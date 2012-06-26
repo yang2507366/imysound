@@ -34,6 +34,9 @@
 		67C32CC61599DFBA000E5533 /* DBKeyValueCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CB01599DFBA000E5533 /* DBKeyValueCache.m */; };
 		67C32CC71599DFBA000E5533 /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CB31599DFBA000E5533 /* TaskQueue.m */; };
 		67C32CC81599DFBA000E5533 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CB51599DFBA000E5533 /* Timer.m */; };
+		67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD01599E0F9000E5533 /* SoundListViewController.m */; };
+		67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD31599E11F000E5533 /* BaseViewController.m */; };
+		67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD61599E1D6000E5533 /* BaseTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +92,12 @@
 		67C32CB31599DFBA000E5533 /* TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskQueue.m; sourceTree = "<group>"; };
 		67C32CB41599DFBA000E5533 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		67C32CB51599DFBA000E5533 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		67C32CCF1599E0F9000E5533 /* SoundListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundListViewController.h; sourceTree = "<group>"; };
+		67C32CD01599E0F9000E5533 /* SoundListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundListViewController.m; sourceTree = "<group>"; };
+		67C32CD21599E11F000E5533 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		67C32CD31599E11F000E5533 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		67C32CD51599E1D6000E5533 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		67C32CD61599E1D6000E5533 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +149,7 @@
 		67C32C2C1599DD3D000E5533 /* imysound */ = {
 			isa = PBXGroup;
 			children = (
+				67C32CCD1599E0E4000E5533 /* ViewControllers */,
 				67C32C351599DD3D000E5533 /* AppDelegate.h */,
 				67C32C361599DD3D000E5533 /* AppDelegate.m */,
 				67C32C2D1599DD3D000E5533 /* Supporting Files */,
@@ -253,6 +263,27 @@
 			path = impl;
 			sourceTree = "<group>";
 		};
+		67C32CCD1599E0E4000E5533 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				67C32CD81599E365000E5533 /* Base */,
+				67C32CCF1599E0F9000E5533 /* SoundListViewController.h */,
+				67C32CD01599E0F9000E5533 /* SoundListViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		67C32CD81599E365000E5533 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				67C32CD21599E11F000E5533 /* BaseViewController.h */,
+				67C32CD31599E11F000E5533 /* BaseViewController.m */,
+				67C32CD51599E1D6000E5533 /* BaseTableViewController.h */,
+				67C32CD61599E1D6000E5533 /* BaseTableViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -335,6 +366,9 @@
 				67C32CC61599DFBA000E5533 /* DBKeyValueCache.m in Sources */,
 				67C32CC71599DFBA000E5533 /* TaskQueue.m in Sources */,
 				67C32CC81599DFBA000E5533 /* Timer.m in Sources */,
+				67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */,
+				67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */,
+				67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +472,7 @@
 				67C32C3C1599DD3D000E5533 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
