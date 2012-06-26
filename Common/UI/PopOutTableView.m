@@ -74,6 +74,16 @@
 
 - (void)popOutViewWillShow
 {
+//    CGFloat maxHeight = self.popOutCell.frame.size.height;
+//    for(UIView *subview in [self.popOutCell.contentView subviews]){
+//        if(subview.frame.origin.y + subview.frame.size.height > maxHeight){
+//            maxHeight = subview.frame.origin.y + subview.frame.size.height;
+//        }
+//    }
+//    CGRect frame = self.popOutCell.frame;
+//    frame.size.height = maxHeight;
+//    self.popOutCell.frame = frame;
+    
     if([self.delegate respondsToSelector:@selector(popOutCellWillShowAtPopOutTableView:)]){
         [self.delegate popOutCellWillShowAtPopOutTableView:self];
     }
@@ -108,7 +118,9 @@
 {
     [self.popOutCell addSubview:view];
     CGRect frame = self.popOutCell.frame;
-    frame.size.height = view.frame.size.height;
+    if(frame.size.height < view.frame.size.height + view.frame.origin.y){
+        frame.size.height = view.frame.size.height + view.frame.origin.y;
+    }
     self.popOutCell.frame = frame;
     [self.tableView reloadData];
 }
