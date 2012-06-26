@@ -50,7 +50,7 @@
     NSDate *date = [[[NSDate alloc] init] autorelease];
     NSString *randomString = [NSString stringWithFormat:@"%f", [date timeIntervalSinceReferenceDate]];
     
-    return randomString;
+    return [randomString stringByReplacingOccurrencesOfString:@"." withString:@""];
 }
 
 + (NSString *)tmpPath
@@ -66,6 +66,12 @@
         return [NSString stringWithFormat:@"0%d", number];
     }
     return [NSString stringWithFormat:@"%d", number];
+}
+
++ (NSArray *)fileNameListInDocumentPath
+{
+    NSString *documentPath = [self documentPath];
+    return [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentPath error:nil];
 }
 
 @end

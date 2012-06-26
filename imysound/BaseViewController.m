@@ -10,4 +10,13 @@
 
 @implementation BaseViewController
 
+- (CGRect)fullBounds
+{
+    CGRect frame = self.view.bounds;
+    frame.size.height -= self.navigationController.navigationBar.frame.size.height;
+    frame.size.height -= self.tabBarController.tabBar.frame.size.height;
+    
+    return frame;
+}
+
 @end

@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseTableViewController.h"
+#import "BaseViewController.h"
 
-@interface SoundListViewController : BaseTableViewController {
-    
+@class PopOutTableView;
+
+@interface SoundListViewController : BaseViewController {
+@private
+    PopOutTableView *_tableView;
+    NSArray *_soundFileList;
 }
 
 @end

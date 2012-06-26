@@ -12,4 +12,6 @@
     
 }
 
+- (CGRect)fullBounds;
+
 @end

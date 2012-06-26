@@ -26,7 +26,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.window.rootViewController = [[[SoundListViewController alloc] init] autorelease];
+    self.window.rootViewController = [[[UINavigationController alloc] initWithRootViewController:
+                                      [[[SoundListViewController alloc] init] autorelease]] autorelease];
     
     return YES;
 }

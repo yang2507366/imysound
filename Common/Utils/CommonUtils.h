@@ -20,4 +20,6 @@
 + (NSString *)tmpPath;
 + (NSString *)formatNumber:(NSUInteger)number;
 
++ (NSArray *)fileNameListInDocumentPath;
+
 @end
