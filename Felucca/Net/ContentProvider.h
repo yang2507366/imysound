@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol FLContentProvider <NSObject>
+@protocol ContentProvider <NSObject>
 
 - (void)cancel;
 
