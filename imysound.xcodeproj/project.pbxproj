@@ -36,6 +36,7 @@
 		67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD01599E0F9000E5533 /* SoundListViewController.m */; };
 		67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD31599E11F000E5533 /* BaseViewController.m */; };
 		67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD61599E1D6000E5533 /* BaseTableViewController.m */; };
+		CF8800C0159BFC2100F01682 /* DBKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,9 @@
 		67C32CD31599E11F000E5533 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		67C32CD51599E1D6000E5533 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		67C32CD61599E1D6000E5533 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		CF8800BD159BFC2100F01682 /* DBKeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DBKeyValueManager.h; sourceTree = "<group>"; };
+		CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBKeyValueManager.m; sourceTree = "<group>"; };
+		CF8800BF159BFC2100F01682 /* KeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; path = KeyValueManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +236,7 @@
 				67C32CAA1599DFBA000E5533 /* DelayController.m */,
 				67C32CAB1599DFBA000E5533 /* KeyboardState.h */,
 				67C32CAC1599DFBA000E5533 /* KeyboardState.m */,
+				CF8800BB159BFC2100F01682 /* KeyValueManager */,
 				67C32CB21599DFBA000E5533 /* TaskQueue.h */,
 				67C32CB31599DFBA000E5533 /* TaskQueue.m */,
 				67C32CB41599DFBA000E5533 /* Timer.h */,
@@ -259,6 +264,24 @@
 				67C32CD61599E1D6000E5533 /* BaseTableViewController.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		CF8800BB159BFC2100F01682 /* KeyValueManager */ = {
+			isa = PBXGroup;
+			children = (
+				CF8800BC159BFC2100F01682 /* impl */,
+				CF8800BF159BFC2100F01682 /* KeyValueManager.h */,
+			);
+			path = KeyValueManager;
+			sourceTree = "<group>";
+		};
+		CF8800BC159BFC2100F01682 /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				CF8800BD159BFC2100F01682 /* DBKeyValueManager.h */,
+				CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */,
+			);
+			path = impl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +368,7 @@
 				67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */,
 				67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */,
 				67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */,
+				CF8800C0159BFC2100F01682 /* DBKeyValueManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
