@@ -67,7 +67,7 @@
 		CF53D824159C28E1009CA3ED /* UIViewController+TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TabBar.m"; sourceTree = "<group>"; };
 		CF53D825159C28E1009CA3ED /* UIWebViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewAdditions.h; sourceTree = "<group>"; };
 		CF53D826159C28E1009CA3ED /* UIWebViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewAdditions.m; sourceTree = "<group>"; };
-		CF53D828159C28E1009CA3ED /* ContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentProvider.h; sourceTree = "<group>"; };
+		CF53D828159C28E1009CA3ED /* FLContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FLContentProvider.h; sourceTree = "<group>"; };
 		CF53D829159C28E1009CA3ED /* HTTPDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDownloader.h; sourceTree = "<group>"; };
 		CF53D82A159C28E1009CA3ED /* HTTPDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDownloader.m; sourceTree = "<group>"; };
 		CF53D82B159C28E1009CA3ED /* HTTPRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequester.h; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		CF53D827159C28E1009CA3ED /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				CF53D828159C28E1009CA3ED /* ContentProvider.h */,
+				CF53D828159C28E1009CA3ED /* FLContentProvider.h */,
 				CF53D829159C28E1009CA3ED /* HTTPDownloader.h */,
 				CF53D82A159C28E1009CA3ED /* HTTPDownloader.m */,
 				CF53D82B159C28E1009CA3ED /* HTTPRequester.h */,
