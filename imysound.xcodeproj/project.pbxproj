@@ -95,9 +95,9 @@
 		67C32CD31599E11F000E5533 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		67C32CD51599E1D6000E5533 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		67C32CD61599E1D6000E5533 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
-		CF8800BD159BFC2100F01682 /* DBKeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DBKeyValueManager.h; sourceTree = "<group>"; };
+		CF8800BD159BFC2100F01682 /* DBKeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBKeyValueManager.h; sourceTree = "<group>"; };
 		CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBKeyValueManager.m; sourceTree = "<group>"; };
-		CF8800BF159BFC2100F01682 /* KeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; path = KeyValueManager.h; sourceTree = "<group>"; };
+		CF8800BF159BFC2100F01682 /* KeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +228,7 @@
 		67C32CA41599DFBA000E5533 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CF8800C1159BFDCE00F01682 /* CacheManager */,
 				67C32CA51599DFBA000E5533 /* CodeUtils.h */,
 				67C32CA61599DFBA000E5533 /* CodeUtils.m */,
 				67C32CA71599DFBA000E5533 /* CommonUtils.h */,
@@ -282,6 +283,13 @@
 				CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */,
 			);
 			path = impl;
+			sourceTree = "<group>";
+		};
+		CF8800C1159BFDCE00F01682 /* CacheManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CacheManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

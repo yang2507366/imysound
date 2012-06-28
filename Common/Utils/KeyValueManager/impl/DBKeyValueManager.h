@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KeyValueCache.h"
+#import "KeyValueManager.h"
 #import "sqlite3.h"
 
 @interface DBKeyValueManager : NSObject <KeyValueManager> {
