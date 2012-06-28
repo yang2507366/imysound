@@ -31,7 +31,6 @@
 		67C32CC31599DFBA000E5533 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CA81599DFBA000E5533 /* CommonUtils.m */; };
 		67C32CC41599DFBA000E5533 /* DelayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CAA1599DFBA000E5533 /* DelayController.m */; };
 		67C32CC51599DFBA000E5533 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CAC1599DFBA000E5533 /* KeyboardState.m */; };
-		67C32CC61599DFBA000E5533 /* DBKeyValueCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CB01599DFBA000E5533 /* DBKeyValueCache.m */; };
 		67C32CC71599DFBA000E5533 /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CB31599DFBA000E5533 /* TaskQueue.m */; };
 		67C32CC81599DFBA000E5533 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CB51599DFBA000E5533 /* Timer.m */; };
 		67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD01599E0F9000E5533 /* SoundListViewController.m */; };
@@ -85,9 +84,6 @@
 		67C32CAA1599DFBA000E5533 /* DelayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayController.m; sourceTree = "<group>"; };
 		67C32CAB1599DFBA000E5533 /* KeyboardState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
 		67C32CAC1599DFBA000E5533 /* KeyboardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
-		67C32CAF1599DFBA000E5533 /* DBKeyValueCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBKeyValueCache.h; sourceTree = "<group>"; };
-		67C32CB01599DFBA000E5533 /* DBKeyValueCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBKeyValueCache.m; sourceTree = "<group>"; };
-		67C32CB11599DFBA000E5533 /* KeyValueCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueCache.h; sourceTree = "<group>"; };
 		67C32CB21599DFBA000E5533 /* TaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskQueue.h; sourceTree = "<group>"; };
 		67C32CB31599DFBA000E5533 /* TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskQueue.m; sourceTree = "<group>"; };
 		67C32CB41599DFBA000E5533 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -236,31 +232,12 @@
 				67C32CAA1599DFBA000E5533 /* DelayController.m */,
 				67C32CAB1599DFBA000E5533 /* KeyboardState.h */,
 				67C32CAC1599DFBA000E5533 /* KeyboardState.m */,
-				67C32CAD1599DFBA000E5533 /* KeyValueCache */,
 				67C32CB21599DFBA000E5533 /* TaskQueue.h */,
 				67C32CB31599DFBA000E5533 /* TaskQueue.m */,
 				67C32CB41599DFBA000E5533 /* Timer.h */,
 				67C32CB51599DFBA000E5533 /* Timer.m */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		67C32CAD1599DFBA000E5533 /* KeyValueCache */ = {
-			isa = PBXGroup;
-			children = (
-				67C32CAE1599DFBA000E5533 /* impl */,
-				67C32CB11599DFBA000E5533 /* KeyValueCache.h */,
-			);
-			path = KeyValueCache;
-			sourceTree = "<group>";
-		};
-		67C32CAE1599DFBA000E5533 /* impl */ = {
-			isa = PBXGroup;
-			children = (
-				67C32CAF1599DFBA000E5533 /* DBKeyValueCache.h */,
-				67C32CB01599DFBA000E5533 /* DBKeyValueCache.m */,
-			);
-			path = impl;
 			sourceTree = "<group>";
 		};
 		67C32CCD1599E0E4000E5533 /* ViewControllers */ = {
@@ -363,7 +340,6 @@
 				67C32CC31599DFBA000E5533 /* CommonUtils.m in Sources */,
 				67C32CC41599DFBA000E5533 /* DelayController.m in Sources */,
 				67C32CC51599DFBA000E5533 /* KeyboardState.m in Sources */,
-				67C32CC61599DFBA000E5533 /* DBKeyValueCache.m in Sources */,
 				67C32CC71599DFBA000E5533 /* TaskQueue.m in Sources */,
 				67C32CC81599DFBA000E5533 /* Timer.m in Sources */,
 				67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */,
