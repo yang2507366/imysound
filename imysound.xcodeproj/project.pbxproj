@@ -228,6 +228,7 @@
 		67C32CA41599DFBA000E5533 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CF8800C2159BFF2A00F01682 /* CacheManager */,
 				67C32CA51599DFBA000E5533 /* CodeUtils.h */,
 				67C32CA61599DFBA000E5533 /* CodeUtils.m */,
 				67C32CA71599DFBA000E5533 /* CommonUtils.h */,
@@ -282,6 +283,13 @@
 				CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */,
 			);
 			path = impl;
+			sourceTree = "<group>";
+		};
+		CF8800C2159BFF2A00F01682 /* CacheManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CacheManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
