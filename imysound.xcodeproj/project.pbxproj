@@ -15,29 +15,29 @@
 		67C32C371599DD3D000E5533 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C361599DD3D000E5533 /* AppDelegate.m */; };
 		67C32C841599DF58000E5533 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C32C831599DF58000E5533 /* SystemConfiguration.framework */; };
 		67C32C861599DF69000E5533 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C32C851599DF69000E5533 /* libsqlite3.dylib */; };
-		67C32CB61599DFBA000E5533 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C8A1599DFBA000E5533 /* UIViewController+Alert.m */; };
-		67C32CB71599DFBA000E5533 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C8C1599DFBA000E5533 /* UIViewController+Loading.m */; };
-		67C32CB81599DFBA000E5533 /* UIViewController+TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C8E1599DFBA000E5533 /* UIViewController+TabBar.m */; };
-		67C32CB91599DFBA000E5533 /* UIWebViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C901599DFBA000E5533 /* UIWebViewAdditions.m */; };
-		67C32CBA1599DFBA000E5533 /* HTTPDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C941599DFBA000E5533 /* HTTPDownloader.m */; };
-		67C32CBB1599DFBA000E5533 /* HTTPRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C961599DFBA000E5533 /* HTTPRequester.m */; };
-		67C32CBC1599DFBA000E5533 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C981599DFBA000E5533 /* NetworkManager.m */; };
-		67C32CBD1599DFBA000E5533 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C9A1599DFBA000E5533 /* Reachability.m */; };
-		67C32CBE1599DFBA000E5533 /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C9D1599DFBA000E5533 /* CustomPickerView.m */; };
-		67C32CBF1599DFBA000E5533 /* PopOutTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32C9F1599DFBA000E5533 /* PopOutTableView.m */; };
-		67C32CC01599DFBA000E5533 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CA11599DFBA000E5533 /* Toast.m */; };
-		67C32CC11599DFBA000E5533 /* UITools.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CA31599DFBA000E5533 /* UITools.m */; };
-		67C32CC21599DFBA000E5533 /* CodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CA61599DFBA000E5533 /* CodeUtils.m */; };
-		67C32CC31599DFBA000E5533 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CA81599DFBA000E5533 /* CommonUtils.m */; };
-		67C32CC41599DFBA000E5533 /* DelayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CAA1599DFBA000E5533 /* DelayController.m */; };
-		67C32CC51599DFBA000E5533 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CAC1599DFBA000E5533 /* KeyboardState.m */; };
-		67C32CC71599DFBA000E5533 /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CB31599DFBA000E5533 /* TaskQueue.m */; };
-		67C32CC81599DFBA000E5533 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CB51599DFBA000E5533 /* Timer.m */; };
 		67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD01599E0F9000E5533 /* SoundListViewController.m */; };
 		67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD31599E11F000E5533 /* BaseViewController.m */; };
 		67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD61599E1D6000E5533 /* BaseTableViewController.m */; };
-		CF8800C0159BFC2100F01682 /* DBKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */; };
-		CF8800C6159C007800F01682 /* SimpleCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800C5159C007800F01682 /* SimpleCacheManager.m */; };
+		CF8800FA159C025100F01682 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800CA159C025000F01682 /* UIViewController+Alert.m */; };
+		CF8800FB159C025100F01682 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800CC159C025000F01682 /* UIViewController+Loading.m */; };
+		CF8800FC159C025100F01682 /* UIViewController+TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800CE159C025000F01682 /* UIViewController+TabBar.m */; };
+		CF8800FD159C025100F01682 /* UIWebViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800D0159C025000F01682 /* UIWebViewAdditions.m */; };
+		CF8800FE159C025100F01682 /* HTTPDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800D4159C025000F01682 /* HTTPDownloader.m */; };
+		CF8800FF159C025100F01682 /* HTTPRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800D6159C025000F01682 /* HTTPRequester.m */; };
+		CF880100159C025100F01682 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800D8159C025000F01682 /* NetworkManager.m */; };
+		CF880101159C025100F01682 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800DA159C025000F01682 /* Reachability.m */; };
+		CF880102159C025100F01682 /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800DD159C025000F01682 /* CustomPickerView.m */; };
+		CF880103159C025100F01682 /* PopOutTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800DF159C025000F01682 /* PopOutTableView.m */; };
+		CF880104159C025100F01682 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800E1159C025000F01682 /* Toast.m */; };
+		CF880105159C025100F01682 /* UITools.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800E3159C025000F01682 /* UITools.m */; };
+		CF880106159C025100F01682 /* SimpleCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800E8159C025000F01682 /* SimpleCacheManager.m */; };
+		CF880107159C025100F01682 /* CodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800EA159C025000F01682 /* CodeUtils.m */; };
+		CF880108159C025100F01682 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800EC159C025000F01682 /* CommonUtils.m */; };
+		CF880109159C025100F01682 /* DelayController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800EE159C025000F01682 /* DelayController.m */; };
+		CF88010A159C025100F01682 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800F0159C025000F01682 /* KeyboardState.m */; };
+		CF88010B159C025100F01682 /* DBKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800F4159C025000F01682 /* DBKeyValueManager.m */; };
+		CF88010C159C025100F01682 /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800F7159C025000F01682 /* TaskQueue.m */; };
+		CF88010D159C025100F01682 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800F9159C025000F01682 /* Timer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,55 +53,55 @@
 		67C32C361599DD3D000E5533 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		67C32C831599DF58000E5533 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		67C32C851599DF69000E5533 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		67C32C891599DFBA000E5533 /* UIViewController+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
-		67C32C8A1599DFBA000E5533 /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
-		67C32C8B1599DFBA000E5533 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
-		67C32C8C1599DFBA000E5533 /* UIViewController+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Loading.m"; sourceTree = "<group>"; };
-		67C32C8D1599DFBA000E5533 /* UIViewController+TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TabBar.h"; sourceTree = "<group>"; };
-		67C32C8E1599DFBA000E5533 /* UIViewController+TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TabBar.m"; sourceTree = "<group>"; };
-		67C32C8F1599DFBA000E5533 /* UIWebViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewAdditions.h; sourceTree = "<group>"; };
-		67C32C901599DFBA000E5533 /* UIWebViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewAdditions.m; sourceTree = "<group>"; };
-		67C32C921599DFBA000E5533 /* ContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentProvider.h; sourceTree = "<group>"; };
-		67C32C931599DFBA000E5533 /* HTTPDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDownloader.h; sourceTree = "<group>"; };
-		67C32C941599DFBA000E5533 /* HTTPDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDownloader.m; sourceTree = "<group>"; };
-		67C32C951599DFBA000E5533 /* HTTPRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequester.h; sourceTree = "<group>"; };
-		67C32C961599DFBA000E5533 /* HTTPRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequester.m; sourceTree = "<group>"; };
-		67C32C971599DFBA000E5533 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
-		67C32C981599DFBA000E5533 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
-		67C32C991599DFBA000E5533 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		67C32C9A1599DFBA000E5533 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		67C32C9C1599DFBA000E5533 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
-		67C32C9D1599DFBA000E5533 /* CustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickerView.m; sourceTree = "<group>"; };
-		67C32C9E1599DFBA000E5533 /* PopOutTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOutTableView.h; sourceTree = "<group>"; };
-		67C32C9F1599DFBA000E5533 /* PopOutTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOutTableView.m; sourceTree = "<group>"; };
-		67C32CA01599DFBA000E5533 /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
-		67C32CA11599DFBA000E5533 /* Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toast.m; sourceTree = "<group>"; };
-		67C32CA21599DFBA000E5533 /* UITools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITools.h; sourceTree = "<group>"; };
-		67C32CA31599DFBA000E5533 /* UITools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITools.m; sourceTree = "<group>"; };
-		67C32CA51599DFBA000E5533 /* CodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeUtils.h; sourceTree = "<group>"; };
-		67C32CA61599DFBA000E5533 /* CodeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeUtils.m; sourceTree = "<group>"; };
-		67C32CA71599DFBA000E5533 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
-		67C32CA81599DFBA000E5533 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
-		67C32CA91599DFBA000E5533 /* DelayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayController.h; sourceTree = "<group>"; };
-		67C32CAA1599DFBA000E5533 /* DelayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayController.m; sourceTree = "<group>"; };
-		67C32CAB1599DFBA000E5533 /* KeyboardState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
-		67C32CAC1599DFBA000E5533 /* KeyboardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
-		67C32CB21599DFBA000E5533 /* TaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskQueue.h; sourceTree = "<group>"; };
-		67C32CB31599DFBA000E5533 /* TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskQueue.m; sourceTree = "<group>"; };
-		67C32CB41599DFBA000E5533 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
-		67C32CB51599DFBA000E5533 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		67C32CCF1599E0F9000E5533 /* SoundListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundListViewController.h; sourceTree = "<group>"; };
 		67C32CD01599E0F9000E5533 /* SoundListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundListViewController.m; sourceTree = "<group>"; };
 		67C32CD21599E11F000E5533 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		67C32CD31599E11F000E5533 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		67C32CD51599E1D6000E5533 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		67C32CD61599E1D6000E5533 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
-		CF8800BD159BFC2100F01682 /* DBKeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBKeyValueManager.h; sourceTree = "<group>"; };
-		CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBKeyValueManager.m; sourceTree = "<group>"; };
-		CF8800BF159BFC2100F01682 /* KeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueManager.h; sourceTree = "<group>"; };
-		CF8800C3159BFF8000F01682 /* CacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheManager.h; sourceTree = "<group>"; };
-		CF8800C4159C007800F01682 /* SimpleCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCacheManager.h; sourceTree = "<group>"; };
-		CF8800C5159C007800F01682 /* SimpleCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCacheManager.m; sourceTree = "<group>"; };
+		CF8800C9159C025000F01682 /* UIViewController+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
+		CF8800CA159C025000F01682 /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
+		CF8800CB159C025000F01682 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
+		CF8800CC159C025000F01682 /* UIViewController+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Loading.m"; sourceTree = "<group>"; };
+		CF8800CD159C025000F01682 /* UIViewController+TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TabBar.h"; sourceTree = "<group>"; };
+		CF8800CE159C025000F01682 /* UIViewController+TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TabBar.m"; sourceTree = "<group>"; };
+		CF8800CF159C025000F01682 /* UIWebViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewAdditions.h; sourceTree = "<group>"; };
+		CF8800D0159C025000F01682 /* UIWebViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewAdditions.m; sourceTree = "<group>"; };
+		CF8800D2159C025000F01682 /* ContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentProvider.h; sourceTree = "<group>"; };
+		CF8800D3159C025000F01682 /* HTTPDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDownloader.h; sourceTree = "<group>"; };
+		CF8800D4159C025000F01682 /* HTTPDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDownloader.m; sourceTree = "<group>"; };
+		CF8800D5159C025000F01682 /* HTTPRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequester.h; sourceTree = "<group>"; };
+		CF8800D6159C025000F01682 /* HTTPRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequester.m; sourceTree = "<group>"; };
+		CF8800D7159C025000F01682 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		CF8800D8159C025000F01682 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		CF8800D9159C025000F01682 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CF8800DA159C025000F01682 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CF8800DC159C025000F01682 /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
+		CF8800DD159C025000F01682 /* CustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickerView.m; sourceTree = "<group>"; };
+		CF8800DE159C025000F01682 /* PopOutTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOutTableView.h; sourceTree = "<group>"; };
+		CF8800DF159C025000F01682 /* PopOutTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOutTableView.m; sourceTree = "<group>"; };
+		CF8800E0159C025000F01682 /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
+		CF8800E1159C025000F01682 /* Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toast.m; sourceTree = "<group>"; };
+		CF8800E2159C025000F01682 /* UITools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITools.h; sourceTree = "<group>"; };
+		CF8800E3159C025000F01682 /* UITools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITools.m; sourceTree = "<group>"; };
+		CF8800E6159C025000F01682 /* CacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheManager.h; sourceTree = "<group>"; };
+		CF8800E7159C025000F01682 /* SimpleCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCacheManager.h; sourceTree = "<group>"; };
+		CF8800E8159C025000F01682 /* SimpleCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCacheManager.m; sourceTree = "<group>"; };
+		CF8800E9159C025000F01682 /* CodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeUtils.h; sourceTree = "<group>"; };
+		CF8800EA159C025000F01682 /* CodeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeUtils.m; sourceTree = "<group>"; };
+		CF8800EB159C025000F01682 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		CF8800EC159C025000F01682 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		CF8800ED159C025000F01682 /* DelayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayController.h; sourceTree = "<group>"; };
+		CF8800EE159C025000F01682 /* DelayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayController.m; sourceTree = "<group>"; };
+		CF8800EF159C025000F01682 /* KeyboardState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
+		CF8800F0159C025000F01682 /* KeyboardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
+		CF8800F3159C025000F01682 /* DBKeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBKeyValueManager.h; sourceTree = "<group>"; };
+		CF8800F4159C025000F01682 /* DBKeyValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBKeyValueManager.m; sourceTree = "<group>"; };
+		CF8800F5159C025000F01682 /* KeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueManager.h; sourceTree = "<group>"; };
+		CF8800F6159C025000F01682 /* TaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskQueue.h; sourceTree = "<group>"; };
+		CF8800F7159C025000F01682 /* TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskQueue.m; sourceTree = "<group>"; };
+		CF8800F8159C025000F01682 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		CF8800F9159C025000F01682 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,7 @@
 			children = (
 				67C32C851599DF69000E5533 /* libsqlite3.dylib */,
 				67C32C831599DF58000E5533 /* SystemConfiguration.framework */,
-				67C32C871599DFBA000E5533 /* Common */,
+				CF8800C7159C025000F01682 /* StarryLib */,
 				67C32C2C1599DD3D000E5533 /* imysound */,
 				67C32C251599DD3D000E5533 /* Frameworks */,
 				67C32C231599DD3D000E5533 /* Products */,
@@ -172,84 +172,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		67C32C871599DFBA000E5533 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				67C32C881599DFBA000E5533 /* Addition */,
-				67C32C911599DFBA000E5533 /* Net */,
-				67C32C9B1599DFBA000E5533 /* UI */,
-				67C32CA41599DFBA000E5533 /* Utils */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		67C32C881599DFBA000E5533 /* Addition */ = {
-			isa = PBXGroup;
-			children = (
-				67C32C891599DFBA000E5533 /* UIViewController+Alert.h */,
-				67C32C8A1599DFBA000E5533 /* UIViewController+Alert.m */,
-				67C32C8B1599DFBA000E5533 /* UIViewController+Loading.h */,
-				67C32C8C1599DFBA000E5533 /* UIViewController+Loading.m */,
-				67C32C8D1599DFBA000E5533 /* UIViewController+TabBar.h */,
-				67C32C8E1599DFBA000E5533 /* UIViewController+TabBar.m */,
-				67C32C8F1599DFBA000E5533 /* UIWebViewAdditions.h */,
-				67C32C901599DFBA000E5533 /* UIWebViewAdditions.m */,
-			);
-			path = Addition;
-			sourceTree = "<group>";
-		};
-		67C32C911599DFBA000E5533 /* Net */ = {
-			isa = PBXGroup;
-			children = (
-				67C32C921599DFBA000E5533 /* ContentProvider.h */,
-				67C32C931599DFBA000E5533 /* HTTPDownloader.h */,
-				67C32C941599DFBA000E5533 /* HTTPDownloader.m */,
-				67C32C951599DFBA000E5533 /* HTTPRequester.h */,
-				67C32C961599DFBA000E5533 /* HTTPRequester.m */,
-				67C32C971599DFBA000E5533 /* NetworkManager.h */,
-				67C32C981599DFBA000E5533 /* NetworkManager.m */,
-				67C32C991599DFBA000E5533 /* Reachability.h */,
-				67C32C9A1599DFBA000E5533 /* Reachability.m */,
-			);
-			path = Net;
-			sourceTree = "<group>";
-		};
-		67C32C9B1599DFBA000E5533 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				67C32C9C1599DFBA000E5533 /* CustomPickerView.h */,
-				67C32C9D1599DFBA000E5533 /* CustomPickerView.m */,
-				67C32C9E1599DFBA000E5533 /* PopOutTableView.h */,
-				67C32C9F1599DFBA000E5533 /* PopOutTableView.m */,
-				67C32CA01599DFBA000E5533 /* Toast.h */,
-				67C32CA11599DFBA000E5533 /* Toast.m */,
-				67C32CA21599DFBA000E5533 /* UITools.h */,
-				67C32CA31599DFBA000E5533 /* UITools.m */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		67C32CA41599DFBA000E5533 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				CF8800C2159BFF2A00F01682 /* CacheManager */,
-				67C32CA51599DFBA000E5533 /* CodeUtils.h */,
-				67C32CA61599DFBA000E5533 /* CodeUtils.m */,
-				67C32CA71599DFBA000E5533 /* CommonUtils.h */,
-				67C32CA81599DFBA000E5533 /* CommonUtils.m */,
-				67C32CA91599DFBA000E5533 /* DelayController.h */,
-				67C32CAA1599DFBA000E5533 /* DelayController.m */,
-				67C32CAB1599DFBA000E5533 /* KeyboardState.h */,
-				67C32CAC1599DFBA000E5533 /* KeyboardState.m */,
-				CF8800BB159BFC2100F01682 /* KeyValueManager */,
-				67C32CB21599DFBA000E5533 /* TaskQueue.h */,
-				67C32CB31599DFBA000E5533 /* TaskQueue.m */,
-				67C32CB41599DFBA000E5533 /* Timer.h */,
-				67C32CB51599DFBA000E5533 /* Timer.m */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		67C32CCD1599E0E4000E5533 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,32 +193,110 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
-		CF8800BB159BFC2100F01682 /* KeyValueManager */ = {
+		CF8800C7159C025000F01682 /* StarryLib */ = {
 			isa = PBXGroup;
 			children = (
-				CF8800BC159BFC2100F01682 /* impl */,
-				CF8800BF159BFC2100F01682 /* KeyValueManager.h */,
+				CF8800C8159C025000F01682 /* Addition */,
+				CF8800D1159C025000F01682 /* Net */,
+				CF8800DB159C025000F01682 /* UI */,
+				CF8800E4159C025000F01682 /* Utils */,
+			);
+			path = StarryLib;
+			sourceTree = "<group>";
+		};
+		CF8800C8159C025000F01682 /* Addition */ = {
+			isa = PBXGroup;
+			children = (
+				CF8800C9159C025000F01682 /* UIViewController+Alert.h */,
+				CF8800CA159C025000F01682 /* UIViewController+Alert.m */,
+				CF8800CB159C025000F01682 /* UIViewController+Loading.h */,
+				CF8800CC159C025000F01682 /* UIViewController+Loading.m */,
+				CF8800CD159C025000F01682 /* UIViewController+TabBar.h */,
+				CF8800CE159C025000F01682 /* UIViewController+TabBar.m */,
+				CF8800CF159C025000F01682 /* UIWebViewAdditions.h */,
+				CF8800D0159C025000F01682 /* UIWebViewAdditions.m */,
+			);
+			path = Addition;
+			sourceTree = "<group>";
+		};
+		CF8800D1159C025000F01682 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				CF8800D2159C025000F01682 /* ContentProvider.h */,
+				CF8800D3159C025000F01682 /* HTTPDownloader.h */,
+				CF8800D4159C025000F01682 /* HTTPDownloader.m */,
+				CF8800D5159C025000F01682 /* HTTPRequester.h */,
+				CF8800D6159C025000F01682 /* HTTPRequester.m */,
+				CF8800D7159C025000F01682 /* NetworkManager.h */,
+				CF8800D8159C025000F01682 /* NetworkManager.m */,
+				CF8800D9159C025000F01682 /* Reachability.h */,
+				CF8800DA159C025000F01682 /* Reachability.m */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
+		CF8800DB159C025000F01682 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CF8800DC159C025000F01682 /* CustomPickerView.h */,
+				CF8800DD159C025000F01682 /* CustomPickerView.m */,
+				CF8800DE159C025000F01682 /* PopOutTableView.h */,
+				CF8800DF159C025000F01682 /* PopOutTableView.m */,
+				CF8800E0159C025000F01682 /* Toast.h */,
+				CF8800E1159C025000F01682 /* Toast.m */,
+				CF8800E2159C025000F01682 /* UITools.h */,
+				CF8800E3159C025000F01682 /* UITools.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CF8800E4159C025000F01682 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CF8800E5159C025000F01682 /* CacheManager */,
+				CF8800E9159C025000F01682 /* CodeUtils.h */,
+				CF8800EA159C025000F01682 /* CodeUtils.m */,
+				CF8800EB159C025000F01682 /* CommonUtils.h */,
+				CF8800EC159C025000F01682 /* CommonUtils.m */,
+				CF8800ED159C025000F01682 /* DelayController.h */,
+				CF8800EE159C025000F01682 /* DelayController.m */,
+				CF8800EF159C025000F01682 /* KeyboardState.h */,
+				CF8800F0159C025000F01682 /* KeyboardState.m */,
+				CF8800F1159C025000F01682 /* KeyValueManager */,
+				CF8800F6159C025000F01682 /* TaskQueue.h */,
+				CF8800F7159C025000F01682 /* TaskQueue.m */,
+				CF8800F8159C025000F01682 /* Timer.h */,
+				CF8800F9159C025000F01682 /* Timer.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CF8800E5159C025000F01682 /* CacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				CF8800E6159C025000F01682 /* CacheManager.h */,
+				CF8800E7159C025000F01682 /* SimpleCacheManager.h */,
+				CF8800E8159C025000F01682 /* SimpleCacheManager.m */,
+			);
+			path = CacheManager;
+			sourceTree = "<group>";
+		};
+		CF8800F1159C025000F01682 /* KeyValueManager */ = {
+			isa = PBXGroup;
+			children = (
+				CF8800F2159C025000F01682 /* impl */,
+				CF8800F5159C025000F01682 /* KeyValueManager.h */,
 			);
 			path = KeyValueManager;
 			sourceTree = "<group>";
 		};
-		CF8800BC159BFC2100F01682 /* impl */ = {
+		CF8800F2159C025000F01682 /* impl */ = {
 			isa = PBXGroup;
 			children = (
-				CF8800BD159BFC2100F01682 /* DBKeyValueManager.h */,
-				CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */,
+				CF8800F3159C025000F01682 /* DBKeyValueManager.h */,
+				CF8800F4159C025000F01682 /* DBKeyValueManager.m */,
 			);
 			path = impl;
-			sourceTree = "<group>";
-		};
-		CF8800C2159BFF2A00F01682 /* CacheManager */ = {
-			isa = PBXGroup;
-			children = (
-				CF8800C3159BFF8000F01682 /* CacheManager.h */,
-				CF8800C4159C007800F01682 /* SimpleCacheManager.h */,
-				CF8800C5159C007800F01682 /* SimpleCacheManager.m */,
-			);
-			path = CacheManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,29 +362,29 @@
 			files = (
 				67C32C331599DD3D000E5533 /* main.m in Sources */,
 				67C32C371599DD3D000E5533 /* AppDelegate.m in Sources */,
-				67C32CB61599DFBA000E5533 /* UIViewController+Alert.m in Sources */,
-				67C32CB71599DFBA000E5533 /* UIViewController+Loading.m in Sources */,
-				67C32CB81599DFBA000E5533 /* UIViewController+TabBar.m in Sources */,
-				67C32CB91599DFBA000E5533 /* UIWebViewAdditions.m in Sources */,
-				67C32CBA1599DFBA000E5533 /* HTTPDownloader.m in Sources */,
-				67C32CBB1599DFBA000E5533 /* HTTPRequester.m in Sources */,
-				67C32CBC1599DFBA000E5533 /* NetworkManager.m in Sources */,
-				67C32CBD1599DFBA000E5533 /* Reachability.m in Sources */,
-				67C32CBE1599DFBA000E5533 /* CustomPickerView.m in Sources */,
-				67C32CBF1599DFBA000E5533 /* PopOutTableView.m in Sources */,
-				67C32CC01599DFBA000E5533 /* Toast.m in Sources */,
-				67C32CC11599DFBA000E5533 /* UITools.m in Sources */,
-				67C32CC21599DFBA000E5533 /* CodeUtils.m in Sources */,
-				67C32CC31599DFBA000E5533 /* CommonUtils.m in Sources */,
-				67C32CC41599DFBA000E5533 /* DelayController.m in Sources */,
-				67C32CC51599DFBA000E5533 /* KeyboardState.m in Sources */,
-				67C32CC71599DFBA000E5533 /* TaskQueue.m in Sources */,
-				67C32CC81599DFBA000E5533 /* Timer.m in Sources */,
 				67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */,
 				67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */,
 				67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */,
-				CF8800C0159BFC2100F01682 /* DBKeyValueManager.m in Sources */,
-				CF8800C6159C007800F01682 /* SimpleCacheManager.m in Sources */,
+				CF8800FA159C025100F01682 /* UIViewController+Alert.m in Sources */,
+				CF8800FB159C025100F01682 /* UIViewController+Loading.m in Sources */,
+				CF8800FC159C025100F01682 /* UIViewController+TabBar.m in Sources */,
+				CF8800FD159C025100F01682 /* UIWebViewAdditions.m in Sources */,
+				CF8800FE159C025100F01682 /* HTTPDownloader.m in Sources */,
+				CF8800FF159C025100F01682 /* HTTPRequester.m in Sources */,
+				CF880100159C025100F01682 /* NetworkManager.m in Sources */,
+				CF880101159C025100F01682 /* Reachability.m in Sources */,
+				CF880102159C025100F01682 /* CustomPickerView.m in Sources */,
+				CF880103159C025100F01682 /* PopOutTableView.m in Sources */,
+				CF880104159C025100F01682 /* Toast.m in Sources */,
+				CF880105159C025100F01682 /* UITools.m in Sources */,
+				CF880106159C025100F01682 /* SimpleCacheManager.m in Sources */,
+				CF880107159C025100F01682 /* CodeUtils.m in Sources */,
+				CF880108159C025100F01682 /* CommonUtils.m in Sources */,
+				CF880109159C025100F01682 /* DelayController.m in Sources */,
+				CF88010A159C025100F01682 /* KeyboardState.m in Sources */,
+				CF88010B159C025100F01682 /* DBKeyValueManager.m in Sources */,
+				CF88010C159C025100F01682 /* TaskQueue.m in Sources */,
+				CF88010D159C025100F01682 /* Timer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
