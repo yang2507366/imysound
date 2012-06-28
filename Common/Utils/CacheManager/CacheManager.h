@@ -10,4 +10,8 @@
 
 @protocol CacheManager <NSObject>
 
+- (void)addCacheForKey:(NSString *)key content:(NSString *)content;
+- (NSString *)cacheContentForKey:(NSString *)key;
+- (void)clearAllCache;
+
 @end

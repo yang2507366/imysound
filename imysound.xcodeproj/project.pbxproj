@@ -37,6 +37,7 @@
 		67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD31599E11F000E5533 /* BaseViewController.m */; };
 		67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD61599E1D6000E5533 /* BaseTableViewController.m */; };
 		CF8800C0159BFC2100F01682 /* DBKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */; };
+		CF8800C6159C007800F01682 /* SimpleCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8800C5159C007800F01682 /* SimpleCacheManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,8 @@
 		CF8800BE159BFC2100F01682 /* DBKeyValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBKeyValueManager.m; sourceTree = "<group>"; };
 		CF8800BF159BFC2100F01682 /* KeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueManager.h; sourceTree = "<group>"; };
 		CF8800C3159BFF8000F01682 /* CacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheManager.h; sourceTree = "<group>"; };
+		CF8800C4159C007800F01682 /* SimpleCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCacheManager.h; sourceTree = "<group>"; };
+		CF8800C5159C007800F01682 /* SimpleCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleCacheManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				CF8800C3159BFF8000F01682 /* CacheManager.h */,
+				CF8800C4159C007800F01682 /* SimpleCacheManager.h */,
+				CF8800C5159C007800F01682 /* SimpleCacheManager.m */,
 			);
 			path = CacheManager;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */,
 				67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */,
 				CF8800C0159BFC2100F01682 /* DBKeyValueManager.m in Sources */,
+				CF8800C6159C007800F01682 /* SimpleCacheManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
