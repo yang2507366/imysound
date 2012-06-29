@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class Cache;
+
 @protocol CacheManager <NSObject>
 
-- (void)addCacheForKey:(NSString *)key content:(NSString *)content;
-- (NSString *)cacheContentForKey:(NSString *)key;
+- (void)addCache:(Cache *)cache;
+- (Cache *)cacheForKey:(NSString *)key;
 - (void)clearAllCache;
 
 @end

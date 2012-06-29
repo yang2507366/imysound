@@ -7,6 +7,7 @@
 //
 
 #import "SimpleCacheManager.h"
+#import "Cache.h"
 
 @interface SimpleCacheManager ()
 
@@ -33,12 +34,12 @@
     return self;
 }
 
-- (void)addCacheForKey:(NSString *)key content:(NSString *)content
+- (void)addCache:(Cache *)cache
 {
-    [self.cacheDictionary setObject:content forKey:key];
+    [self.cacheDictionary setObject:cache forKey:cache.key];
 }
 
-- (NSString *)cacheContentForKey:(NSString *)key
+- (Cache *)cacheForKey:(NSString *)key
 {
     return [self.cacheDictionary objectForKey:key];
 }
