@@ -22,4 +22,26 @@
     [super dealloc];
 }
 
+- (id)init
+{
+    self = [super init];
+    
+    static NSDateFormatter *dateFormatter = nil;
+    @synchronized(dateFormatter){
+        if(dateFormatter == nil){
+            dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+        }
+    }
+    
+    self.date = [dateFormatter stringFromDate:[[[NSDate alloc] init] autorelease]];
+    
+    return self;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@, %@:%@", self.date, self.key, self.content];
+}
+
 @end

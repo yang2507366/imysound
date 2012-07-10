@@ -52,14 +52,14 @@
 {
     NSString *key = cache.key;
     NSString *value = [NSString stringWithFormat:@"%@%@%@", cache.content, SEPARATOR, cache.date];
-    [self.dbKeyValueMgr setValue:key forKey:value];
+    [self.dbKeyValueMgr setValue:value forKey:key];
 }
 
 - (Cache *)cacheForKey:(NSString *)key
 {
     NSString *value = [self.dbKeyValueMgr valueForKey:key];
     NSArray *valueArray = [value componentsSeparatedByString:SEPARATOR];
-    if(valueArray.count == 0){
+    if(valueArray.count == 2){
         Cache *cache = [[[Cache alloc] init] autorelease];
         cache.key = key;
         cache.content = [valueArray objectAtIndex:0];

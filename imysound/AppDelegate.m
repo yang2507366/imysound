@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "SoundListViewController.h"
+#import "CacheManagerFactory.h"
+#import "Cache.h"
 
 @implementation AppDelegate
 
@@ -28,6 +30,7 @@
     
     self.window.rootViewController = [[[UINavigationController alloc] initWithRootViewController:
                                       [[[SoundListViewController alloc] init] autorelease]] autorelease];
+    
     
     return YES;
 }
