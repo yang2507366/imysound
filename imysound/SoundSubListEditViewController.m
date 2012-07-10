@@ -9,6 +9,7 @@
 #import "SoundSubListEditViewController.h"
 #import "SoundSubManager.h"
 #import "SoundSub.h"
+#import "SoundSubEditViewController.h"
 
 @interface SoundSubListEditViewController ()
 
@@ -71,7 +72,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.row == self.soundSubList.count){
-        
+        SoundSubEditViewController *vc = [[[SoundSubEditViewController alloc] 
+                                           initWithSoundFilePath:self.soundFilePath] autorelease];
+        UINavigationController *nc = [[[UINavigationController alloc] 
+                                       initWithRootViewController:vc] autorelease];
+        [self presentModalViewController:nc animated:YES];
     }
 }
 
