@@ -10,7 +10,7 @@
 		678586B815AC622D00B096C1 /* SoundSub.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586B715AC622D00B096C1 /* SoundSub.m */; };
 		678586BC15AC626C00B096C1 /* SoundSubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586BB15AC626C00B096C1 /* SoundSubManager.m */; };
 		678586BF15AC62B600B096C1 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586BE15AC62B600B096C1 /* Singleton.m */; };
-		678586C215AC68DE00B096C1 /* SoundSubEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586C115AC68DE00B096C1 /* SoundSubEditViewController.m */; };
+		678586C215AC68DE00B096C1 /* SoundSubListEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586C115AC68DE00B096C1 /* SoundSubListEditViewController.m */; };
 		67C32C271599DD3D000E5533 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C32C261599DD3D000E5533 /* UIKit.framework */; };
 		67C32C291599DD3D000E5533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C32C281599DD3D000E5533 /* Foundation.framework */; };
 		67C32C2B1599DD3D000E5533 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C32C2A1599DD3D000E5533 /* CoreGraphics.framework */; };
@@ -54,8 +54,8 @@
 		678586BB15AC626C00B096C1 /* SoundSubManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSubManager.m; sourceTree = "<group>"; };
 		678586BD15AC62B600B096C1 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		678586BE15AC62B600B096C1 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
-		678586C015AC68DE00B096C1 /* SoundSubEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSubEditViewController.h; sourceTree = "<group>"; };
-		678586C115AC68DE00B096C1 /* SoundSubEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSubEditViewController.m; sourceTree = "<group>"; };
+		678586C015AC68DE00B096C1 /* SoundSubListEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SoundSubListEditViewController.h; sourceTree = "<group>"; };
+		678586C115AC68DE00B096C1 /* SoundSubListEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSubListEditViewController.m; sourceTree = "<group>"; };
 		67C32C221599DD3D000E5533 /* imysound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imysound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C32C261599DD3D000E5533 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67C32C281599DD3D000E5533 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -211,8 +211,8 @@
 				67C32CD81599E365000E5533 /* Base */,
 				67C32CCF1599E0F9000E5533 /* SoundListViewController.h */,
 				67C32CD01599E0F9000E5533 /* SoundListViewController.m */,
-				678586C015AC68DE00B096C1 /* SoundSubEditViewController.h */,
-				678586C115AC68DE00B096C1 /* SoundSubEditViewController.m */,
+				678586C015AC68DE00B096C1 /* SoundSubListEditViewController.h */,
+				678586C115AC68DE00B096C1 /* SoundSubListEditViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -442,7 +442,7 @@
 				678586B815AC622D00B096C1 /* SoundSub.m in Sources */,
 				678586BC15AC626C00B096C1 /* SoundSubManager.m in Sources */,
 				678586BF15AC62B600B096C1 /* Singleton.m in Sources */,
-				678586C215AC68DE00B096C1 /* SoundSubEditViewController.m in Sources */,
+				678586C215AC68DE00B096C1 /* SoundSubListEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

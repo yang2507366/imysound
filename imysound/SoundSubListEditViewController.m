@@ -6,18 +6,18 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "SoundSubEditViewController.h"
+#import "SoundSubListEditViewController.h"
 #import "SoundSubManager.h"
 #import "SoundSub.h"
 
-@interface SoundSubEditViewController ()
+@interface SoundSubListEditViewController ()
 
 @property(nonatomic, copy)NSString *soundFilePath;
 @property(nonatomic, retain)NSMutableArray *soundSubList;
 
 @end
 
-@implementation SoundSubEditViewController
+@implementation SoundSubListEditViewController
 
 @synthesize soundFilePath = _soundFilePath;
 @synthesize soundSubList = _soundSubList;

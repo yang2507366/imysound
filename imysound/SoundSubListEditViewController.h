@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseTableViewController.h"
 
-@interface SoundSubEditViewController : BaseTableViewController {
+@interface SoundSubListEditViewController : BaseTableViewController {
     NSString *_soundFilePath;
     NSMutableArray *_soundSubList;
 }
