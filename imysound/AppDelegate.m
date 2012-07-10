@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "SoundListViewController.h"
-#import "CacheManagerFactory.h"
-#import "Cache.h"
+#import "SoundSubManager.h"
+#import "SoundSub.h"
 
 @implementation AppDelegate
 
@@ -31,6 +31,14 @@
     self.window.rootViewController = [[[UINavigationController alloc] initWithRootViewController:
                                       [[[SoundListViewController alloc] init] autorelease]] autorelease];
     
+    SoundSubManager *subManager = [SoundSubManager sharedInstance];
+    SoundSub *sub = [[[SoundSub alloc] init] autorelease];
+    sub.title = @"title";
+    sub.beginTime = 3.24f;
+    sub.endTime = 5.25f;
+    NSArray *subList = [NSArray arrayWithObject:sub];
+    [subManager setSubListWithArray:subList forIdentifier:@"111.mp3"];
+    NSLog(@"%@", [subManager subListForIdentifier:@"111.mp3"]);
     
     return YES;
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		678586B815AC622D00B096C1 /* SoundSub.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586B715AC622D00B096C1 /* SoundSub.m */; };
+		678586BC15AC626C00B096C1 /* SoundSubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586BB15AC626C00B096C1 /* SoundSubManager.m */; };
+		678586BF15AC62B600B096C1 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586BE15AC62B600B096C1 /* Singleton.m */; };
 		67C32C271599DD3D000E5533 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C32C261599DD3D000E5533 /* UIKit.framework */; };
 		67C32C291599DD3D000E5533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C32C281599DD3D000E5533 /* Foundation.framework */; };
 		67C32C2B1599DD3D000E5533 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C32C2A1599DD3D000E5533 /* CoreGraphics.framework */; };
@@ -44,6 +47,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		678586B615AC622D00B096C1 /* SoundSub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSub.h; sourceTree = "<group>"; };
+		678586B715AC622D00B096C1 /* SoundSub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSub.m; sourceTree = "<group>"; };
+		678586BA15AC626C00B096C1 /* SoundSubManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSubManager.h; sourceTree = "<group>"; };
+		678586BB15AC626C00B096C1 /* SoundSubManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSubManager.m; sourceTree = "<group>"; };
+		678586BD15AC62B600B096C1 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		678586BE15AC62B600B096C1 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 		67C32C221599DD3D000E5533 /* imysound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imysound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C32C261599DD3D000E5533 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67C32C281599DD3D000E5533 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -129,6 +138,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		678586B515AC621A00B096C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				678586B615AC622D00B096C1 /* SoundSub.h */,
+				678586B715AC622D00B096C1 /* SoundSub.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		678586B915AC624E00B096C1 /* SoundSubManager */ = {
+			isa = PBXGroup;
+			children = (
+				678586BA15AC626C00B096C1 /* SoundSubManager.h */,
+				678586BB15AC626C00B096C1 /* SoundSubManager.m */,
+			);
+			name = SoundSubManager;
+			sourceTree = "<group>";
+		};
 		67C32C171599DD3D000E5533 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +189,8 @@
 		67C32C2C1599DD3D000E5533 /* imysound */ = {
 			isa = PBXGroup;
 			children = (
+				678586B915AC624E00B096C1 /* SoundSubManager */,
+				678586B515AC621A00B096C1 /* Model */,
 				67C32CCD1599E0E4000E5533 /* ViewControllers */,
 				67C32C351599DD3D000E5533 /* AppDelegate.h */,
 				67C32C361599DD3D000E5533 /* AppDelegate.m */,
@@ -276,6 +305,8 @@
 				CF53D898159C36D1009CA3ED /* TaskQueue.m */,
 				CF53D899159C36D1009CA3ED /* Timer.h */,
 				CF53D89A159C36D1009CA3ED /* Timer.m */,
+				678586BD15AC62B600B096C1 /* Singleton.h */,
+				678586BE15AC62B600B096C1 /* Singleton.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -411,6 +442,9 @@
 				CF7EEF27159D5E430010DB03 /* LocalDBCacheManager.m in Sources */,
 				CF7EEF2B159D5F2D0010DB03 /* Cache.m in Sources */,
 				CF697E8215ABD41000D760CE /* CacheManagerFactory.m in Sources */,
+				678586B815AC622D00B096C1 /* SoundSub.m in Sources */,
+				678586BC15AC626C00B096C1 /* SoundSubManager.m in Sources */,
+				678586BF15AC62B600B096C1 /* Singleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
