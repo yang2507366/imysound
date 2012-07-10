@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface BaseViewController : UIViewController {
-    
+@private
+    NSString *_customTitle;
+    UILabel *_titleLabel;
 }
 
 - (CGRect)fullBounds;
