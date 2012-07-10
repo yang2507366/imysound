@@ -12,7 +12,7 @@
 
 @interface DBKeyValueManager ()
 
-@property(nonatomic, copy)NSString *cacheName;
+@property(nonatomic, copy)NSString *dbName;
 @property(nonatomic, copy)NSString *dbFilePath;
 
 - (void)openDatabase:(NSString *)dbFilePath;
@@ -21,12 +21,12 @@
 
 @implementation DBKeyValueManager
 
-@synthesize cacheName = _cacheName;
+@synthesize dbName = _dbName;
 @synthesize dbFilePath = _dbFilePath;
 
 - (void)dealloc
 {
-    [_cacheName release];
+    [_dbName release];
     [_dbFilePath release];
     
     sqlite3_close(_db);
@@ -42,20 +42,20 @@
     return self;
 }
 
-- (id)initWithDBName:(NSString *)cacheName
+- (id)initWithDBName:(NSString *)dbName
 {
     NSString *filePath = [[CommonUtils documentPath] 
-                          stringByAppendingPathComponent:[CodeUtils encodeWithString:cacheName]];
-    self = [self initWithDBName:cacheName atFilePath:filePath];
+                          stringByAppendingPathComponent:[CodeUtils encodeWithString:dbName]];
+    self = [self initWithDBName:dbName atFilePath:filePath];
     
     return self;
 }
 
-- (id)initWithDBName:(NSString *)cacheName atFilePath:(NSString *)filePath
+- (id)initWithDBName:(NSString *)dbName atFilePath:(NSString *)filePath
 {
     self = [super init];
     
-    self.cacheName = cacheName;
+    self.dbName = dbName;
     self.dbFilePath = filePath;
     
     [self openDatabase:self.dbFilePath];
@@ -69,7 +69,7 @@
     BOOL dbExists = [[NSFileManager defaultManager] fileExistsAtPath:dbFilePath];
     if(sqlite3_open([dbFilePath UTF8String], &_db) == SQLITE_OK){
         if(!dbExists){
-            NSLog(@"create cache:%@", self.cacheName);
+            NSLog(@"create cache:%@", self.dbName);
             const char *sql_create_table = {
                 "create table default_table("
                 "uid INTEGER primary key AUTOINCREMENT,"
@@ -78,9 +78,9 @@
                 ")"
             };
             if(sqlite3_exec(_db, sql_create_table, NULL, NULL, NULL) == SQLITE_OK){
-                NSLog(@"create table for cache:%@ succeed", self.cacheName);
+                NSLog(@"create table for cache:%@ succeed", self.dbName);
             }else{
-                NSLog(@"create table for cache:%@ failed", self.cacheName);
+                NSLog(@"create table for cache:%@ failed", self.dbName);
             }
         }
     }
@@ -152,7 +152,7 @@
 {
     sqlite3_close(_db);
     _db = NULL;
-    NSString *dbFilePath = [[CommonUtils documentPath] stringByAppendingPathComponent:[CodeUtils encodeWithString:self.cacheName]];
+    NSString *dbFilePath = [[CommonUtils documentPath] stringByAppendingPathComponent:[CodeUtils encodeWithString:self.dbName]];
     [[NSFileManager defaultManager] removeItemAtPath:dbFilePath error:nil];
     [self openDatabase:self.dbFilePath];
 }

@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "CacheManager.h"
 
+@class DBKeyValueManager;
+
 @interface LocalDBCacheManager : NSObject <CacheManager> {
-    
+    DBKeyValueManager *_dbKeyValueMgr;
 }
+
+- (id)initWithDBName:(NSString *)dbName;
 
 @end

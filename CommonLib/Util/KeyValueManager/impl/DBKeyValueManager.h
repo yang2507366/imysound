@@ -11,13 +11,13 @@
 #import "sqlite3.h"
 
 @interface DBKeyValueManager : NSObject <KeyValueManager> {
-    NSString *_cacheName;
+    NSString *_dbName;
     NSString *_dbFilePath;
     
     sqlite3 *_db;
 }
 
-- (id)initWithDBName:(NSString *)cacheName;
-- (id)initWithDBName:(NSString *)cacheName atFilePath:(NSString *)filePath;
+- (id)initWithDBName:(NSString *)dbName;
+- (id)initWithDBName:(NSString *)dbName atFilePath:(NSString *)filePath;
 
 @end

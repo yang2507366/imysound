@@ -12,7 +12,7 @@
 
 @protocol CacheManager <NSObject>
 
-- (void)addCache:(Cache *)cache;
+- (void)setCache:(Cache *)cache;
 - (Cache *)cacheForKey:(NSString *)key;
 - (void)clearAllCache;
 

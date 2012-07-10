@@ -34,7 +34,7 @@
     return self;
 }
 
-- (void)addCache:(Cache *)cache
+- (void)setCache:(Cache *)cache
 {
     [self.cacheDictionary setObject:cache forKey:cache.key];
 }

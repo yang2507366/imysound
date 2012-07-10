@@ -38,6 +38,7 @@
 		CF53D8AC159C36D1009CA3ED /* DBKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF53D895159C36D1009CA3ED /* DBKeyValueManager.m */; };
 		CF53D8AD159C36D1009CA3ED /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CF53D898159C36D1009CA3ED /* TaskQueue.m */; };
 		CF53D8AE159C36D1009CA3ED /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF53D89A159C36D1009CA3ED /* Timer.m */; };
+		CF697E8215ABD41000D760CE /* CacheManagerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF697E8115ABD41000D760CE /* CacheManagerFactory.m */; };
 		CF7EEF27159D5E430010DB03 /* LocalDBCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7EEF26159D5E430010DB03 /* LocalDBCacheManager.m */; };
 		CF7EEF2B159D5F2D0010DB03 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7EEF2A159D5F2D0010DB03 /* Cache.m */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,8 @@
 		CF53D898159C36D1009CA3ED /* TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskQueue.m; sourceTree = "<group>"; };
 		CF53D899159C36D1009CA3ED /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		CF53D89A159C36D1009CA3ED /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		CF697E8015ABD41000D760CE /* CacheManagerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheManagerFactory.h; sourceTree = "<group>"; };
+		CF697E8115ABD41000D760CE /* CacheManagerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheManagerFactory.m; sourceTree = "<group>"; };
 		CF7EEF25159D5E430010DB03 /* LocalDBCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDBCacheManager.h; sourceTree = "<group>"; };
 		CF7EEF26159D5E430010DB03 /* LocalDBCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalDBCacheManager.m; sourceTree = "<group>"; };
 		CF7EEF29159D5F2D0010DB03 /* Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cache.h; sourceTree = "<group>"; };
@@ -280,13 +283,12 @@
 		CF53D886159C36D1009CA3ED /* CacheManager */ = {
 			isa = PBXGroup;
 			children = (
+				CF697E8415ABD42300D760CE /* impl */,
 				CF7EEF29159D5F2D0010DB03 /* Cache.h */,
 				CF7EEF2A159D5F2D0010DB03 /* Cache.m */,
 				CF53D887159C36D1009CA3ED /* CacheManager.h */,
-				CF7EEF25159D5E430010DB03 /* LocalDBCacheManager.h */,
-				CF7EEF26159D5E430010DB03 /* LocalDBCacheManager.m */,
-				CF53D888159C36D1009CA3ED /* SimpleCacheManager.h */,
-				CF53D889159C36D1009CA3ED /* SimpleCacheManager.m */,
+				CF697E8015ABD41000D760CE /* CacheManagerFactory.h */,
+				CF697E8115ABD41000D760CE /* CacheManagerFactory.m */,
 			);
 			path = CacheManager;
 			sourceTree = "<group>";
@@ -307,6 +309,17 @@
 				CF53D895159C36D1009CA3ED /* DBKeyValueManager.m */,
 			);
 			path = impl;
+			sourceTree = "<group>";
+		};
+		CF697E8415ABD42300D760CE /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EEF25159D5E430010DB03 /* LocalDBCacheManager.h */,
+				CF7EEF26159D5E430010DB03 /* LocalDBCacheManager.m */,
+				CF53D888159C36D1009CA3ED /* SimpleCacheManager.h */,
+				CF53D889159C36D1009CA3ED /* SimpleCacheManager.m */,
+			);
+			name = impl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,6 +410,7 @@
 				CF53D8AE159C36D1009CA3ED /* Timer.m in Sources */,
 				CF7EEF27159D5E430010DB03 /* LocalDBCacheManager.m in Sources */,
 				CF7EEF2B159D5F2D0010DB03 /* Cache.m in Sources */,
+				CF697E8215ABD41000D760CE /* CacheManagerFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
