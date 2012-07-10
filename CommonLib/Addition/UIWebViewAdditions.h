@@ -19,4 +19,5 @@
 - (void)gotoAddress:(NSString *)address;
 - (NSString *)getPageTitle;
 - (NSString *)getSelectedText;
+- (void)removeShadow;
 @end
