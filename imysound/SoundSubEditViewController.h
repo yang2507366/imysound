@@ -20,6 +20,12 @@
     PlayerControlView   *_playerControlView;
     
     Timer *_timer;
+    
+    NSTimeInterval _beginTime;
+    NSTimeInterval _endTime;
+    
+    UIButton *_markBeginTimeBtn;
+    UIButton *_markEndTimeBtn;
 }
 
 - (id)initWithSoundFilePath:(NSString *)soundFilePath;

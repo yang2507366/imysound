@@ -11,6 +11,7 @@
 #import "PlayerControlView.h"
 #import "Player.h"
 #import "Timer.h"
+#import "CommonUtils.h"
 
 @interface SoundSubEditViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate>
 
@@ -20,6 +21,14 @@
 @property(nonatomic, retain)PlayerControlView *playerControlView;
 
 @property(nonatomic, retain)Timer *timer;
+
+@property(nonatomic, assign)NSTimeInterval beginTime;
+@property(nonatomic, assign)NSTimeInterval endTime;
+
+@property(nonatomic, retain)UIButton *markBeginTimeBtn;
+@property(nonatomic, retain)UIButton *markEndTimeBtn;
+
+- (NSString *)timeFormat:(NSTimeInterval)time;
 
 @end
 
@@ -32,6 +41,11 @@
 
 @synthesize timer = _timer;
 
+@synthesize beginTime = _beginTime;
+@synthesize endTime = _endTime;
+@synthesize markBeginTimeBtn = _markBeginTimeBtn;
+@synthesize markEndTimeBtn = _markEndTimeBtn;
+
 - (void)dealloc
 {
     [_soundFilePath release];
@@ -40,6 +54,9 @@
     [_playerControlView release];
     
     [_timer cancel]; [_timer release];
+    
+    [_markBeginTimeBtn release];
+    [_markEndTimeBtn release];
     [super dealloc];
 }
 
@@ -50,6 +67,9 @@
     self.title = NSLocalizedString(@"edit_sound_sub", nil);
     
     self.soundFilePath = soundFilePath;
+    
+    self.beginTime = 0.0f;
+    self.endTime = 0.0f;
     
     return self;
 }
@@ -77,6 +97,27 @@
                                               self.view.frame.size.width, 
                                               44);
     
+    self.markBeginTimeBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.view addSubview:self.markBeginTimeBtn];
+    self.markBeginTimeBtn.frame = CGRectMake(10, 120, (self.view.bounds.size.width - 30) / 2, 40);
+    [self.markBeginTimeBtn setTitle:NSLocalizedString(@"mark_begin_time", nil) forState:UIControlStateNormal];
+    [self.markBeginTimeBtn addTarget:self action:@selector(onMarkBeginTimeBtnTapped) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.markEndTimeBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.view addSubview:self.markEndTimeBtn];
+    self.markEndTimeBtn.frame = CGRectMake(self.markBeginTimeBtn.frame.origin.x + self.markBeginTimeBtn.frame.size.width + 10, 
+                                           self.markBeginTimeBtn.frame.origin.y, 
+                                           self.markBeginTimeBtn.frame.size.width, 
+                                           self.markBeginTimeBtn.frame.size.height);
+    [self.markEndTimeBtn setTitle:NSLocalizedString(@"mark_end_time", nil) forState:UIControlStateNormal];
+    [self.markEndTimeBtn addTarget:self action:@selector(onMarkEndTimeBtnTapped) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.view addSubview:saveBtn];
+    saveBtn.frame = CGRectMake(60, 220, 200, 40);
+    [saveBtn setTitle:NSLocalizedString(@"save_sound_sub", nil) forState:UIControlStateNormal];
+    [saveBtn addTarget:self action:@selector(onSaveBtnTapped) forControlEvents:UIControlEventTouchUpInside];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(onPlayerDidStartPlayNotification:) 
                                                  name:kPlayerDidStartPlayNotification 
@@ -90,6 +131,18 @@
                                                  name:kPlayerDidStopNotification 
                                                object:nil];
     
+}
+
+#pragma mark - private methods
+- (NSString *)timeFormat:(NSTimeInterval)time
+{
+    NSInteger minute = time / 60;
+    NSInteger second = (NSInteger)time % 60;
+    NSTimeInterval dot = time - (NSInteger)time;
+    NSString *dotString = [NSString stringWithFormat:@"%f", dot];
+    dotString = [dotString substringFromIndex:1];
+    return [NSString stringWithFormat:@"%@:%@%@", [CommonUtils formatTimeNumber:minute], 
+            [CommonUtils formatTimeNumber:second], dotString];
 }
 
 #pragma mark - events
@@ -118,10 +171,30 @@
 - (void)onPlayerDidStopNotification:(NSNotification *)n
 {
     [self.playerControlView setPlaying:NO];
+    self.playerStatusView.currentTime = 0.0f;
     self.playerStatusView.totalTime = 0.0f;
     
     [self.timer cancel];
     self.timer = nil;
+}
+
+- (void)onMarkBeginTimeBtnTapped
+{
+    self.beginTime = [Player sharedInstance].currentTime;
+    [self.markBeginTimeBtn setTitle:[self timeFormat:self.beginTime] 
+                           forState:UIControlStateNormal];
+}
+
+- (void)onMarkEndTimeBtnTapped
+{
+    self.endTime = [Player sharedInstance].currentTime;
+    [self.markEndTimeBtn setTitle:[self timeFormat:self.endTime] 
+                         forState:UIControlStateNormal];
+}
+
+- (void)onSaveBtnTapped
+{
+    
 }
 
 #pragma mark - TimerDelegate
