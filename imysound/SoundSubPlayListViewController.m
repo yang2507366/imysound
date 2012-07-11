@@ -35,6 +35,7 @@
     self = [super init];
     
     self.soundFilePath = soundFilePath;
+    self.title = [self.soundFilePath lastPathComponent];
     
     return self;
 }

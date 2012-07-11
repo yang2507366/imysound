@@ -10,6 +10,7 @@
 #import "PopOutTableView.h"
 #import "CommonUtils.h"
 #import "SoundSubListEditViewController.h"
+#import "SoundSubPlayListViewController.h"
 
 @interface SoundListViewController () <PopOutTableViewDelegate>
 
@@ -93,7 +94,10 @@
 
 - (void)onViewBtnTapped
 {
-    
+    NSString *soundFilePath = [self soundFileAtIndex:self.tableView.selectedCellIndex];
+    SoundSubPlayListViewController *vc = [[SoundSubPlayListViewController alloc] initWithSoundFilePath:soundFilePath];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
 }
 
 #pragma mark - PopOutTableViewDelegate

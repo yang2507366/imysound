@@ -78,7 +78,7 @@
 }
 - (void)setTitle:(NSString *)title
 {
-    [super setTitle:NSLocalizedString(@"back", nil)];
+    [super setTitle:NSLocalizedString(@"Back", nil)];
     self.customTitle = title;
 }
 
