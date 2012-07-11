@@ -18,15 +18,15 @@
 @end
 
 @interface PlayerStatusView : UIView {
-    id<PlayerControlViewDelegate> _delegate;
+    id<PlayerControlViewDelegate>   _delegate;
     
-    UIView *_topBlackBar;
-    UIView *_bottomLine;
-    UILabel *_currentTimeLabel;
-    UILabel *_totalTimeLabel;
-    UISlider *_positionSilder;
+    UIView      *_topBlackBar;
+    UIView      *_bottomLine;
+    UILabel     *_currentTimeLabel;
+    UILabel     *_totalTimeLabel;
+    UISlider    *_positionSilder;
     
-    BOOL _positionSilderTouching;
+    BOOL    _positionSilderTouching;
 }
 
 @property(nonatomic, assign)id<PlayerControlViewDelegate> delegate;
