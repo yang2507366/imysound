@@ -74,4 +74,39 @@
     return [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentPath error:nil];
 }
 
++ (NSString *)timeStringWithDateString:(NSString *)dateString
+{
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSTimeInterval interval = [NSDate timeIntervalSinceReferenceDate] 
+    - [[dateFormatter dateFromString:dateString] timeIntervalSinceReferenceDate];
+    NSString *timeString = nil;
+    if(interval < 60){
+        // 1分钟之内，秒
+        timeString = @"刚刚";
+    }else if(interval >= 60 && interval < 3600){
+        // 1分钟－1小时，分
+        NSInteger minute = interval / 60;
+        timeString = [NSString stringWithFormat:@"%d分钟前", minute];
+    }else if(interval >= 3600 && interval < 86400){
+        // 1小时－1天，时
+        NSInteger hour = interval / 3600;
+        timeString = [NSString stringWithFormat:@"%d小时前", hour];
+    }else if(interval >= 86400 && interval < 2592000){
+        // 1天－1个月，天
+        NSInteger day = interval / 86400;
+        timeString = [NSString stringWithFormat:@"%d天前", day];
+    }else if(interval >= 2592000 && interval < 31104000){
+        // 1个月－1年，月
+        NSInteger month = interval / 2592000;
+        timeString = [NSString stringWithFormat:@"%d个月前", month];
+    }else{
+        // 大于1年，年
+        NSInteger year = interval / 31104000;
+        timeString = [NSString stringWithFormat:@"%d年前", year];
+    }
+    
+    return timeString;
+}
+
 @end

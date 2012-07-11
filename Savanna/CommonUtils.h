@@ -22,4 +22,6 @@
 
 + (NSArray *)fileNameListInDocumentPath;
 
++ (NSString *)timeStringWithDateString:(NSString *)dateString;
+
 @end
