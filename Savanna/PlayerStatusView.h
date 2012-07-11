@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlayerControlView : UIView {
+@class PlayerStatusView;
+
+@protocol PlayerControlViewDelegate <NSObject>
+
+@optional
+- (void)playerControlView:(PlayerStatusView *)playerStatusView didChangeToNewPosition:(float)value;
+
+@end
+
+@interface PlayerStatusView : UIView {
+    id<PlayerControlViewDelegate> _delegate;
+    
     UIView *_topBlackBar;
     UIView *_bottomLine;
     UILabel *_currentTimeLabel;
@@ -17,5 +28,10 @@
     
     BOOL _positionSilderTouching;
 }
+
+@property(nonatomic, assign)id<PlayerControlViewDelegate> delegate;
+
+@property(nonatomic, assign)NSTimeInterval currentTime;
+@property(nonatomic, assign)NSTimeInterval totalTime;
 
 @end

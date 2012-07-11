@@ -49,7 +49,7 @@
 		67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD01599E0F9000E5533 /* SoundListViewController.m */; };
 		67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD31599E11F000E5533 /* BaseViewController.m */; };
 		67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD61599E1D6000E5533 /* BaseTableViewController.m */; };
-		CF81BBF915AD261100A05E67 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBF815AD261100A05E67 /* PlayerControlView.m */; };
+		CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBF815AD261100A05E67 /* PlayerStatusView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,8 +135,8 @@
 		67C32CD31599E11F000E5533 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		67C32CD51599E1D6000E5533 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		67C32CD61599E1D6000E5533 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
-		CF81BBF715AD261100A05E67 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlView.h; sourceTree = "<group>"; };
-		CF81BBF815AD261100A05E67 /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerControlView.m; sourceTree = "<group>"; };
+		CF81BBF715AD261100A05E67 /* PlayerStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PlayerStatusView.h; sourceTree = "<group>"; };
+		CF81BBF815AD261100A05E67 /* PlayerStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerStatusView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,8 +221,8 @@
 				678586F815AC75E400B096C1 /* Toast.m */,
 				678586F915AC75E400B096C1 /* UITools.h */,
 				678586FA15AC75E400B096C1 /* UITools.m */,
-				CF81BBF715AD261100A05E67 /* PlayerControlView.h */,
-				CF81BBF815AD261100A05E67 /* PlayerControlView.m */,
+				CF81BBF715AD261100A05E67 /* PlayerStatusView.h */,
+				CF81BBF815AD261100A05E67 /* PlayerStatusView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -462,7 +462,7 @@
 				6785872115AC764F00B096C1 /* SimpleCacheManager.m in Sources */,
 				6785872615AC768A00B096C1 /* DBKeyValueManager.m in Sources */,
 				6785872915AC775400B096C1 /* KeyValueManagerFactory.m in Sources */,
-				CF81BBF915AD261100A05E67 /* PlayerControlView.m in Sources */,
+				CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

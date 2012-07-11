@@ -7,13 +7,13 @@
 //
 
 #import "SoundSubEditViewController.h"
-#import "PlayerControlView.h"
+#import "PlayerStatusView.h"
 
-@interface SoundSubEditViewController ()
+@interface SoundSubEditViewController () <PlayerControlViewDelegate>
 
 @property(nonatomic, copy)NSString *soundFilePath;
 
-@property(nonatomic, retain)PlayerControlView *playerControlView;
+@property(nonatomic, retain)PlayerStatusView *playerStatusView;
 
 @end
 
@@ -21,13 +21,13 @@
 
 @synthesize soundFilePath = _soundFilePath;
 
-@synthesize playerControlView = _playerControlView;
+@synthesize playerStatusView = _playerStatusView;
 
 - (void)dealloc
 {
     [_soundFilePath release];
     
-    [_playerControlView release];
+    [_playerStatusView release];
     [super dealloc];
 }
 
@@ -52,15 +52,22 @@
     self.navigationItem.rightBarButtonItem = doneBtn;
     [doneBtn release];
     
-    self.playerControlView = [[[PlayerControlView alloc] init] autorelease];
-    [self.view addSubview:self.playerControlView];
-    self.playerControlView.frame = CGRectMake(0, 0, self.view.frame.size.width, 60);
+    self.playerStatusView = [[[PlayerStatusView alloc] init] autorelease];
+    [self.view addSubview:self.playerStatusView];
+    self.playerStatusView.delegate = self;
+    self.playerStatusView.frame = CGRectMake(0, 0, self.view.frame.size.width, 60);
 }
 
 #pragma mark - instance methods
 - (void)onDoneBtnTapped
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - PlayerControlViewDelegate
+- (void)playerControlView:(PlayerStatusView *)playerStatusView didChangeToNewPosition:(float)value
+{
+    
 }
 
 @end

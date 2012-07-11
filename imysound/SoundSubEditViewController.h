@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
 
-@class PlayerControlView;
+@class PlayerStatusView;
 
 @interface SoundSubEditViewController : BaseViewController {
     NSString *_soundFilePath;
     
-    PlayerControlView *_playerControlView;
+    PlayerStatusView *_playerStatusView;
 }
 
 - (id)initWithSoundFilePath:(NSString *)soundFilePath;

@@ -6,9 +6,10 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "PlayerControlView.h"
+#import "PlayerStatusView.h"
+#import "CommonUtils.h"
 
-@interface PlayerControlView ()
+@interface PlayerStatusView ()
 
 @property(nonatomic, retain)UIView *topBlackBar;
 @property(nonatomic, retain)UIView *bottomLine;
@@ -20,7 +21,12 @@
 
 @end
 
-@implementation PlayerControlView
+@implementation PlayerStatusView
+
+@synthesize delegate = _delegate;
+
+@dynamic currentTime;
+@dynamic totalTime;
 
 @synthesize topBlackBar = _topBlackBar;
 @synthesize bottomLine = _bottomLine;
@@ -126,6 +132,38 @@
 - (void)onPositionSilderDragExit
 {
     self.positionSilderTouching = NO;
+    if([self.delegate respondsToSelector:@selector(playerControlView:didChangeToNewPosition:)]){
+        [self.delegate playerControlView:self didChangeToNewPosition:self.positionSilder.value];
+    }
+}
+
+#pragma mark - instance methods
+- (void)setCurrentTime:(NSTimeInterval)currentTime
+{
+    NSInteger minute = currentTime / 60;
+    NSInteger second = (NSInteger)currentTime % 60;
+    self.currentTimeLabel.text = [NSString stringWithFormat:@"%@:%@", [CommonUtils formatNumber:minute], 
+                                  [CommonUtils formatNumber:second]];
+}
+
+- (NSTimeInterval)currentTime
+{
+    return 0.0f;
+}
+
+- (void)setTotalTime:(NSTimeInterval)totalTime
+{
+    NSInteger minute = totalTime / 60;
+    NSInteger second = (NSInteger)totalTime % 60;
+    self.totalTimeLabel.text = [NSString stringWithFormat:@"%@:%@", [CommonUtils formatNumber:minute], 
+                                [CommonUtils formatNumber:second]];
+    self.positionSilder.minimumValue = 0.0f;
+    self.positionSilder.maximumValue = totalTime;
+}
+
+- (NSTimeInterval)totalTime
+{
+    return 0.0f;
 }
 
 @end
