@@ -14,7 +14,7 @@
 @interface SoundListViewController : BaseViewController {
 @private
     PopOutTableView *_tableView;
-    NSArray *_soundFileList;
+    NSMutableArray *_soundFileList;
 }
 
 @end

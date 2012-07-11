@@ -19,6 +19,8 @@
 @optional
 - (void)popOutCellWillShowAtPopOutTableView:(PopOutTableView *)tableView;
 - (CGFloat)popOutTableView:(PopOutTableView *)popOutTableView heightForRowAtIndex:(NSInteger)index;
+- (void)popOutTableView:(PopOutTableView *)popOutTableView deleteRowAtIndex:(NSInteger)index;
+- (void)popOutTableView:(PopOutTableView *)popOutTableView willBeginEditingAtIndex:(NSInteger)index;
 
 @end
 
@@ -31,16 +33,19 @@
     NSInteger _tappingIndex;
     
     UITableViewCell *_popOutCell;
-    
+    BOOL _editable;
 }
 
 @property(nonatomic, assign)id<PopOutTableViewDelegate> delegate;
 
 @property(nonatomic, readonly)UITableView *tableView;
 
+@property(nonatomic, assign)BOOL editable;
+
 - (void)addSubviewToPopOutCell:(UIView *)view;
 
 - (NSInteger)selectedCellIndex;
 - (NSInteger)tappingIndex;
+- (void)collapsePopOutCell;
 
 @end

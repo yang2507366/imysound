@@ -15,7 +15,7 @@
 @interface SoundListViewController () <PopOutTableViewDelegate>
 
 @property(nonatomic, retain)PopOutTableView *tableView;
-@property(nonatomic, retain)NSArray *soundFileList;
+@property(nonatomic, retain)NSMutableArray *soundFileList;
 
 - (NSString *)soundFileAtIndex:(NSInteger)index;
 
@@ -46,11 +46,12 @@
 {
     [super viewDidLoad];
     
-    self.soundFileList = [CommonUtils fileNameListInDocumentPath];
+    self.soundFileList = [NSMutableArray arrayWithArray:[CommonUtils fileNameListInDocumentPath]];
     
     self.tableView = [[[PopOutTableView alloc] initWithFrame:self.fullBounds] autorelease];
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
+    self.tableView.editable = YES;
     
     UIView *popOutView = [[[UIView alloc] initWithFrame:
                            CGRectMake(0, 0, self.tableView.frame.size.width, 50)] autorelease];
@@ -70,6 +71,13 @@
                                5, 
                                (self.tableView.frame.size.width - 30) / 2, 
                                40);
+    
+    UIBarButtonItem *editBtnItem = [[[UIBarButtonItem alloc] init] autorelease];
+    editBtnItem.title = NSLocalizedString(@"Edit", nil);
+    editBtnItem.target = self;
+    editBtnItem.action = @selector(onEditBtnItemTapped:);
+    editBtnItem.style = UIBarButtonItemStyleBordered;
+    self.navigationItem.rightBarButtonItem = editBtnItem;
 }
 
 - (void)viewDidUnload
@@ -100,7 +108,34 @@
     [vc release];
 }
 
+- (void)onEditBtnItemTapped:(UIBarButtonItem *)editBtnItem
+{
+    editBtnItem.style = self.tableView.tableView.editing ? UIBarButtonItemStyleBordered : UIBarButtonItemStyleDone;
+    editBtnItem.title = self.tableView.tableView.editing ? NSLocalizedString(@"Edit", nil) : NSLocalizedString(@"Done", nil);
+    [self.tableView.tableView setEditing:!self.tableView.tableView.editing animated:YES];
+}
+
 #pragma mark - PopOutTableViewDelegate
+- (void)popOutTableView:(PopOutTableView *)popOutTableView deleteRowAtIndex:(NSInteger)index
+{
+    NSString *fileName = [self.soundFileList objectAtIndex:index];
+    NSString *filePath = [[CommonUtils documentPath] stringByAppendingPathComponent:fileName];
+    [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+    
+    [self.soundFileList removeObjectAtIndex:index];
+    [popOutTableView.tableView beginUpdates];
+    [popOutTableView.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] 
+                                     withRowAnimation:UITableViewRowAnimationFade];
+    [popOutTableView.tableView endUpdates];
+}
+
+- (void)popOutTableView:(PopOutTableView *)popOutTableView willBeginEditingAtIndex:(NSInteger)index
+{
+    if(index == self.tableView.selectedCellIndex){
+        [self.tableView collapsePopOutCell];
+    }
+}
+
 - (NSInteger)numberOfRowsInPopOutTableView:(PopOutTableView *)popOutTableView
 {
     return self.soundFileList.count;

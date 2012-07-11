@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		676AB66C15ADBCC3004444C6 /* PlayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 676AB66B15ADBCC3004444C6 /* PlayItem.m */; };
+		676AB67015ADBDA0004444C6 /* PlayQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 676AB66F15ADBDA0004444C6 /* PlayQueue.m */; };
+		676AB67415ADBF03004444C6 /* PlayQueueControlNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = 676AB67315ADBF03004444C6 /* PlayQueueControlNormal.m */; };
+		676AB67715ADC0E7004444C6 /* PlayQueueControlFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 676AB67615ADC0E7004444C6 /* PlayQueueControlFactory.m */; };
 		678586B815AC622D00B096C1 /* SoundSub.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586B715AC622D00B096C1 /* SoundSub.m */; };
 		678586BC15AC626C00B096C1 /* SoundSubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586BB15AC626C00B096C1 /* SoundSubManager.m */; };
 		678586C215AC68DE00B096C1 /* SoundSubListEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678586C115AC68DE00B096C1 /* SoundSubListEditViewController.m */; };
@@ -55,6 +59,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		676AB66A15ADBCC3004444C6 /* PlayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayItem.h; sourceTree = "<group>"; };
+		676AB66B15ADBCC3004444C6 /* PlayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayItem.m; sourceTree = "<group>"; };
+		676AB66E15ADBDA0004444C6 /* PlayQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueue.h; sourceTree = "<group>"; };
+		676AB66F15ADBDA0004444C6 /* PlayQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayQueue.m; sourceTree = "<group>"; };
+		676AB67115ADBDE7004444C6 /* PlayQueueControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueueControl.h; sourceTree = "<group>"; };
+		676AB67215ADBF03004444C6 /* PlayQueueControlNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueueControlNormal.h; sourceTree = "<group>"; };
+		676AB67315ADBF03004444C6 /* PlayQueueControlNormal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayQueueControlNormal.m; sourceTree = "<group>"; };
+		676AB67515ADC0E7004444C6 /* PlayQueueControlFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueueControlFactory.h; sourceTree = "<group>"; };
+		676AB67615ADC0E7004444C6 /* PlayQueueControlFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayQueueControlFactory.m; sourceTree = "<group>"; };
 		678586B615AC622D00B096C1 /* SoundSub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSub.h; sourceTree = "<group>"; };
 		678586B715AC622D00B096C1 /* SoundSub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSub.m; sourceTree = "<group>"; };
 		678586BA15AC626C00B096C1 /* SoundSubManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSubManager.h; sourceTree = "<group>"; };
@@ -329,7 +342,7 @@
 		67C32C2C1599DD3D000E5533 /* imysound */ = {
 			isa = PBXGroup;
 			children = (
-				CF81BC1015AD731F00A05E67 /* PlayList */,
+				CF81BC1015AD731F00A05E67 /* PlayQueue */,
 				678586B915AC624E00B096C1 /* SoundSubManager */,
 				67C32CCD1599E0E4000E5533 /* ViewControllers */,
 				67C32C351599DD3D000E5533 /* AppDelegate.h */,
@@ -377,11 +390,20 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
-		CF81BC1015AD731F00A05E67 /* PlayList */ = {
+		CF81BC1015AD731F00A05E67 /* PlayQueue */ = {
 			isa = PBXGroup;
 			children = (
+				676AB66A15ADBCC3004444C6 /* PlayItem.h */,
+				676AB66B15ADBCC3004444C6 /* PlayItem.m */,
+				676AB66E15ADBDA0004444C6 /* PlayQueue.h */,
+				676AB66F15ADBDA0004444C6 /* PlayQueue.m */,
+				676AB67115ADBDE7004444C6 /* PlayQueueControl.h */,
+				676AB67215ADBF03004444C6 /* PlayQueueControlNormal.h */,
+				676AB67315ADBF03004444C6 /* PlayQueueControlNormal.m */,
+				676AB67515ADC0E7004444C6 /* PlayQueueControlFactory.h */,
+				676AB67615ADC0E7004444C6 /* PlayQueueControlFactory.m */,
 			);
-			name = PlayList;
+			name = PlayQueue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,6 +505,10 @@
 				CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */,
 				CF81BC0015AD339100A05E67 /* PlayerControlView.m in Sources */,
 				CF81BC0F15AD707200A05E67 /* SoundSubPlayListViewController.m in Sources */,
+				676AB66C15ADBCC3004444C6 /* PlayItem.m in Sources */,
+				676AB67015ADBDA0004444C6 /* PlayQueue.m in Sources */,
+				676AB67415ADBF03004444C6 /* PlayQueueControlNormal.m in Sources */,
+				676AB67715ADC0E7004444C6 /* PlayQueueControlFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

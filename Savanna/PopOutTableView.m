@@ -20,6 +20,9 @@
 @synthesize delegate = _delegate;
 
 @synthesize tableView = _tableView;
+
+@synthesize editable = _editable;
+
 @synthesize insertedIndex = _insertedIndex;
 @synthesize popOutCell = _popOutCell;
 
@@ -53,6 +56,8 @@
     self.tableView.dataSource = self;
     [self addSubview:self.tableView];
     
+    self.editable = NO;
+    
     return self;
 }
 
@@ -74,16 +79,6 @@
 
 - (void)popOutViewWillShow
 {
-//    CGFloat maxHeight = self.popOutCell.frame.size.height;
-//    for(UIView *subview in [self.popOutCell.contentView subviews]){
-//        if(subview.frame.origin.y + subview.frame.size.height > maxHeight){
-//            maxHeight = subview.frame.origin.y + subview.frame.size.height;
-//        }
-//    }
-//    CGRect frame = self.popOutCell.frame;
-//    frame.size.height = maxHeight;
-//    self.popOutCell.frame = frame;
-    
     if([self.delegate respondsToSelector:@selector(popOutCellWillShowAtPopOutTableView:)]){
         [self.delegate popOutCellWillShowAtPopOutTableView:self];
     }
@@ -123,6 +118,14 @@
     }
     self.popOutCell.frame = frame;
     [self.tableView reloadData];
+}
+
+- (void)collapsePopOutCell
+{
+    if(self.selectedCellIndex != -1){
+        [self tableView:self.tableView didSelectRowAtIndexPath:
+         [NSIndexPath indexPathForRow:self.selectedCellIndex inSection:0]];
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -179,6 +182,30 @@
             [self.tableView reloadData];
             [self performSelector:@selector(hidePopOutCell) withObject:nil afterDelay:0.02];
         }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        if([self.delegate respondsToSelector:@selector(popOutTableView:deleteRowAtIndex:)]){
+            [self.delegate popOutTableView:self deleteRowAtIndex:indexPath.row];
+        }
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.selectedCellIndex != -1 && indexPath.row == self.selectedCellIndex + 1){
+        return NO;
+    }
+    return self.editable;
+}
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([self.delegate respondsToSelector:@selector(popOutTableView:willBeginEditingAtIndex:)]){
+        [self.delegate popOutTableView:self willBeginEditingAtIndex:indexPath.row];
     }
 }
 
