@@ -225,7 +225,6 @@
 		678586D515AC753D00B096C1 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				6785872215AC767A00B096C1 /* KeyValueManager */,
 				6785871415AC763F00B096C1 /* CacheManager */,
 				678586FF15AC760300B096C1 /* CodeUtils.h */,
 				6785870015AC760300B096C1 /* CodeUtils.m */,
@@ -235,6 +234,7 @@
 				6785870415AC760300B096C1 /* DelayController.m */,
 				6785870515AC760300B096C1 /* KeyboardState.h */,
 				6785870615AC760300B096C1 /* KeyboardState.m */,
+				6785872215AC767A00B096C1 /* KeyValueManager */,
 				6785870715AC760300B096C1 /* Singleton.h */,
 				6785870815AC760300B096C1 /* Singleton.m */,
 				6785870915AC760300B096C1 /* TaskQueue.h */,
