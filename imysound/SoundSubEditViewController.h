@@ -9,15 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
 
+@class PlayerControlView;
+
 @interface SoundSubEditViewController : BaseViewController {
     NSString *_soundFilePath;
     
-    UIView *_topControlView;
-    UILabel *_currentTimeLabel;
-    UILabel *_totalTimeLabel;
-    UISlider *_positionSilder;
-    
-    BOOL _positionSilderTouching;
+    PlayerControlView *_playerControlView;
 }
 
 - (id)initWithSoundFilePath:(NSString *)soundFilePath;
