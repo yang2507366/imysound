@@ -14,6 +14,7 @@
 
 - (void)dealloc
 {
+//    NSLog(@"Timer:%@ dealloc", self);
     [super dealloc];
 }
 
@@ -72,6 +73,7 @@
 
 - (void)cancel
 {
+    [self stop];
     self.delegate = nil;
 }
 
