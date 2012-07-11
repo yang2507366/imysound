@@ -37,12 +37,6 @@
     self.title = NSLocalizedString(@"edit_sound_sub", nil);
     
     self.soundFilePath = soundFilePath;
-    NSArray *existSoundSubList = [[SoundSubManager sharedInstance] subListForIdentifier:self.soundFilePath];
-    if(!existSoundSubList){
-        self.soundSubList = [NSMutableArray arrayWithArray:existSoundSubList];
-    }else{
-        self.soundSubList = [NSMutableArray array];
-    }
     
     return self;
 }
@@ -54,11 +48,25 @@
     UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)] autorelease];
     self.tableView.tableHeaderView = headerView;
     
-    UILabel *titleLabel = [[[UILabel alloc] initWithFrame:headerView.bounds] autorelease];
+    UILabel *titleLabel = [[[UILabel alloc] init] autorelease];
     [headerView addSubview:titleLabel];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     titleLabel.text = [self.soundFilePath lastPathComponent];
+    titleLabel.frame = CGRectMake(10, 0, headerView.frame.size.width - 20, headerView.frame.size.height);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSArray *existSoundSubList = [[SoundSubManager sharedInstance] subListForIdentifier:self.soundFilePath];
+    if(existSoundSubList){
+        self.soundSubList = [NSMutableArray arrayWithArray:existSoundSubList];
+    }else{
+        self.soundSubList = [NSMutableArray array];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -90,6 +98,17 @@
     return self.soundSubList.count + 1;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        [self.soundSubList removeObjectAtIndex:indexPath.row];
+        [[SoundSubManager sharedInstance] setSubListWithArray:self.soundSubList forIdentifier:self.soundFilePath];
+        [tableView beginUpdates];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView endUpdates];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifierSoundSub = @"sound_sub";
@@ -111,9 +130,11 @@
         if(!cell){
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                            reuseIdentifier:cellIdentifierSoundSub] autorelease];
+            cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
         }
         SoundSub *sub = [self.soundSubList objectAtIndex:indexPath.row];
-        cell.textLabel.text = [sub description];
+        cell.textLabel.text = [NSString stringWithFormat:@"%d.%@", indexPath.row, [sub description]];
     }
     
     return cell;

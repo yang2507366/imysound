@@ -50,7 +50,7 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
     return self;
 }
 
-- (void)playSoundAtFilePath:(NSString *)soundFilePath
+- (void)playSoundAtFilePath:(NSString *)soundFilePath autoPlay:(BOOL)autoPlay
 {
     if(_currentSoundFilePath != soundFilePath){
         [_currentSoundFilePath release];
@@ -67,6 +67,18 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
+    if(autoPlay){
+        [self play];
+    }
+}
+
+- (void)playSoundAtFilePath:(NSString *)soundFilePath
+{
+    [self playSoundAtFilePath:soundFilePath autoPlay:YES];
+}
+
+- (void)play
+{
     [self.audioPlayer play];
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidStartPlayNotification object:nil];
 }

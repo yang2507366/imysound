@@ -12,8 +12,10 @@
 #import "Player.h"
 #import "Timer.h"
 #import "CommonUtils.h"
+#import "SoundSub.h"
+#import "SoundSubManager.h"
 
-@interface SoundSubEditViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate>
+@interface SoundSubEditViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate, UIAlertViewDelegate>
 
 @property(nonatomic, copy)NSString *soundFilePath;
 
@@ -131,6 +133,9 @@
                                                  name:kPlayerDidStopNotification 
                                                object:nil];
     
+    [[Player sharedInstance] playSoundAtFilePath:self.soundFilePath autoPlay:NO];
+    self.playerStatusView.currentTime = [Player sharedInstance].currentTime;
+    self.playerStatusView.totalTime = [Player sharedInstance].duration;
 }
 
 #pragma mark - private methods
@@ -146,6 +151,12 @@
 }
 
 #pragma mark - events
+- (void)onDoneBtnTapped
+{
+    [[Player sharedInstance] stop];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)onPlayerDidStartPlayNotification:(NSNotification *)n
 {
     [self.playerControlView setPlaying:YES];
@@ -194,7 +205,36 @@
 
 - (void)onSaveBtnTapped
 {
-    
+    if(self.beginTime != 0.0f || self.endTime != 0.0f){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"enter_sub_name", nil) 
+                                                            message:@"\n" 
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
+                                                  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 43, 252, 30)];
+        [alertView addSubview:textField];
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+        textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textField.tag = 27;
+        textField.text = [NSString stringWithFormat:@"%@-%@", [self timeFormat:self.beginTime], [self timeFormat:self.endTime]];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        [alertView show];
+        [textField becomeFirstResponder];
+        [alertView release];
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        UITextField *textField = (id)[alertView viewWithTag:27];
+        if(textField.text.length != 0){
+            [self saveCurrentSoundSubWithTitle:textField.text];
+        }else{
+            [self onSaveBtnTapped];
+        }
+    }
 }
 
 #pragma mark - TimerDelegate
@@ -205,9 +245,23 @@
 }
 
 #pragma mark - instance methods
-- (void)onDoneBtnTapped
+- (void)saveCurrentSoundSubWithTitle:(NSString *)title
 {
-    [self dismissModalViewControllerAnimated:YES];
+    SoundSub *sub = [[[SoundSub alloc] init] autorelease];
+    sub.title = title;
+    sub.beginTime = self.beginTime;
+    sub.endTime = self.endTime;
+    
+    NSArray *subList = [[SoundSubManager sharedInstance] subListForIdentifier:self.soundFilePath];
+    NSMutableArray *newSubList = nil;
+    if(subList){
+        newSubList = [NSMutableArray arrayWithArray:subList];
+        [newSubList addObject:sub];
+    }else{
+        newSubList = [NSMutableArray arrayWithObject:sub];
+    }
+    [[SoundSubManager sharedInstance] setSubListWithArray:newSubList forIdentifier:self.soundFilePath];
+    [self alert:NSLocalizedString(@"sound_sub_save_succeed", nil)];
 }
 
 #pragma mark - PlayerStatusViewDelegate
@@ -224,7 +278,7 @@
         if([player.currentSoundFilePath isEqualToString:self.soundFilePath] && !player.playing){
             [player resume];
         }else{
-            [player playSoundAtFilePath:self.soundFilePath];
+            [player play];
         }
     }else{
         [player pause];

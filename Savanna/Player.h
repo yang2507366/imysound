@@ -27,6 +27,8 @@ OBJC_EXPORT NSString *kPlayerDidChangeSoundNotification;
 + (Player *)sharedInstance;
 
 - (void)playSoundAtFilePath:(NSString *)soundFilePath;
+- (void)playSoundAtFilePath:(NSString *)soundFilePath autoPlay:(BOOL)autoPlay;
+- (void)play;
 - (void)pause;
 - (void)resume;
 - (void)stop;
