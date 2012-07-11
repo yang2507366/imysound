@@ -10,6 +10,7 @@
 #import "SoundSubManager.h"
 #import "SoundSub.h"
 #import "SoundSubEditViewController.h"
+#import "CommonUtils.h"
 
 @interface SoundSubListEditViewController ()
 
@@ -48,6 +49,13 @@
     UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 44)] autorelease];
     self.tableView.tableHeaderView = headerView;
     
+    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) 
+                                                                style:UIBarButtonItemStyleBordered 
+                                                               target:self 
+                                                               action:@selector(onEditBtnTapped:)];
+    self.navigationItem.rightBarButtonItem = editBtn;
+    [editBtn release];
+    
     UILabel *titleLabel = [[[UILabel alloc] init] autorelease];
     [headerView addSubview:titleLabel];
     titleLabel.backgroundColor = [UIColor clearColor];
@@ -72,6 +80,14 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+}
+
+#pragma mark - events
+- (void)onEditBtnTapped:(UIBarButtonItem *)editBtn
+{
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
+    editBtn.style = self.tableView.editing ? UIBarButtonItemStyleDone : UIBarButtonItemStyleBordered;
+    editBtn.title = self.tableView.editing ? NSLocalizedString(@"Done", nil) : NSLocalizedString(@"Edit", nil);
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -109,6 +125,26 @@
     }
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row != self.soundSubList.count;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row != self.soundSubList.count;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    if(destinationIndexPath.row == self.soundSubList.count){
+        [self.tableView reloadData];
+    }else{
+        [self.soundSubList exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+        [[SoundSubManager sharedInstance] setSubListWithArray:self.soundSubList forIdentifier:self.soundFilePath];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifierSoundSub = @"sound_sub";
@@ -128,13 +164,23 @@
         // sound sub item
         cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierSoundSub];
         if(!cell){
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
                                            reuseIdentifier:cellIdentifierSoundSub] autorelease];
             cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
         }
         SoundSub *sub = [self.soundSubList objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%d.%@", indexPath.row, [sub description]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [sub title]];
+        
+        NSInteger minute = sub.beginTime / 60;
+        NSInteger second = (NSInteger)sub.beginTime % 60;
+        NSString *beginTime = [NSString stringWithFormat:@"%@:%@", [CommonUtils formatTimeNumber:minute], [CommonUtils formatTimeNumber:second]];
+
+        minute = sub.endTime / 60;
+        second = (NSInteger)sub.endTime % 60;
+        NSString *endTime = [NSString stringWithFormat:@"%@:%@", [CommonUtils formatTimeNumber:minute], [CommonUtils formatTimeNumber:second]];
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@-%@", beginTime, endTime];
     }
     
     return cell;

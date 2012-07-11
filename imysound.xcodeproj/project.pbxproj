@@ -51,6 +51,7 @@
 		67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD61599E1D6000E5533 /* BaseTableViewController.m */; };
 		CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBF815AD261100A05E67 /* PlayerStatusView.m */; };
 		CF81BC0015AD339100A05E67 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBFF15AD339100A05E67 /* PlayerControlView.m */; };
+		CF81BC0F15AD707200A05E67 /* SoundSubPlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +141,8 @@
 		CF81BBF815AD261100A05E67 /* PlayerStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerStatusView.m; sourceTree = "<group>"; };
 		CF81BBFE15AD339100A05E67 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlView.h; sourceTree = "<group>"; };
 		CF81BBFF15AD339100A05E67 /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerControlView.m; sourceTree = "<group>"; };
+		CF81BC0D15AD707200A05E67 /* SoundSubPlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSubPlayListViewController.h; sourceTree = "<group>"; };
+		CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSubPlayListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +329,7 @@
 		67C32C2C1599DD3D000E5533 /* imysound */ = {
 			isa = PBXGroup;
 			children = (
+				CF81BC1015AD731F00A05E67 /* PlayList */,
 				678586B915AC624E00B096C1 /* SoundSubManager */,
 				67C32CCD1599E0E4000E5533 /* ViewControllers */,
 				67C32C351599DD3D000E5533 /* AppDelegate.h */,
@@ -356,6 +360,8 @@
 				678586C115AC68DE00B096C1 /* SoundSubListEditViewController.m */,
 				678586C315AC6F3100B096C1 /* SoundSubEditViewController.h */,
 				678586C415AC6F3100B096C1 /* SoundSubEditViewController.m */,
+				CF81BC0D15AD707200A05E67 /* SoundSubPlayListViewController.h */,
+				CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -369,6 +375,13 @@
 				67C32CD61599E1D6000E5533 /* BaseTableViewController.m */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		CF81BC1015AD731F00A05E67 /* PlayList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PlayList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +482,7 @@
 				6785872915AC775400B096C1 /* KeyValueManagerFactory.m in Sources */,
 				CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */,
 				CF81BC0015AD339100A05E67 /* PlayerControlView.m in Sources */,
+				CF81BC0F15AD707200A05E67 /* SoundSubPlayListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
