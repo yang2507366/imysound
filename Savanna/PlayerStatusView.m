@@ -78,6 +78,12 @@
     [self.positionSilder addTarget:self 
                             action:@selector(onPositionSilderDragExit) 
                   forControlEvents:UIControlEventTouchUpOutside];
+    [self.positionSilder addTarget:self 
+                            action:@selector(onPositionSliderDragging) 
+                  forControlEvents:UIControlEventTouchDragInside];
+    [self.positionSilder addTarget:self 
+                            action:@selector(onPositionSliderDragging) 
+                  forControlEvents:UIControlEventTouchDragOutside];
     [self addSubview:self.positionSilder];
     
     // time labels
@@ -132,18 +138,30 @@
 - (void)onPositionSilderDragExit
 {
     self.positionSilderTouching = NO;
-    if([self.delegate respondsToSelector:@selector(playerControlView:didChangeToNewPosition:)]){
-        [self.delegate playerControlView:self didChangeToNewPosition:self.positionSilder.value];
+    if([self.delegate respondsToSelector:@selector(playerStatusView:didChangeToNewPosition:)]){
+        [self.delegate playerStatusView:self didChangeToNewPosition:self.positionSilder.value];
     }
+}
+
+- (void)onPositionSliderDragging
+{
+    NSTimeInterval currentTime = self.positionSilder.value;
+    NSInteger minute = currentTime / 60;
+    NSInteger second = (NSInteger)currentTime % 60;
+    self.currentTimeLabel.text = [NSString stringWithFormat:@"%@:%@", [CommonUtils formatNumber:minute], 
+                                  [CommonUtils formatNumber:second]];
 }
 
 #pragma mark - instance methods
 - (void)setCurrentTime:(NSTimeInterval)currentTime
 {
-    NSInteger minute = currentTime / 60;
-    NSInteger second = (NSInteger)currentTime % 60;
-    self.currentTimeLabel.text = [NSString stringWithFormat:@"%@:%@", [CommonUtils formatNumber:minute], 
-                                  [CommonUtils formatNumber:second]];
+    if(!self.positionSilderTouching){
+        NSInteger minute = currentTime / 60;
+        NSInteger second = (NSInteger)currentTime % 60;
+        self.currentTimeLabel.text = [NSString stringWithFormat:@"%@:%@", [CommonUtils formatNumber:minute], 
+                                      [CommonUtils formatNumber:second]];
+        self.positionSilder.value = currentTime;
+    }
 }
 
 - (NSTimeInterval)currentTime

@@ -10,15 +10,15 @@
 
 @class PlayerStatusView;
 
-@protocol PlayerControlViewDelegate <NSObject>
+@protocol PlayerStatusViewDelegate <NSObject>
 
 @optional
-- (void)playerControlView:(PlayerStatusView *)playerStatusView didChangeToNewPosition:(float)value;
+- (void)playerStatusView:(PlayerStatusView *)playerStatusView didChangeToNewPosition:(float)value;
 
 @end
 
 @interface PlayerStatusView : UIView {
-    id<PlayerControlViewDelegate>   _delegate;
+    id<PlayerStatusViewDelegate>   _delegate;
     
     UIView      *_topBlackBar;
     UIView      *_bottomLine;
@@ -29,7 +29,7 @@
     BOOL    _positionSilderTouching;
 }
 
-@property(nonatomic, assign)id<PlayerControlViewDelegate> delegate;
+@property(nonatomic, assign)id<PlayerStatusViewDelegate> delegate;
 
 @property(nonatomic, assign)NSTimeInterval currentTime;
 @property(nonatomic, assign)NSTimeInterval totalTime;

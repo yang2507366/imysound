@@ -10,11 +10,16 @@
 #import "BaseViewController.h"
 
 @class PlayerStatusView;
+@class PlayerControlView;
+@class Timer;
 
 @interface SoundSubEditViewController : BaseViewController {
     NSString *_soundFilePath;
     
-    PlayerStatusView *_playerStatusView;
+    PlayerStatusView    *_playerStatusView;
+    PlayerControlView   *_playerControlView;
+    
+    Timer *_timer;
 }
 
 - (id)initWithSoundFilePath:(NSString *)soundFilePath;
