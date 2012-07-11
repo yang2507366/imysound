@@ -174,7 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				678586D215AC752F00B096C1 /* Addition */,
-				678586D615AC754100B096C1 /* Metia */,
+				678586D615AC754100B096C1 /* Media */,
 				678586D315AC753600B096C1 /* Net */,
 				678586D415AC753A00B096C1 /* UI */,
 				678586D515AC753D00B096C1 /* Util */,
@@ -255,13 +255,13 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
-		678586D615AC754100B096C1 /* Metia */ = {
+		678586D615AC754100B096C1 /* Media */ = {
 			isa = PBXGroup;
 			children = (
 				678586D715AC759700B096C1 /* Player.h */,
 				678586D815AC759700B096C1 /* Player.m */,
 			);
-			name = Metia;
+			name = Media;
 			sourceTree = "<group>";
 		};
 		6785871415AC763F00B096C1 /* CacheManager */ = {
