@@ -9,18 +9,32 @@
 #import <Foundation/Foundation.h>
 
 @class AVAudioPlayer;
+@class Player;
 
 OBJC_EXPORT NSString *kPlayerDidStartPlayNotification;
 OBJC_EXPORT NSString *kPlayerDidPauseNotification;
 OBJC_EXPORT NSString *kPlayerDidStopNotification;
 OBJC_EXPORT NSString *kPlayerDidChangeSoundNotification;
 
+@protocol PlayerDelegate <NSObject>
+
+@optional
+- (void)playerDidStartPlay:(Player *)player;
+- (void)playerDidPause:(Player *)player;
+- (void)playerDidStop:(Player *)player;
+- (void)playerDidChangeSound:(Player *)player;
+
+@end
+
 @interface Player : NSObject {
 @private
+    id<PlayerDelegate> _delegate;
     AVAudioPlayer *_audioPlayer;
     
     NSString *_currentSoundFilePath;
 }
+
+@property(nonatomic, assign)id<PlayerDelegate> delegate;
 
 @property(nonatomic, readonly)NSString *currentSoundFilePath;
 

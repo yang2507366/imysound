@@ -14,9 +14,11 @@
 #import "CommonUtils.h"
 #import "SoundSub.h"
 #import "SoundSubManager.h"
-#import "PlayViewController.h"
 
-@interface SoundSubEditViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate, UIAlertViewDelegate>
+#define ALERT_TAG_INPUT 1001
+#define ALERT_TAG_EXIT_CONFIRM 1002
+
+@interface SoundSubEditViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate, UIAlertViewDelegate, PlayerDelegate>
 
 @property(nonatomic, copy)NSString *soundFilePath;
 
@@ -30,6 +32,8 @@
 
 @property(nonatomic, retain)UIButton *markBeginTimeBtn;
 @property(nonatomic, retain)UIButton *markEndTimeBtn;
+
+@property(nonatomic, retain)Player *player;
 
 - (NSString *)timeFormat:(NSTimeInterval)time;
 - (void)updateTimeLabel;
@@ -50,6 +54,8 @@
 @synthesize markBeginTimeBtn = _markBeginTimeBtn;
 @synthesize markEndTimeBtn = _markEndTimeBtn;
 
+@synthesize player = _player;
+
 - (void)dealloc
 {
     [_soundFilePath release];
@@ -61,6 +67,7 @@
     
     [_markBeginTimeBtn release];
     [_markEndTimeBtn release];
+    [_player release];
     [super dealloc];
 }
 
@@ -81,8 +88,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [[PlayViewController sharedInstance] reset];
     
     self.view.backgroundColor = [UIColor lightGrayColor];
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
@@ -154,8 +159,9 @@
                                              selector:@selector(onPlayerDidStopNotification:) 
                                                  name:kPlayerDidStopNotification 
                                                object:nil];
-    
-    [[Player sharedInstance] playSoundAtFilePath:self.soundFilePath autoPlay:NO];
+    self.player = [[[Player alloc] init] autorelease];
+    self.player.delegate = self;
+    [self.player playSoundAtFilePath:self.soundFilePath autoPlay:NO];
     [self updateTimeLabel];
 }
 
@@ -173,59 +179,70 @@
 
 - (void)updateTimeLabel
 {
-    self.playerStatusView.currentTime = [Player sharedInstance].currentTime;
-    self.playerStatusView.totalTime = [Player sharedInstance].duration;
+    self.playerStatusView.currentTime = self.player.currentTime;
+    self.playerStatusView.totalTime = self.player.duration;
 }
 
 #pragma mark - events
 - (void)onDoneBtnTapped
 {
-    [[Player sharedInstance] stop];
-    [self dismissModalViewControllerAnimated:YES];
+    if(self.beginTime == 0.0f && self.endTime == 0.0f){
+        [self.player stop];
+        [self dismissModalViewControllerAnimated:YES];
+    }else{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"exit_without_save", nil) 
+                                                            message:nil 
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
+                                                  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+        alertView.tag = ALERT_TAG_EXIT_CONFIRM;
+        [alertView show];
+        [alertView release];
+    }
 }
 
 - (void)onPlayerDidStartPlayNotification:(NSNotification *)n
 {
-    [self.playerControlView setPlaying:YES];
-    self.playerStatusView.totalTime = [Player sharedInstance].duration;
-    
-    if(self.timer){
-        [self.timer cancel];
-        self.timer = nil;
-    }
-    self.timer = [[[Timer alloc] init] autorelease];
-    self.timer.delegate = self;
-    [self.timer startWithTimeInterval:0.50f];
+//    [self.playerControlView setPlaying:YES];
+//    self.playerStatusView.totalTime = self.player.duration;
+//    
+//    if(self.timer){
+//        [self.timer cancel];
+//        self.timer = nil;
+//    }
+//    self.timer = [[[Timer alloc] init] autorelease];
+//    self.timer.delegate = self;
+//    [self.timer startWithTimeInterval:0.50f];
 }
 
 - (void)onPlayerDidPauseNotification:(NSNotification *)n
 {
-    [self.playerControlView setPlaying:NO];
-    
-    [self.timer cancel];
-    self.timer = nil;
+//    [self.playerControlView setPlaying:NO];
+//    
+//    [self.timer cancel];
+//    self.timer = nil;
 }
 
 - (void)onPlayerDidStopNotification:(NSNotification *)n
 {
-    [self.playerControlView setPlaying:NO];
-    self.playerStatusView.currentTime = 0.0f;
-    self.playerStatusView.totalTime = 0.0f;
-    
-    [self.timer cancel];
-    self.timer = nil;
+//    [self.playerControlView setPlaying:NO];
+//    self.playerStatusView.currentTime = 0.0f;
+//    self.playerStatusView.totalTime = 0.0f;
+//    
+//    [self.timer cancel];
+//    self.timer = nil;
 }
 
 - (void)onMarkBeginTimeBtnTapped
 {
-    self.beginTime = [Player sharedInstance].currentTime;
+    self.beginTime = self.player.currentTime;
     [self.markBeginTimeBtn setTitle:[self timeFormat:self.beginTime] 
                            forState:UIControlStateNormal];
 }
 
 - (void)onMarkEndTimeBtnTapped
 {
-    self.endTime = [Player sharedInstance].currentTime;
+    self.endTime = self.player.currentTime;
     [self.markEndTimeBtn setTitle:[self timeFormat:self.endTime] 
                          forState:UIControlStateNormal];
 }
@@ -244,6 +261,7 @@
                                                            delegate:self 
                                                   cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
                                                   otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+        alertView.tag = ALERT_TAG_INPUT;
         UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 43, 252, 30)];
         [alertView addSubview:textField];
         textField.borderStyle = UITextBorderStyleRoundedRect;
@@ -259,25 +277,32 @@
 
 - (void)onPreviousBtnTapped
 {
-    [Player sharedInstance].currentTime -= 2.0f;
+    self.player.currentTime -= 2.0f;
     [self updateTimeLabel];
 }
 
 - (void)onNextBtnTapped
 {
-    [Player sharedInstance].currentTime += 2.0f;
+    self.player.currentTime += 2.0f;
     [self updateTimeLabel];
 }
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(buttonIndex == 1){
-        UITextField *textField = (id)[alertView viewWithTag:27];
-        if(textField.text.length != 0){
-            [self saveCurrentSoundSubWithTitle:textField.text];
-        }else{
-            [self onSaveBtnTapped];
+    if(alertView.tag == ALERT_TAG_INPUT){
+        if(buttonIndex == 1){
+            UITextField *textField = (id)[alertView viewWithTag:27];
+            if(textField.text.length != 0){
+                [self saveCurrentSoundSubWithTitle:textField.text];
+            }else{
+                [self onSaveBtnTapped];
+            }
+        }
+    }else if(alertView.tag == ALERT_TAG_EXIT_CONFIRM){
+        if(buttonIndex == 1){
+            [self.player stop];
+            [self dismissModalViewControllerAnimated:YES];
         }
     }
 }
@@ -311,13 +336,13 @@
 #pragma mark - PlayerStatusViewDelegate
 - (void)playerStatusView:(PlayerStatusView *)playerStatusView didChangeToNewPosition:(float)value
 {
-    [Player sharedInstance].currentTime = value;
+    self.player.currentTime = value;
 }
 
 #pragma mark - PlayerControlViewDelegate
 - (void)playerControlView:(PlayerControlView *)playerControlView didUpdatePlayStatus:(BOOL)playing
 {
-    Player *player = [Player sharedInstance];
+    Player *player = self.player;
     if(playing){
         if([player.currentSoundFilePath isEqualToString:self.soundFilePath] && !player.playing){
             [player resume];
@@ -327,6 +352,39 @@
     }else{
         [player pause];
     }
+}
+
+#pragma mark - PlayerDelegate
+- (void)playerDidStartPlay:(Player *)player
+{
+    [self.playerControlView setPlaying:YES];
+    self.playerStatusView.totalTime = self.player.duration;
+    
+    if(self.timer){
+        [self.timer cancel];
+        self.timer = nil;
+    }
+    self.timer = [[[Timer alloc] init] autorelease];
+    self.timer.delegate = self;
+    [self.timer startWithTimeInterval:0.50f];
+}
+
+- (void)playerDidPause:(Player *)player
+{
+    [self.playerControlView setPlaying:NO];
+    
+    [self.timer cancel];
+    self.timer = nil;
+}
+
+- (void)playerDidStop:(Player *)player
+{
+    [self.playerControlView setPlaying:NO];
+    self.playerStatusView.currentTime = 0.0f;
+    self.playerStatusView.totalTime = 0.0f;
+    
+    [self.timer cancel];
+    self.timer = nil;
 }
 
 @end

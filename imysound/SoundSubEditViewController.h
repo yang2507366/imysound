@@ -12,6 +12,7 @@
 @class PlayerStatusView;
 @class PlayerControlView;
 @class Timer;
+@class Player;
 
 @interface SoundSubEditViewController : BaseViewController {
     NSString *_soundFilePath;
@@ -26,6 +27,8 @@
     
     UIButton *_markBeginTimeBtn;
     UIButton *_markEndTimeBtn;
+    
+    Player *_player;
 }
 
 - (id)initWithSoundFilePath:(NSString *)soundFilePath;
