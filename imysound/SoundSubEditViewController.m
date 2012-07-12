@@ -31,6 +31,7 @@
 @property(nonatomic, retain)UIButton *markEndTimeBtn;
 
 - (NSString *)timeFormat:(NSTimeInterval)time;
+- (void)updateTimeLabel;
 
 @end
 
@@ -101,6 +102,21 @@
     [self.playerControlView hideNextButton:YES];
     [self.playerControlView hidePreviousButton:YES];
     
+    UIButton *previousBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.view addSubview:previousBtn];
+    previousBtn.frame = CGRectMake(10, 70, (self.view.bounds.size.width - 30) / 2, 40);
+    [previousBtn setTitle:@"< 2s" forState:UIControlStateNormal];
+    [previousBtn addTarget:self action:@selector(onPreviousBtnTapped) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.view addSubview:nextBtn];
+    nextBtn.frame = CGRectMake(previousBtn.frame.origin.x + previousBtn.frame.size.width + 10, 
+                               previousBtn.frame.origin.y, 
+                               previousBtn.frame.size.width, 
+                               previousBtn.frame.size.height);
+    [nextBtn setTitle:@"> 2s" forState:UIControlStateNormal];
+    [nextBtn addTarget:self action:@selector(onNextBtnTapped) forControlEvents:UIControlEventTouchUpInside];
+    
     self.markBeginTimeBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.view addSubview:self.markBeginTimeBtn];
     self.markBeginTimeBtn.frame = CGRectMake(10, 120, (self.view.bounds.size.width - 30) / 2, 40);
@@ -136,8 +152,7 @@
                                                object:nil];
     
     [[Player sharedInstance] playSoundAtFilePath:self.soundFilePath autoPlay:NO];
-    self.playerStatusView.currentTime = [Player sharedInstance].currentTime;
-    self.playerStatusView.totalTime = [Player sharedInstance].duration;
+    [self updateTimeLabel];
 }
 
 #pragma mark - private methods
@@ -150,6 +165,12 @@
     dotString = [dotString substringFromIndex:1];
     return [NSString stringWithFormat:@"%@:%@%@", [CommonUtils formatTimeNumber:minute], 
             [CommonUtils formatTimeNumber:second], dotString];
+}
+
+- (void)updateTimeLabel
+{
+    self.playerStatusView.currentTime = [Player sharedInstance].currentTime;
+    self.playerStatusView.totalTime = [Player sharedInstance].duration;
 }
 
 #pragma mark - events
@@ -226,6 +247,18 @@
     }
 }
 
+- (void)onPreviousBtnTapped
+{
+    [Player sharedInstance].currentTime -= 2.0f;
+    [self updateTimeLabel];
+}
+
+- (void)onNextBtnTapped
+{
+    [Player sharedInstance].currentTime += 2.0f;
+    [self updateTimeLabel];
+}
+
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -242,8 +275,7 @@
 #pragma mark - TimerDelegate
 - (void)timer:(Timer *)timer timerRunningWithInterval:(CGFloat)interval
 {
-    self.playerStatusView.currentTime = [Player sharedInstance].currentTime;
-    self.playerStatusView.totalTime = [Player sharedInstance].duration;
+    [self updateTimeLabel];
 }
 
 #pragma mark - instance methods
