@@ -10,6 +10,9 @@
 #import "SoundSub.h"
 #import "SoundSubManager.h"
 #import "CommonUtils.h"
+#import "PlayViewController.h"
+#import "PlayItem.h"
+#import "PlayQueue.h"
 
 @interface SoundSubPlayListViewController ()
 
@@ -51,6 +54,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSMutableArray *playItemList = [NSMutableArray array];
+    for(SoundSub *sub in self.soundSubList){
+        PlayItem *item = [[[PlayItem alloc] init] autorelease];
+        item.soundFilePath = self.soundFilePath;
+        item.beginTime = sub.beginTime;
+        item.endTime = sub.endTime;
+        [playItemList addObject:item];
+    }
+    PlayQueue *queue = [[PlayQueue alloc] initWithPlayItemList:playItemList playAtIndex:indexPath.row];
+    PlayViewController *vc = [PlayViewController sharedInstance];
+    [vc playWithPlayQueue:queue];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

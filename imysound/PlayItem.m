@@ -20,4 +20,9 @@
     [super dealloc];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@, %f->%f", soundFilePath, beginTime, endTime];
+}
+
 @end

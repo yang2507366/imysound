@@ -13,7 +13,9 @@
 @protocol PlayerControlViewDelegate <NSObject>
 
 @optional
-- (void)playerControlView:(PlayerControlView *)playerControlView didUpdatePlayStatus:(BOOL)playing; 
+- (void)playerControlView:(PlayerControlView *)playerControlView didUpdatePlayStatus:(BOOL)playing;
+- (void)playerControlViewDidControlToPrevious:(PlayerControlView *)playerControlView;
+- (void)playerControlViewDidControlToNext:(PlayerControlView *)playerControlView;
 
 @end
 
@@ -24,6 +26,8 @@
     
     UIBarButtonItem *_playBtn;
     UIBarButtonItem *_pauseBtn;
+    UIBarButtonItem *_previousBtn;
+    UIBarButtonItem *_nextBtn;
     
     NSArray *_playingToolbarItemList;
     NSArray *_pausedToolbarItemList;
@@ -32,5 +36,7 @@
 @property(nonatomic, assign)id<PlayerControlViewDelegate> delegate;
 
 - (void)setPlaying:(BOOL)playing;
+- (void)hidePreviousButton:(BOOL)hide;
+- (void)hideNextButton:(BOOL)hide;
 
 @end

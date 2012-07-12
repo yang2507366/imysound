@@ -24,6 +24,8 @@
 
 @synthesize currentIndex = _currentIndex;
 
+@synthesize finished = _finished;
+
 - (void)dealloc
 {
     [_playItemList release];
@@ -32,12 +34,20 @@
     [super dealloc];
 }
 
-- (id)initWithPlayItemList:(NSArray *)playItemList
+- (id)initWithPlayItemList:(NSArray *)playItemList playAtIndex:(NSInteger)index
 {
     self = [super init];
     
     self.playItemList = playItemList;
-    self.currentIndex = 0;
+    self.currentIndex = index;
+    self.finished = NO;
+    
+    return self;
+}
+
+- (id)initWithPlayItemList:(NSArray *)playItemList
+{
+    self = [self initWithPlayItemList:playItemList playAtIndex:0];
     
     return self;
 }
@@ -45,6 +55,11 @@
 - (NSInteger)currentPlayingIndex
 {
     return self.currentIndex;
+}
+
+- (void)setCurrentPlayingIndex:(NSInteger)index
+{
+    self.currentIndex = index;
 }
 
 - (NSInteger)numberOfPlayItems
@@ -64,6 +79,38 @@
     }
     
     return nil;
+}
+
+- (PlayItem *)goNext
+{
+    NSInteger nextIndex = self.currentIndex + 1;
+    if(nextIndex < self.playItemList.count){
+        return [self.playItemList objectAtIndex:nextIndex];
+    }
+    return nil;
+}
+
+- (PlayItem *)goPrevious
+{
+    NSInteger previousIndex = self.currentIndex - 1;
+    if(previousIndex >= 0){
+        return [self.playItemList objectAtIndex:previousIndex];
+    }
+    return nil;
+}
+
+- (PlayItem *)currentPlayItem
+{
+    if(self.currentIndex >= 0){
+        return [self.playItemList objectAtIndex:self.currentIndex];
+    }
+    return nil;
+}
+
+- (void)reset
+{
+    self.currentIndex = 0;
+    self.finished = NO;
 }
 
 @end

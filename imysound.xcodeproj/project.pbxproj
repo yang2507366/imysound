@@ -55,6 +55,7 @@
 		67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD61599E1D6000E5533 /* BaseTableViewController.m */; };
 		CF6930F315AE6BF8005352AB /* PlayQueueControlSingleLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930F215AE6BF8005352AB /* PlayQueueControlSingleLoop.m */; };
 		CF6930F815AE6CAE005352AB /* PlayQueueControlAllLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930F715AE6CAE005352AB /* PlayQueueControlAllLoop.m */; };
+		CF6930FC15AE78A7005352AB /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930FB15AE78A7005352AB /* PlayViewController.m */; };
 		CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBF815AD261100A05E67 /* PlayerStatusView.m */; };
 		CF81BC0015AD339100A05E67 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBFF15AD339100A05E67 /* PlayerControlView.m */; };
 		CF81BC0F15AD707200A05E67 /* SoundSubPlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */; };
@@ -156,6 +157,8 @@
 		CF6930F215AE6BF8005352AB /* PlayQueueControlSingleLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayQueueControlSingleLoop.m; sourceTree = "<group>"; };
 		CF6930F615AE6CAE005352AB /* PlayQueueControlAllLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueueControlAllLoop.h; sourceTree = "<group>"; };
 		CF6930F715AE6CAE005352AB /* PlayQueueControlAllLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayQueueControlAllLoop.m; sourceTree = "<group>"; };
+		CF6930FA15AE78A7005352AB /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		CF6930FB15AE78A7005352AB /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		CF81BBF715AD261100A05E67 /* PlayerStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatusView.h; sourceTree = "<group>"; };
 		CF81BBF815AD261100A05E67 /* PlayerStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerStatusView.m; sourceTree = "<group>"; };
 		CF81BBFE15AD339100A05E67 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlView.h; sourceTree = "<group>"; };
@@ -381,6 +384,8 @@
 				678586C415AC6F3100B096C1 /* SoundSubEditViewController.m */,
 				CF81BC0D15AD707200A05E67 /* SoundSubPlayListViewController.h */,
 				CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */,
+				CF6930FA15AE78A7005352AB /* PlayViewController.h */,
+				CF6930FB15AE78A7005352AB /* PlayViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				676AB67715ADC0E7004444C6 /* PlayQueueControlFactory.m in Sources */,
 				CF6930F315AE6BF8005352AB /* PlayQueueControlSingleLoop.m in Sources */,
 				CF6930F815AE6CAE005352AB /* PlayQueueControlAllLoop.m in Sources */,
+				CF6930FC15AE78A7005352AB /* PlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

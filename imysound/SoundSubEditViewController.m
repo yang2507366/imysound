@@ -98,6 +98,8 @@
                                               self.view.bounds.size.height - self.navigationController.navigationBar.frame.size.height - 44, 
                                               self.view.frame.size.width, 
                                               44);
+    [self.playerControlView hideNextButton:YES];
+    [self.playerControlView hidePreviousButton:YES];
     
     self.markBeginTimeBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.view addSubview:self.markBeginTimeBtn];

@@ -13,8 +13,9 @@
 
 - (PlayItem *)nextPlayItemFromQueue:(PlayQueue *)queue
 {
-    NSInteger nextIndex = [queue currentPlayingIndex];
+    NSInteger nextIndex = [queue currentPlayingIndex] + 1;
     if(nextIndex != [queue numberOfPlayItems]){
+        queue.currentPlayingIndex = nextIndex;
         return [queue playItemAtIndex:nextIndex];
     }
     return nil;
