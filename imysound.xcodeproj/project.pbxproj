@@ -400,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				CF6930F915AE6D36005352AB /* impl */,
+				676AB67115ADBDE7004444C6 /* PlayQueueControl.h */,
 				676AB67515ADC0E7004444C6 /* PlayQueueControlFactory.h */,
 				676AB67615ADC0E7004444C6 /* PlayQueueControlFactory.m */,
 			);
@@ -409,7 +410,6 @@
 		CF6930F915AE6D36005352AB /* impl */ = {
 			isa = PBXGroup;
 			children = (
-				676AB67115ADBDE7004444C6 /* PlayQueueControl.h */,
 				676AB67215ADBF03004444C6 /* PlayQueueControlNormal.h */,
 				676AB67315ADBF03004444C6 /* PlayQueueControlNormal.m */,
 				CF6930F115AE6BF8005352AB /* PlayQueueControlSingleLoop.h */,
