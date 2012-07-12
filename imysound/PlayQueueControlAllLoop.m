@@ -17,6 +17,7 @@
     if(nextIndex == [queue numberOfPlayItems]){
         nextIndex = 0;
     }
+    queue.currentPlayingIndex = nextIndex;
     return [queue playItemAtIndex:nextIndex];
 }
 
