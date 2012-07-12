@@ -211,9 +211,18 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
         }
     }
 }
+
 - (PlayItem *)currentPlayItem
 {
     return self.playQueue.finished ? nil : [self.playQueue currentPlayItem];
+}
+
+- (void)reset
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[Player sharedInstance] stop];
+    [self onPlayQueueOver];
+    [self onPlayerDidStopNotification:nil];
 }
 
 #pragma mark - private methods

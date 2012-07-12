@@ -19,6 +19,8 @@
 
 - (NSString *)soundFileAtIndex:(NSInteger)index;
 
+- (void)reloadSoundList;
+
 @end
 
 @implementation SoundListViewController
@@ -28,6 +30,7 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_tableView release];
     [_soundFileList release];
     [super dealloc];
@@ -45,8 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.soundFileList = [NSMutableArray arrayWithArray:[CommonUtils fileNameListInDocumentPath]];
     
     self.tableView = [[[PopOutTableView alloc] initWithFrame:self.fullBounds] autorelease];
     [self.view addSubview:self.tableView];
@@ -78,6 +79,11 @@
     editBtnItem.action = @selector(onEditBtnItemTapped:);
     editBtnItem.style = UIBarButtonItemStyleBordered;
     self.navigationItem.leftBarButtonItem = editBtnItem;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onApplicationBecomeActiveNotification:) 
+                                                 name:UIApplicationDidBecomeActiveNotification 
+                                               object:nil];
 }
 
 - (void)viewDidUnload
@@ -85,10 +91,22 @@
     [super viewDidUnload];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self reloadSoundList];
+}
+
 #pragma mark - private methods
 - (NSString *)soundFileAtIndex:(NSInteger)index
 {
     return [[CommonUtils documentPath] stringByAppendingPathComponent:[self.soundFileList objectAtIndex:index]];
+}
+
+- (void)reloadSoundList
+{
+    self.soundFileList = [NSMutableArray arrayWithArray:[CommonUtils fileNameListInDocumentPath]];
+    [self.tableView.tableView reloadData];
 }
 
 #pragma mark - events
@@ -113,6 +131,11 @@
     editBtnItem.style = self.tableView.tableView.editing ? UIBarButtonItemStyleBordered : UIBarButtonItemStyleDone;
     editBtnItem.title = self.tableView.tableView.editing ? NSLocalizedString(@"Edit", nil) : NSLocalizedString(@"Done", nil);
     [self.tableView.tableView setEditing:!self.tableView.tableView.editing animated:YES];
+}
+
+- (void)onApplicationBecomeActiveNotification:(NSNotification *)n
+{
+    [self reloadSoundList];
 }
 
 #pragma mark - PopOutTableViewDelegate

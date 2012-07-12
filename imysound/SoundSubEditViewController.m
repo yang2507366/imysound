@@ -14,6 +14,7 @@
 #import "CommonUtils.h"
 #import "SoundSub.h"
 #import "SoundSubManager.h"
+#import "PlayViewController.h"
 
 @interface SoundSubEditViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate, UIAlertViewDelegate>
 
@@ -80,6 +81,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[PlayViewController sharedInstance] reset];
+    
     self.view.backgroundColor = [UIColor lightGrayColor];
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
                                                                              target:self 
@@ -228,6 +232,12 @@
 
 - (void)onSaveBtnTapped
 {
+    if(self.endTime == 0.0f){
+        return;
+    }
+    if(self.beginTime > self.endTime){
+        return;
+    }
     if(self.beginTime != 0.0f || self.endTime != 0.0f){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"enter_sub_name", nil) 
                                                             message:@"\n" 

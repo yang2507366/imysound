@@ -35,4 +35,6 @@ OBJC_EXPORT NSString *kPlayQueueDidPlayCompletely;
 
 - (PlayItem *)currentPlayItem;
 
+- (void)reset;
+
 @end
