@@ -8,6 +8,8 @@
 
 #import "PlayQueueControlFactory.h"
 #import "PlayQueueControlNormal.h"
+#import "PlayQueueControlSingleLoop.h"
+#import "PlayQueueControlAllLoop.h"
 
 @implementation PlayQueueControlFactory
 
@@ -18,12 +20,12 @@
 
 + (id<PlayQueueControl>)createSingleLoopPlayQueueControl
 {
-    return [[[PlayQueueControlNormal alloc] init] autorelease];
+    return [[[PlayQueueControlSingleLoop alloc] init] autorelease];
 }
 
 + (id<PlayQueueControl>)createLoopPlayQueueControl
 {
-    return [[[PlayQueueControlNormal alloc] init] autorelease];
+    return [[[PlayQueueControlAllLoop alloc] init] autorelease];
 }
 
 @end
