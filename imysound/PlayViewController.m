@@ -15,7 +15,9 @@
 #import "PlayItem.h"
 #import "PlayQueueControlFactory.h"
 
-@interface PlayViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate>
+NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
+
+@interface PlayViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, retain)PlayQueue *playQueue;
 
@@ -24,6 +26,8 @@
 
 @property(nonatomic, retain)Timer *timer;
 @property(nonatomic, retain)Timer *trackFinishTimer;
+
+@property(nonatomic, retain)UITableView *tableView;
 
 - (void)playWithPlayItem:(PlayItem *)playItem;
 - (NSTimeInterval)currentTimeWithPlayItem:(PlayItem *)playItem;
@@ -42,8 +46,11 @@
 @synthesize timer = _timer;
 @synthesize trackFinishTimer = _trackFinishTimer;
 
+@synthesize tableView = _tableView;
+
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_playQueue release];
     
     [_playerStatusView release];
@@ -51,6 +58,8 @@
     
     [_timer cancel]; [_timer release];
     [_trackFinishTimer cancel]; [_trackFinishTimer release];
+    
+    [_tableView release];
     [super dealloc];
 }
 
@@ -64,6 +73,15 @@
     }
     
     return instance;
+}
+
+- (id)init
+{
+    self = [super init];
+    
+    self.title = NSLocalizedString(@"now_playing", nil);
+    
+    return self;
 }
 
 - (void)viewDidLoad
@@ -81,6 +99,16 @@
     self.playerControlView.frame = CGRectMake(0, tmpY, self.view.bounds.size.width, 44.0f);
     self.playerControlView.delegate = self;
     
+    self.tableView = [[[UITableView alloc] init] autorelease];
+    [self.view addSubview:self.tableView];
+    tmpY = self.playerStatusView.frame.origin.y + self.playerStatusView.frame.size.height;
+    self.tableView.frame = CGRectMake(0, 
+                                      tmpY, 
+                                      self.view.bounds.size.width, 
+                                      self.playerControlView.frame.origin.y - tmpY);
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(onPlayerDidStartPlayNotification:) 
                                                  name:kPlayerDidStartPlayNotification 
@@ -93,8 +121,14 @@
                                              selector:@selector(onPlayerDidStopNotification:) 
                                                  name:kPlayerDidStopNotification 
                                                object:nil];
-    
-    [self playWithPlayItem:[self.playQueue currentPlayItem]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(![Player sharedInstance].playing && ![self.playQueue finished]){
+        [self playWithPlayItem:[self.playQueue currentPlayItem]];
+    }
 }
 
 - (void)viewDidUnload
@@ -127,6 +161,8 @@
     self.trackFinishTimer = [[[Timer alloc] init] autorelease];
     self.trackFinishTimer.delegate = self;
     [self.trackFinishTimer startWithTimeInterval:0.01];
+    
+    [self.tableView reloadData];
 }
 
 - (void)onPlayerDidPauseNotification:(NSNotification *)n
@@ -151,22 +187,39 @@
     self.playerStatusView.currentTime = 0.0f;
     self.playerStatusView.totalTime = 0.0f;
     
-    PlayItem *nextItem = [self.playQueue nextPlayItem];
-    if(nextItem){
-        [self playWithPlayItem:nextItem];
+    if(!self.playQueue.finished){
+        PlayItem *nextItem = [self.playQueue nextPlayItem];
+        if(nextItem){
+            [self playWithPlayItem:nextItem];
+        }
     }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - instance methods
 - (void)playWithPlayQueue:(PlayQueue *)playQueue
 {
-    self.playQueue = playQueue;
-    self.playQueue.playQueueControl = [PlayQueueControlFactory createNormalPlayQueueControl];
+    if(![playQueue.currentPlayItem isEqual:self.playQueue.currentPlayItem]){
+        [[Player sharedInstance] stop];
+        
+        self.playQueue = playQueue;
+        self.playQueue.playQueueControl = [PlayQueueControlFactory createNormalPlayQueueControl];
+    }else{
+        if(![Player sharedInstance].playing){
+            [[Player sharedInstance] play];
+        }
+    }
+}
+- (PlayItem *)currentPlayItem
+{
+    return self.playQueue.finished ? nil : [self.playQueue currentPlayItem];
 }
 
 #pragma mark - private methods
 - (void)playWithPlayItem:(PlayItem *)playItem
 {
+    self.playQueue.finished = NO;
     Player *player = [Player sharedInstance];
     [player playSoundAtFilePath:playItem.soundFilePath autoPlay:NO];
     player.currentTime = playItem.beginTime;
@@ -188,6 +241,8 @@
 {
     [Player sharedInstance].currentTime = 0.0f;
     self.playQueue.finished = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayQueueDidPlayCompletely object:nil];
+    [self.tableView reloadData];
 }
 
 #pragma mark - TimerDelegate
@@ -213,7 +268,7 @@
                     [self onPlayQueueOver];
                 }
             }else{
-                NSLog(@"%f->%f", [self currentTimeWithPlayItem:currentItem], [self totalTimeWithPlayItem:currentItem]);
+//                NSLog(@"%f->%f", [self currentTimeWithPlayItem:currentItem], [self totalTimeWithPlayItem:currentItem]);
             }
         }
     }
@@ -246,11 +301,63 @@
 
 - (void)playerControlViewDidControlToPrevious:(PlayerControlView *)playerControlView
 {
-    
+    PlayItem *previousItem = [self.playQueue goPrevious];
+    if(previousItem){
+        [self playWithPlayItem:previousItem];
+    }else{
+        [[Player sharedInstance] stop];
+        [self onPlayQueueOver];
+        [self onPlayerDidStopNotification:nil];
+    }
 }
 
 - (void)playerControlViewDidControlToNext:(PlayerControlView *)playerControlView
 {
+    PlayItem *nextItem = [self.playQueue goNext];
+    if(nextItem){
+        [self playWithPlayItem:nextItem];
+    }else{
+        [[Player sharedInstance] stop];
+        [self onPlayQueueOver];
+        [self onPlayerDidStopNotification:nil];
+    }
+}
+
+#pragma mark - UITableViewDelegate & UIITableViewDataSource
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    PlayItem *playItem = [self.playQueue playItemAtIndex:indexPath.row];
+    [self playWithPlayItem:playItem];
+    self.playQueue.currentPlayingIndex = indexPath.row;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.playQueue.numberOfPlayItems;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"id";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if(cell == nil){
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                       reuseIdentifier:identifier] autorelease];
+        cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+    }
+    
+    PlayItem *item = [self.playQueue playItemAtIndex:indexPath.row];
+    
+    if([item isEqual:self.currentPlayItem]){
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    cell.textLabel.text = item.title;
+    
+    return cell;
 }
 
 @end

@@ -85,6 +85,7 @@
 {
     NSInteger nextIndex = self.currentIndex + 1;
     if(nextIndex < self.playItemList.count){
+        self.currentIndex = nextIndex;
         return [self.playItemList objectAtIndex:nextIndex];
     }
     return nil;
@@ -94,6 +95,7 @@
 {
     NSInteger previousIndex = self.currentIndex - 1;
     if(previousIndex >= 0){
+        self.currentIndex = previousIndex;
         return [self.playItemList objectAtIndex:previousIndex];
     }
     return nil;

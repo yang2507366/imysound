@@ -77,7 +77,7 @@
     editBtnItem.target = self;
     editBtnItem.action = @selector(onEditBtnItemTapped:);
     editBtnItem.style = UIBarButtonItemStyleBordered;
-    self.navigationItem.rightBarButtonItem = editBtnItem;
+    self.navigationItem.leftBarButtonItem = editBtnItem;
 }
 
 - (void)viewDidUnload

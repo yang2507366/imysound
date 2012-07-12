@@ -125,7 +125,6 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidStopNotification object:nil];
-    self.currentTime = 0.0f;
 }
 
 - (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player

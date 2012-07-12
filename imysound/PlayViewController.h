@@ -13,6 +13,9 @@
 @class PlayerStatusView;
 @class PlayerControlView;
 @class Timer;
+@class PlayItem;
+
+OBJC_EXPORT NSString *kPlayQueueDidPlayCompletely;
 
 @interface PlayViewController : BaseViewController {
     PlayQueue *_playQueue;
@@ -22,10 +25,14 @@
     
     Timer *_timer;
     Timer *_trackFinishTimer;
+    
+    UITableView *_tableView;
 }
 
 + (id)sharedInstance;
 
 - (void)playWithPlayQueue:(PlayQueue *)playQueue;
+
+- (PlayItem *)currentPlayItem;
 
 @end

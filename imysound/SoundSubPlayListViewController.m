@@ -13,6 +13,7 @@
 #import "PlayViewController.h"
 #import "PlayItem.h"
 #import "PlayQueue.h"
+#import "Player.h"
 
 @interface SoundSubPlayListViewController ()
 
@@ -48,6 +49,30 @@
     [super viewDidLoad];
     
     self.soundSubList = [[SoundSubManager sharedInstance] subListForIdentifier:self.soundFilePath];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayStateChanged:) 
+                                                 name:kPlayerDidStartPlayNotification 
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayStateChanged:) 
+                                                 name:kPlayerDidStopNotification 
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayStateChanged:) 
+                                                 name:kPlayQueueDidPlayCompletely 
+                                               object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+#pragma mark - events
+- (void)onPlayStateChanged:(NSNotification *)n
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -60,6 +85,7 @@
         item.soundFilePath = self.soundFilePath;
         item.beginTime = sub.beginTime;
         item.endTime = sub.endTime;
+        item.title = sub.title;
         [playItemList addObject:item];
     }
     PlayQueue *queue = [[PlayQueue alloc] initWithPlayItemList:playItemList playAtIndex:indexPath.row];
@@ -97,6 +123,15 @@
     NSString *endTime = [NSString stringWithFormat:@"%@:%@", [CommonUtils formatTimeNumber:minute], [CommonUtils formatTimeNumber:second]];
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@-%@", beginTime, endTime];
+    
+    PlayItem *currentPlayItem = [[PlayViewController sharedInstance] currentPlayItem];
+    if([currentPlayItem.soundFilePath isEqualToString:self.soundFilePath] 
+       && currentPlayItem.beginTime == sub.beginTime 
+       && currentPlayItem.endTime == sub.endTime){
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
