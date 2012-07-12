@@ -108,19 +108,6 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
                                       self.playerControlView.frame.origin.y - tmpY);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(onPlayerDidStartPlayNotification:) 
-                                                 name:kPlayerDidStartPlayNotification 
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(onPlayerDidPauseNotification:) 
-                                                 name:kPlayerDidPauseNotification 
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(onPlayerDidStopNotification:) 
-                                                 name:kPlayerDidStopNotification 
-                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -206,8 +193,13 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
         self.playQueue = playQueue;
         self.playQueue.playQueueControl = [PlayQueueControlFactory createNormalPlayQueueControl];
     }else{
-        if(![Player sharedInstance].playing){
-            [[Player sharedInstance] play];
+        if([[Player sharedInstance].currentSoundFilePath isEqualToString:self.currentPlayItem.soundFilePath]){
+            if(![Player sharedInstance].playing){
+                [[Player sharedInstance] play];
+            }
+        }else{
+            self.playQueue.finished = NO;
+            [self playWithPlayItem:self.playQueue.currentPlayItem];
         }
     }
 }
@@ -228,6 +220,19 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 #pragma mark - private methods
 - (void)playWithPlayItem:(PlayItem *)playItem
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayerDidStartPlayNotification:) 
+                                                 name:kPlayerDidStartPlayNotification 
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayerDidPauseNotification:) 
+                                                 name:kPlayerDidPauseNotification 
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayerDidStopNotification:) 
+                                                 name:kPlayerDidStopNotification 
+                                               object:nil];
+    
     self.playQueue.finished = NO;
     Player *player = [Player sharedInstance];
     [player playSoundAtFilePath:playItem.soundFilePath autoPlay:NO];
