@@ -186,11 +186,11 @@
 #pragma mark - events
 - (void)onDoneBtnTapped
 {
-    if(self.beginTime == 0.0f && self.endTime == 0.0f){
-        [self.player stop];
-        [self dismissModalViewControllerAnimated:YES];
-    }else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"exit_without_save", nil) 
+//    if(self.beginTime == 0.0f && self.endTime == 0.0f){
+//        [self.player stop];
+//        [self dismissModalViewControllerAnimated:YES];
+//    }else{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"exit_sound_edit_confirm", nil) 
                                                             message:nil 
                                                            delegate:self 
                                                   cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
@@ -198,7 +198,7 @@
         alertView.tag = ALERT_TAG_EXIT_CONFIRM;
         [alertView show];
         [alertView release];
-    }
+//    }
 }
 
 - (void)onPlayerDidStartPlayNotification:(NSNotification *)n

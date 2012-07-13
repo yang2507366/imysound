@@ -15,6 +15,9 @@
 @private
     PopOutTableView *_tableView;
     NSMutableArray *_soundFileList;
+    
+    UIView *_soundFilePopOutView;
+    UIView *_otherFilePopOutView;
 }
 
 @end

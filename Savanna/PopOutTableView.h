@@ -17,6 +17,7 @@
 - (UITableViewCell *)popOutTableView:(PopOutTableView *)popOutTableView cellForRowAtIndex:(NSInteger)index;
 
 @optional
+- (BOOL)popOutTableView:(PopOutTableView *)tableView shouldShowPopOutCellAtIndex:(NSInteger)index;
 - (void)popOutCellWillShowAtPopOutTableView:(PopOutTableView *)tableView;
 - (CGFloat)popOutTableView:(PopOutTableView *)popOutTableView heightForRowAtIndex:(NSInteger)index;
 - (void)popOutTableView:(PopOutTableView *)popOutTableView deleteRowAtIndex:(NSInteger)index;

@@ -148,6 +148,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if([self.delegate respondsToSelector:@selector(popOutTableView:shouldShowPopOutCellAtIndex:)]){
+        NSInteger targetRow = indexPath.row;
+        if(self.insertedIndex != -1){
+            if(indexPath.row > self.insertedIndex){
+                --targetRow;
+            }
+        }
+        if(![self.delegate popOutTableView:self shouldShowPopOutCellAtIndex:targetRow]){
+            return;
+        }
+    }
     if(self.insertedIndex == -1){
         if(indexPath.row + 1 > [self tableView:tableView numberOfRowsInSection:0] - 2){
             [self performSelector:@selector(scrollToBottom) withObject:nil afterDelay:0.01f];

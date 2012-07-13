@@ -59,9 +59,10 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
         _currentSoundFilePath = nil;
     }
     _currentSoundFilePath = [soundFilePath retain];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidChangeSoundNotification object:nil];
     if([self.delegate respondsToSelector:@selector(playerDidChangeSound:)]){
         [self.delegate playerDidChangeSound:self];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidChangeSoundNotification object:nil];
     }
     
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:_currentSoundFilePath];
@@ -85,36 +86,40 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
 - (void)play
 {
     [self.audioPlayer play];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidStartPlayNotification object:nil];
     if([self.delegate respondsToSelector:@selector(playerDidStartPlay:)]){
         [self.delegate playerDidStartPlay:self];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidStartPlayNotification object:nil];
     }
 }
 
 - (void)pause
 {
     [self.audioPlayer pause];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidPauseNotification object:nil];
     if([self.delegate respondsToSelector:@selector(playerDidPause:)]){
         [self.delegate playerDidPause:self];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidPauseNotification object:nil];
     }
 }
 
 - (void)resume
 {
     [self.audioPlayer play];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidStartPlayNotification object:nil];
     if([self.delegate respondsToSelector:@selector(playerDidStartPlay:)]){
         [self.delegate playerDidStartPlay:self];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidStartPlayNotification object:nil];
     }
 }
 
 - (void)stop
 {
     [self.audioPlayer stop];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidPauseNotification object:nil];
     if([self.delegate respondsToSelector:@selector(playerDidStop:)]){
         [self.delegate playerDidStop:self];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidPauseNotification object:nil];
     }
 }
 
@@ -141,9 +146,10 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
 #pragma mark - AudioPlayerDelegate
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidStopNotification object:nil];
     if([self.delegate respondsToSelector:@selector(playerDidStop:)]){
         [self.delegate playerDidStop:self];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidStopNotification object:nil];
     }
 }
 

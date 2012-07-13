@@ -17,6 +17,9 @@
 @property(nonatomic, retain)PopOutTableView *tableView;
 @property(nonatomic, retain)NSMutableArray *soundFileList;
 
+@property(nonatomic, retain)UIView *soundFilePopOutView;
+@property(nonatomic, retain)UIView *otherFilePopOutView;
+
 - (NSString *)soundFileAtIndex:(NSInteger)index;
 
 - (void)reloadSoundList;
@@ -28,11 +31,17 @@
 @synthesize tableView = _tableView;
 @synthesize soundFileList = _soundFileList;
 
+@synthesize soundFilePopOutView = _soundFilePopOutView;
+@synthesize otherFilePopOutView = _otherFilePopOutView;
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_tableView release];
     [_soundFileList release];
+    
+    [_soundFilePopOutView release];
+    [_otherFilePopOutView release];
     [super dealloc];
 }
 
@@ -54,24 +63,35 @@
     self.tableView.delegate = self;
     self.tableView.editable = YES;
     
-    UIView *popOutView = [[[UIView alloc] initWithFrame:
+    UIView *soundFilePopOutView = [[[UIView alloc] initWithFrame:
                            CGRectMake(0, 0, self.tableView.frame.size.width, 50)] autorelease];
-    [self.tableView addSubviewToPopOutCell:popOutView];
+    self.soundFilePopOutView = soundFilePopOutView;
+    [self.tableView addSubviewToPopOutCell:soundFilePopOutView];
     
     UIButton *viewBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [popOutView addSubview:viewBtn];
+    [soundFilePopOutView addSubview:viewBtn];
     [viewBtn setTitle:NSLocalizedString(@"View", nil) forState:UIControlStateNormal];
     [viewBtn addTarget:self action:@selector(onViewBtnTapped) forControlEvents:UIControlEventTouchUpInside];
     viewBtn.frame = CGRectMake(10, 5, (self.tableView.frame.size.width - 30) / 2, 40);
     
     UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [popOutView addSubview:editBtn];
+    [soundFilePopOutView addSubview:editBtn];
     [editBtn setTitle:NSLocalizedString(@"Edit", nil) forState:UIControlStateNormal];
     [editBtn addTarget:self action:@selector(onEditBtnTapped) forControlEvents:UIControlEventTouchUpInside];
     editBtn.frame = CGRectMake(10 + (self.tableView.frame.size.width - 30) / 2 + 10, 
                                5, 
                                (self.tableView.frame.size.width - 30) / 2, 
                                40);
+    
+    UIView *otherFilePopOutView = [[[UIView alloc] initWithFrame:
+                                    CGRectMake(0, 0, self.tableView.frame.size.width, 60)] autorelease];
+    self.otherFilePopOutView = otherFilePopOutView;
+    
+    UIButton *openBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [otherFilePopOutView addSubview:openBtn];
+    [openBtn setTitle:NSLocalizedString(@"Open", nil) forState:UIControlStateNormal];
+    [openBtn addTarget:self action:@selector(onOpenBtnTapped) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UIBarButtonItem *editBtnItem = [[[UIBarButtonItem alloc] init] autorelease];
     editBtnItem.title = NSLocalizedString(@"Edit", nil);
@@ -139,6 +159,21 @@
 }
 
 #pragma mark - PopOutTableViewDelegate
+- (BOOL)popOutTableView:(PopOutTableView *)tableView shouldShowPopOutCellAtIndex:(NSInteger)index
+{
+    NSString *soundFilePath = [self soundFileAtIndex:index];
+    
+    if(![[soundFilePath lowercaseString] hasSuffix:@".mp3"]){
+        NSLog(@"%@", soundFilePath);
+        return NO;
+    }
+    return YES;
+}
+
+- (void)popOutCellWillShowAtPopOutTableView:(PopOutTableView *)tableView
+{
+}
+
 - (void)popOutTableView:(PopOutTableView *)popOutTableView deleteRowAtIndex:(NSInteger)index
 {
     NSString *fileName = [self.soundFileList objectAtIndex:index];
