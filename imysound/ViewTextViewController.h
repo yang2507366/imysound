@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
 #import "KeyValueManager.h"
+#import "TextBookmarkManager.h"
 
 @interface ViewTextViewController : BaseViewController {
     NSString *_textFilePath;
     id<KeyValueManager> _keyValueMgr;
+    id<TextBookmarkManager> _bookmarkMgr;
     
     UITextView *_textView;
     UIBarButtonItem *_nowPlayingBtn;

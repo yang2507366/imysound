@@ -176,6 +176,7 @@
 
 - (void)onNowPlayingBtnTapped
 {
+    [[PlayViewController sharedInstance] setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:[PlayViewController sharedInstance] animated:YES];
 }
 

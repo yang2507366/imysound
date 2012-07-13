@@ -10,6 +10,13 @@
 
 @implementation UITools
 
++ (UIBarButtonItem *)createFlexibleSpaceBarButtonItem
+{
+    return [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
+                                                          target:nil 
+                                                          action:nil] autorelease];
+}
+
 + (UIImage *)createPureColorImageWithColor:(UIColor *)color size:(CGSize)size
 {
     float width = size.width;

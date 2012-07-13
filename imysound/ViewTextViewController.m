@@ -10,11 +10,13 @@
 #import "KeyValueManagerFactory.h"
 #import "Player.h"
 #import "PlayViewController.h"
+#import "UITools.h"
 
 @interface ViewTextViewController () <UITextViewDelegate>
 
 @property(nonatomic, copy)NSString *textFilePath;
 @property(nonatomic, retain)id<KeyValueManager> keyValueMgr;
+@property(nonatomic, retain)id<TextBookmarkManager> bookmarkMgr;
 
 @property(nonatomic, retain)UITextView *textView;
 @property(nonatomic, retain)UIBarButtonItem *nowPlayingBtn;
@@ -25,6 +27,7 @@
 
 @synthesize textFilePath = _textFilePath;
 @synthesize keyValueMgr = _keyValueMgr;
+@synthesize bookmarkMgr = _bookmarkMgr;
 
 @synthesize textView = _textView;
 @synthesize nowPlayingBtn = _nowPlayingBtn;
@@ -33,6 +36,7 @@
 {
     [_textFilePath release];
     [_keyValueMgr release];
+    [_bookmarkMgr release];
     
     [_textView release];
     [_nowPlayingBtn release];
@@ -45,6 +49,7 @@
     
     self.textFilePath = filePath;
     self.keyValueMgr = [KeyValueManagerFactory createLocalDBKeyValueManagerWithName:@"text_position_"];
+    self.bookmarkMgr = [TextBookmarkManager createManager];
     
     self.title = [self.textFilePath lastPathComponent];
     
@@ -78,6 +83,21 @@
         self.navigationItem.rightBarButtonItem = self.nowPlayingBtn;
     }
     
+    CGFloat tmpY = self.view.bounds.size.height - self.navigationController.navigationBar.frame.size.height - 44.0f;
+    UIToolbar *toolbar = [[[UIToolbar alloc] initWithFrame:
+                           CGRectMake(0, tmpY, self.view.bounds.size.width, 44.0f)] autorelease];
+    [self.view addSubview:toolbar];
+    toolbar.barStyle = UIBarStyleBlack;
+    
+    NSMutableArray *toolbarItems = [NSMutableArray array];
+    [toolbarItems addObject:[UITools createFlexibleSpaceBarButtonItem]];
+    UIBarButtonItem *bookmarkBtn = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks 
+                                                                                 target:self 
+                                                                                 action:@selector(onBookmarkBtnTapped)] autorelease];
+    [toolbarItems addObject:bookmarkBtn];
+    [toolbarItems addObject:[UITools createFlexibleSpaceBarButtonItem]];
+    toolbar.items = toolbarItems;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(onPlayerDidStartPlayNotification:) 
                                                  name:kPlayerDidStartPlayNotification 
@@ -101,6 +121,11 @@
 - (void)onNowPlayingBtnTapped
 {
     [self.navigationController pushViewController:[PlayViewController sharedInstance] animated:YES];
+}
+
+- (void)onBookmarkBtnTapped
+{
+    
 }
 
 - (void)onPlayerDidStartPlayNotification:(NSNotification *)n

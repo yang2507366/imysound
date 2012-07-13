@@ -10,6 +10,8 @@
 
 @interface UITools : NSObject
 
++ (UIBarButtonItem *)createFlexibleSpaceBarButtonItem;
+
 + (UIImage *)createPureColorImageWithColor:(UIColor *)color size:(CGSize)size;
 + (UIImage *)createPureColorImageWithColor:(UIColor *)color size:(CGSize)size text:(NSString *)text font:(UIFont *)font;
 

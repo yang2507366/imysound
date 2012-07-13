@@ -58,6 +58,8 @@
 		CF6930F815AE6CAE005352AB /* PlayQueueControlAllLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930F715AE6CAE005352AB /* PlayQueueControlAllLoop.m */; };
 		CF6930FC15AE78A7005352AB /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930FB15AE78A7005352AB /* PlayViewController.m */; };
 		CF788A1715AFEF5F00188B7F /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF788A1615AFEF5F00188B7F /* PlayListViewController.m */; };
+		CF788A1E15AFFC0200188B7F /* TextBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = CF788A1D15AFFC0200188B7F /* TextBookmark.m */; };
+		CF788A2015AFFCD200188B7F /* TextBookmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF788A1F15AFFCD200188B7F /* TextBookmarkManager.m */; };
 		CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBF815AD261100A05E67 /* PlayerStatusView.m */; };
 		CF81BC0015AD339100A05E67 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBFF15AD339100A05E67 /* PlayerControlView.m */; };
 		CF81BC0F15AD707200A05E67 /* SoundSubPlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */; };
@@ -165,6 +167,10 @@
 		CF6930FB15AE78A7005352AB /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		CF788A1515AFEF5F00188B7F /* PlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayListViewController.h; sourceTree = "<group>"; };
 		CF788A1615AFEF5F00188B7F /* PlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListViewController.m; sourceTree = "<group>"; };
+		CF788A1A15AFFB9B00188B7F /* TextBookmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBookmarkManager.h; sourceTree = "<group>"; };
+		CF788A1C15AFFC0200188B7F /* TextBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBookmark.h; sourceTree = "<group>"; };
+		CF788A1D15AFFC0200188B7F /* TextBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextBookmark.m; sourceTree = "<group>"; };
+		CF788A1F15AFFCD200188B7F /* TextBookmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextBookmarkManager.m; sourceTree = "<group>"; };
 		CF81BBF715AD261100A05E67 /* PlayerStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatusView.h; sourceTree = "<group>"; };
 		CF81BBF815AD261100A05E67 /* PlayerStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerStatusView.m; sourceTree = "<group>"; };
 		CF81BBFE15AD339100A05E67 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlView.h; sourceTree = "<group>"; };
@@ -357,6 +363,7 @@
 		67C32C2C1599DD3D000E5533 /* imysound */ = {
 			isa = PBXGroup;
 			children = (
+				CF788A1915AFFB8500188B7F /* TextBookmarkManager */,
 				CF81BC1015AD731F00A05E67 /* PlayQueue */,
 				678586B915AC624E00B096C1 /* SoundSubManager */,
 				67C32CCD1599E0E4000E5533 /* ViewControllers */,
@@ -433,6 +440,17 @@
 				CF6930F715AE6CAE005352AB /* PlayQueueControlAllLoop.m */,
 			);
 			name = impl;
+			sourceTree = "<group>";
+		};
+		CF788A1915AFFB8500188B7F /* TextBookmarkManager */ = {
+			isa = PBXGroup;
+			children = (
+				CF788A1A15AFFB9B00188B7F /* TextBookmarkManager.h */,
+				CF788A1F15AFFCD200188B7F /* TextBookmarkManager.m */,
+				CF788A1C15AFFC0200188B7F /* TextBookmark.h */,
+				CF788A1D15AFFC0200188B7F /* TextBookmark.m */,
+			);
+			name = TextBookmarkManager;
 			sourceTree = "<group>";
 		};
 		CF81BC1015AD731F00A05E67 /* PlayQueue */ = {
@@ -555,6 +573,8 @@
 				CF6930FC15AE78A7005352AB /* PlayViewController.m in Sources */,
 				CF0F95B715AFC283003B094C /* ViewTextViewController.m in Sources */,
 				CF788A1715AFEF5F00188B7F /* PlayListViewController.m in Sources */,
+				CF788A1E15AFFC0200188B7F /* TextBookmark.m in Sources */,
+				CF788A2015AFFCD200188B7F /* TextBookmarkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
