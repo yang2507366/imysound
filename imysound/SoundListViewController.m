@@ -11,6 +11,7 @@
 #import "CommonUtils.h"
 #import "SoundSubListEditViewController.h"
 #import "SoundSubPlayListViewController.h"
+#import "ViewTextViewController.h"
 
 @interface SoundListViewController () <PopOutTableViewDelegate>
 
@@ -164,14 +165,12 @@
     NSString *soundFilePath = [self soundFileAtIndex:index];
     
     if(![[soundFilePath lowercaseString] hasSuffix:@".mp3"]){
-        NSLog(@"%@", soundFilePath);
+        ViewTextViewController *vc = [[ViewTextViewController alloc] initWithTextFilePath:soundFilePath];
+        [self.navigationController pushViewController:vc animated:YES];
+        [vc release];
         return NO;
     }
     return YES;
-}
-
-- (void)popOutCellWillShowAtPopOutTableView:(PopOutTableView *)tableView
-{
 }
 
 - (void)popOutTableView:(PopOutTableView *)popOutTableView deleteRowAtIndex:(NSInteger)index

@@ -53,6 +53,7 @@
 		67C32CD11599E0F9000E5533 /* SoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD01599E0F9000E5533 /* SoundListViewController.m */; };
 		67C32CD41599E11F000E5533 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD31599E11F000E5533 /* BaseViewController.m */; };
 		67C32CD71599E1D6000E5533 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C32CD61599E1D6000E5533 /* BaseTableViewController.m */; };
+		CF0F95B715AFC283003B094C /* ViewTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0F95B615AFC283003B094C /* ViewTextViewController.m */; };
 		CF6930F315AE6BF8005352AB /* PlayQueueControlSingleLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930F215AE6BF8005352AB /* PlayQueueControlSingleLoop.m */; };
 		CF6930F815AE6CAE005352AB /* PlayQueueControlAllLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930F715AE6CAE005352AB /* PlayQueueControlAllLoop.m */; };
 		CF6930FC15AE78A7005352AB /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930FB15AE78A7005352AB /* PlayViewController.m */; };
@@ -153,6 +154,8 @@
 		67C32CD31599E11F000E5533 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		67C32CD51599E1D6000E5533 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		67C32CD61599E1D6000E5533 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		CF0F95B515AFC283003B094C /* ViewTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewTextViewController.h; sourceTree = "<group>"; };
+		CF0F95B615AFC283003B094C /* ViewTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewTextViewController.m; sourceTree = "<group>"; };
 		CF6930F115AE6BF8005352AB /* PlayQueueControlSingleLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueueControlSingleLoop.h; sourceTree = "<group>"; };
 		CF6930F215AE6BF8005352AB /* PlayQueueControlSingleLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayQueueControlSingleLoop.m; sourceTree = "<group>"; };
 		CF6930F615AE6CAE005352AB /* PlayQueueControlAllLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueueControlAllLoop.h; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */,
 				CF6930FA15AE78A7005352AB /* PlayViewController.h */,
 				CF6930FB15AE78A7005352AB /* PlayViewController.m */,
+				CF0F95B515AFC283003B094C /* ViewTextViewController.h */,
+				CF0F95B615AFC283003B094C /* ViewTextViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -543,6 +548,7 @@
 				CF6930F315AE6BF8005352AB /* PlayQueueControlSingleLoop.m in Sources */,
 				CF6930F815AE6CAE005352AB /* PlayQueueControlAllLoop.m in Sources */,
 				CF6930FC15AE78A7005352AB /* PlayViewController.m in Sources */,
+				CF0F95B715AFC283003B094C /* ViewTextViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

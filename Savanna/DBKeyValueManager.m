@@ -44,7 +44,7 @@
 
 - (id)initWithDBName:(NSString *)dbName
 {
-    NSString *filePath = [[CommonUtils documentPath] 
+    NSString *filePath = [[CommonUtils tmpPath] 
                           stringByAppendingPathComponent:[CodeUtils encodeWithString:dbName]];
     self = [self initWithDBName:dbName atFilePath:filePath];
     
