@@ -60,6 +60,7 @@
 		CF788A1715AFEF5F00188B7F /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF788A1615AFEF5F00188B7F /* PlayListViewController.m */; };
 		CF788A1E15AFFC0200188B7F /* TextBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = CF788A1D15AFFC0200188B7F /* TextBookmark.m */; };
 		CF788A2015AFFCD200188B7F /* TextBookmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF788A1F15AFFCD200188B7F /* TextBookmarkManager.m */; };
+		CF788A2315B01FAC00188B7F /* TextBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF788A2215B01FAC00188B7F /* TextBookmarkViewController.m */; };
 		CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBF815AD261100A05E67 /* PlayerStatusView.m */; };
 		CF81BC0015AD339100A05E67 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBFF15AD339100A05E67 /* PlayerControlView.m */; };
 		CF81BC0F15AD707200A05E67 /* SoundSubPlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */; };
@@ -171,6 +172,8 @@
 		CF788A1C15AFFC0200188B7F /* TextBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBookmark.h; sourceTree = "<group>"; };
 		CF788A1D15AFFC0200188B7F /* TextBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextBookmark.m; sourceTree = "<group>"; };
 		CF788A1F15AFFCD200188B7F /* TextBookmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextBookmarkManager.m; sourceTree = "<group>"; };
+		CF788A2115B01FAC00188B7F /* TextBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextBookmarkViewController.h; sourceTree = "<group>"; };
+		CF788A2215B01FAC00188B7F /* TextBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextBookmarkViewController.m; sourceTree = "<group>"; };
 		CF81BBF715AD261100A05E67 /* PlayerStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatusView.h; sourceTree = "<group>"; };
 		CF81BBF815AD261100A05E67 /* PlayerStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerStatusView.m; sourceTree = "<group>"; };
 		CF81BBFE15AD339100A05E67 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlView.h; sourceTree = "<group>"; };
@@ -403,6 +406,8 @@
 				CF0F95B615AFC283003B094C /* ViewTextViewController.m */,
 				CF788A1515AFEF5F00188B7F /* PlayListViewController.h */,
 				CF788A1615AFEF5F00188B7F /* PlayListViewController.m */,
+				CF788A2115B01FAC00188B7F /* TextBookmarkViewController.h */,
+				CF788A2215B01FAC00188B7F /* TextBookmarkViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -575,6 +580,7 @@
 				CF788A1715AFEF5F00188B7F /* PlayListViewController.m in Sources */,
 				CF788A1E15AFFC0200188B7F /* TextBookmark.m in Sources */,
 				CF788A2015AFFCD200188B7F /* TextBookmarkManager.m in Sources */,
+				CF788A2315B01FAC00188B7F /* TextBookmarkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

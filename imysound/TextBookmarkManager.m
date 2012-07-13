@@ -52,6 +52,12 @@
                         forKey:identifier];
 }
 
+- (void)setBookmarkList:(NSArray *)bookmarkList forIdentifier:(NSString *)identifier
+{
+    [self.keyValueMgr setValue:[CodeUtils encodeWithData:[NSKeyedArchiver archivedDataWithRootObject:bookmarkList]] 
+                        forKey:identifier];
+}
+
 - (NSArray *)bookmarkListForIdentifier:(NSString *)identifier
 {
     NSData *objData = [CodeUtils dataDecodedWithString:[self.keyValueMgr valueForKey:identifier]];

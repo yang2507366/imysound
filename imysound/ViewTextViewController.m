@@ -11,8 +11,10 @@
 #import "Player.h"
 #import "PlayViewController.h"
 #import "UITools.h"
+#import "TextBookmarkViewController.h"
+#import "TextBookmark.h"
 
-@interface ViewTextViewController () <UITextViewDelegate>
+@interface ViewTextViewController () <UITextViewDelegate, TextBookmarkViewControllerDelegate>
 
 @property(nonatomic, copy)NSString *textFilePath;
 @property(nonatomic, retain)id<KeyValueManager> keyValueMgr;
@@ -20,6 +22,8 @@
 
 @property(nonatomic, retain)UITextView *textView;
 @property(nonatomic, retain)UIBarButtonItem *nowPlayingBtn;
+
+- (void)scrollTextViewToY:(CGFloat)y animated:(BOOL)animated;
 
 @end
 
@@ -70,9 +74,7 @@
     self.textView.text = [NSString stringWithContentsOfFile:self.textFilePath encoding:NSASCIIStringEncoding error:nil];
     self.textView.delegate = self;
     
-    CGFloat positionY = [[self.keyValueMgr valueForKey:self.textFilePath] floatValue];
-    [self.textView scrollRectToVisible:CGRectMake(0, positionY, self.textView.bounds.size.width, self.textView.bounds.size.height) 
-                              animated:NO];
+    [self scrollTextViewToY:[[self.keyValueMgr valueForKey:self.textFilePath] floatValue] animated:NO];
     
     self.nowPlayingBtn = [[[UIBarButtonItem alloc] init] autorelease];
     self.nowPlayingBtn.title = NSLocalizedString(@"now_playing", nil);
@@ -117,6 +119,24 @@
     [super viewDidUnload];
 }
 
+#pragma mark - TextBookmarkViewControllerDelegate
+- (CGFloat)scrollPositionForTextBookmarkViewControllerToAddNewBookmark:(TextBookmarkViewController *)vc
+{
+    return self.textView.contentOffset.y;
+}
+
+- (void)textBookmarkViewControllerDidSelectTextBookmark:(TextBookmark *)bookmark
+{
+    [self scrollTextViewToY:bookmark.scrollPosition animated:YES];
+}
+
+#pragma mark - private methods
+- (void)scrollTextViewToY:(CGFloat)y animated:(BOOL)animated
+{
+    [self.textView scrollRectToVisible:CGRectMake(0, y, self.textView.bounds.size.width, self.textView.bounds.size.height) 
+                              animated:animated];
+}
+
 #pragma mark - events
 - (void)onNowPlayingBtnTapped
 {
@@ -125,7 +145,13 @@
 
 - (void)onBookmarkBtnTapped
 {
-    
+    [self scrollTextViewToY:self.textView.contentOffset.y animated:NO];
+    TextBookmarkViewController *vc = [[TextBookmarkViewController alloc] initWithIdentifier:self.textFilePath];
+    vc.delegate = self;
+    UINavigationController *nc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+    nc.navigationBar.barStyle = self.navigationController.navigationBar.barStyle;
+    [self presentModalViewController:nc animated:YES];
+    [vc release];
 }
 
 - (void)onPlayerDidStartPlayNotification:(NSNotification *)n

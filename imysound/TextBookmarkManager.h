@@ -14,6 +14,7 @@
 @protocol TextBookmarkManager <NSObject>
 
 - (void)addBookmark:(TextBookmark *)bookmark forIdentifier:(NSString *)identifier;
+- (void)setBookmarkList:(NSArray *)bookmarkList forIdentifier:(NSString *)identifier;
 - (NSArray *)bookmarkListForIdentifier:(NSString *)identifier;
 
 @end
