@@ -15,6 +15,7 @@
     id<KeyValueManager> _keyValueMgr;
     
     UITextView *_textView;
+    UIBarButtonItem *_nowPlayingBtn;
 }
 
 - (id)initWithTextFilePath:(NSString *)filePath;

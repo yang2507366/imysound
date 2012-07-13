@@ -18,6 +18,8 @@
     
     UIView *_soundFilePopOutView;
     UIView *_otherFilePopOutView;
+    
+    UIBarButtonItem *_nowPlayingBtn;
 }
 
 @end

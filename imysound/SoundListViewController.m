@@ -12,6 +12,8 @@
 #import "SoundSubListEditViewController.h"
 #import "SoundSubPlayListViewController.h"
 #import "ViewTextViewController.h"
+#import "Player.h"
+#import "PlayViewController.h"
 
 @interface SoundListViewController () <PopOutTableViewDelegate>
 
@@ -20,6 +22,8 @@
 
 @property(nonatomic, retain)UIView *soundFilePopOutView;
 @property(nonatomic, retain)UIView *otherFilePopOutView;
+
+@property(nonatomic, retain)UIBarButtonItem *nowPlayingBtn;
 
 - (NSString *)soundFileAtIndex:(NSInteger)index;
 
@@ -35,6 +39,8 @@
 @synthesize soundFilePopOutView = _soundFilePopOutView;
 @synthesize otherFilePopOutView = _otherFilePopOutView;
 
+@synthesize nowPlayingBtn = _nowPlayingBtn;
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -43,6 +49,8 @@
     
     [_soundFilePopOutView release];
     [_otherFilePopOutView release];
+    
+    [_nowPlayingBtn release];
     [super dealloc];
 }
 
@@ -101,9 +109,27 @@
     editBtnItem.style = UIBarButtonItemStyleBordered;
     self.navigationItem.leftBarButtonItem = editBtnItem;
     
+    self.nowPlayingBtn = [[[UIBarButtonItem alloc] init] autorelease];
+    self.nowPlayingBtn.title = NSLocalizedString(@"now_playing", nil);
+    self.nowPlayingBtn.style = UIBarButtonItemStyleDone;
+    self.nowPlayingBtn.target = self;
+    self.nowPlayingBtn.action = @selector(onNowPlayingBtnTapped);
+    
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(onApplicationBecomeActiveNotification:) 
                                                  name:UIApplicationDidBecomeActiveNotification 
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayerDidStartPlayNotification:) 
+                                                 name:kPlayerDidStartPlayNotification 
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayerDidStopNotification:) 
+                                                 name:kPlayerDidStopNotification 
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(onPlayerDidStopNotification:) 
+                                                 name:kPlayQueueDidPlayCompletely 
                                                object:nil];
 }
 
@@ -139,6 +165,11 @@
     [vc release];
 }
 
+- (void)onNowPlayingBtnTapped
+{
+    [self.navigationController pushViewController:[PlayViewController sharedInstance] animated:YES];
+}
+
 - (void)onViewBtnTapped
 {
     NSString *soundFilePath = [self soundFileAtIndex:self.tableView.selectedCellIndex];
@@ -157,6 +188,16 @@
 - (void)onApplicationBecomeActiveNotification:(NSNotification *)n
 {
     [self reloadSoundList];
+}
+
+- (void)onPlayerDidStartPlayNotification:(NSNotification *)n
+{
+    self.navigationItem.rightBarButtonItem = self.nowPlayingBtn;
+}
+
+- (void)onPlayerDidStopNotification:(NSNotification *)n
+{
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 #pragma mark - PopOutTableViewDelegate
