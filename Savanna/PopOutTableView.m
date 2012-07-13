@@ -148,6 +148,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(self.selectedCellIndex != -1 && indexPath.row == self.selectedCellIndex + 1){
+        if([self.delegate respondsToSelector:@selector(popOutTableViewDidSelectPopOutCell:)]){
+            [self.delegate popOutTableViewDidSelectPopOutCell:self];
+        }
+        return;
+    }
     if([self.delegate respondsToSelector:@selector(popOutTableView:shouldShowPopOutCellAtIndex:)]){
         NSInteger targetRow = indexPath.row;
         if(self.insertedIndex != -1){

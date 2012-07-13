@@ -14,6 +14,7 @@
 #import "ViewTextViewController.h"
 #import "Player.h"
 #import "PlayViewController.h"
+#import "UITools.h"
 
 @interface SoundListViewController () <PopOutTableViewDelegate>
 
@@ -58,7 +59,7 @@
 {
     self = [super init];
     
-    self.title = NSLocalizedString(@"imysounds", nil);
+    self.title = NSLocalizedString(@"sound_list", nil);
     
     return self;
 }
@@ -66,6 +67,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     self.tableView = [[[PopOutTableView alloc] initWithFrame:self.fullBounds] autorelease];
     [self.view addSubview:self.tableView];
@@ -73,17 +75,20 @@
     self.tableView.editable = YES;
     
     UIView *soundFilePopOutView = [[[UIView alloc] initWithFrame:
-                           CGRectMake(0, 0, self.tableView.frame.size.width, 50)] autorelease];
+                           CGRectMake(0, 0, self.tableView.frame.size.width, 60)] autorelease];
     self.soundFilePopOutView = soundFilePopOutView;
     [self.tableView addSubviewToPopOutCell:soundFilePopOutView];
     
-    UIButton *viewBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *viewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [soundFilePopOutView addSubview:viewBtn];
     [viewBtn setTitle:NSLocalizedString(@"View", nil) forState:UIControlStateNormal];
     [viewBtn addTarget:self action:@selector(onViewBtnTapped) forControlEvents:UIControlEventTouchUpInside];
     viewBtn.frame = CGRectMake(10, 5, (self.tableView.frame.size.width - 30) / 2, 40);
+    [viewBtn setBackgroundImage:[UITools createPureColorImageWithColor:[UIColor darkGrayColor] size:viewBtn.frame.size] 
+                       forState:UIControlStateNormal];
+    viewBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     
-    UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [soundFilePopOutView addSubview:editBtn];
     [editBtn setTitle:NSLocalizedString(@"Edit", nil) forState:UIControlStateNormal];
     [editBtn addTarget:self action:@selector(onEditBtnTapped) forControlEvents:UIControlEventTouchUpInside];
@@ -91,6 +96,9 @@
                                5, 
                                (self.tableView.frame.size.width - 30) / 2, 
                                40);
+    [editBtn setBackgroundImage:[UITools createPureColorImageWithColor:[UIColor orangeColor] size:editBtn.frame.size] 
+                       forState:UIControlStateNormal];
+    editBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
     
     UIView *otherFilePopOutView = [[[UIView alloc] initWithFrame:
                                     CGRectMake(0, 0, self.tableView.frame.size.width, 60)] autorelease];
@@ -161,6 +169,7 @@
 {
     NSString *soundFilePath = [self soundFileAtIndex:self.tableView.selectedCellIndex];
     SoundSubListEditViewController *vc = [[SoundSubListEditViewController alloc] initWithSoundFilePath:soundFilePath];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }
@@ -174,6 +183,7 @@
 {
     NSString *soundFilePath = [self soundFileAtIndex:self.tableView.selectedCellIndex];
     SoundSubPlayListViewController *vc = [[SoundSubPlayListViewController alloc] initWithSoundFilePath:soundFilePath];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }
@@ -207,6 +217,7 @@
     
     if(![[soundFilePath lowercaseString] hasSuffix:@".mp3"]){
         ViewTextViewController *vc = [[ViewTextViewController alloc] initWithTextFilePath:soundFilePath];
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         [vc release];
         return NO;
@@ -249,9 +260,18 @@
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
     }
     
-    cell.textLabel.text = [self.soundFileList objectAtIndex:index];
+    NSString *soundFilePath = [self.soundFileList objectAtIndex:index];
+    
+    cell.textLabel.text = soundFilePath;
+    cell.textLabel.textColor = [[soundFilePath lowercaseString] hasSuffix:@".mp3"] ? 
+        [UIColor blackColor] : [UIColor orangeColor];
     
     return cell;
+}
+
+- (CGFloat)popOutTableView:(PopOutTableView *)popOutTableView heightForRowAtIndex:(NSInteger)index
+{
+    return 60.0f;
 }
 
 @end

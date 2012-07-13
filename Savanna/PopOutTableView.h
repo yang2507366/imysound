@@ -22,6 +22,7 @@
 - (CGFloat)popOutTableView:(PopOutTableView *)popOutTableView heightForRowAtIndex:(NSInteger)index;
 - (void)popOutTableView:(PopOutTableView *)popOutTableView deleteRowAtIndex:(NSInteger)index;
 - (void)popOutTableView:(PopOutTableView *)popOutTableView willBeginEditingAtIndex:(NSInteger)index;
+- (void)popOutTableViewDidSelectPopOutCell:(PopOutTableView *)tableView;
 
 @end
 

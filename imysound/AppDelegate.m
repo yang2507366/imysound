@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SoundListViewController.h"
+#import "PlayListViewController.h"
 
 @implementation AppDelegate
 
@@ -26,8 +27,16 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.window.rootViewController = [[[UINavigationController alloc] initWithRootViewController:
-                                      [[[SoundListViewController alloc] init] autorelease]] autorelease];
+    UINavigationController *soundListNC = [[[UINavigationController alloc] initWithRootViewController:
+                                            [[[SoundListViewController alloc] init] autorelease]] autorelease];
+    soundListNC.title = NSLocalizedString(@"sound_list", nil);
+    UINavigationController *playListNC = [[[UINavigationController alloc] initWithRootViewController:
+                                           [[[PlayListViewController alloc] init] autorelease]] autorelease];
+    playListNC.title = NSLocalizedString(@"play_list", nil);
+    
+    UITabBarController *tabBarController = [[[UITabBarController alloc] init] autorelease];
+    self.window.rootViewController = tabBarController;
+    tabBarController.viewControllers = [NSArray arrayWithObjects:soundListNC, playListNC, nil];
     
     return YES;
 }
