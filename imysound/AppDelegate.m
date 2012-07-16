@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SoundListViewController.h"
 #import "PlayListViewController.h"
+#import "LuaHelper.h"
 
 @implementation AppDelegate
 
@@ -37,6 +38,11 @@
     UITabBarController *tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.window.rootViewController = tabBarController;
     tabBarController.viewControllers = [NSArray arrayWithObjects:soundListNC, playListNC, nil];
+    
+    NSString *scriptFilePath = [[NSBundle mainBundle] pathForResource:@"common" ofType:@"lua"];
+    [LuaHelper sharedInstance].script = [NSString stringWithContentsOfFile:scriptFilePath 
+                                                                  encoding:NSUTF8StringEncoding 
+                                                                     error:nil];
     
     return YES;
 }

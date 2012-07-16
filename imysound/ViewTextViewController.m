@@ -13,6 +13,8 @@
 #import "UITools.h"
 #import "TextBookmarkViewController.h"
 #import "TextBookmark.h"
+#import "CommonUtils.h"
+#import "DictionaryViewController.h"
 
 @interface ViewTextViewController () <UITextViewDelegate, TextBookmarkViewControllerDelegate>
 
@@ -24,6 +26,7 @@
 @property(nonatomic, retain)UIBarButtonItem *nowPlayingBtn;
 
 - (void)scrollTextViewToY:(CGFloat)y animated:(BOOL)animated;
+- (void)configureDictionaryMenuItem;
 
 @end
 
@@ -112,6 +115,8 @@
                                              selector:@selector(onPlayerDidStopNotification:) 
                                                  name:kPlayQueueDidPlayCompletely 
                                                object:nil];
+    
+    [self configureDictionaryMenuItem];
 }
 
 - (void)viewDidUnload
@@ -137,7 +142,44 @@
                               animated:animated];
 }
 
+- (void)configureDictionaryMenuItem
+{
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    NSMutableArray *menuItems = [NSMutableArray arrayWithArray:menuController.menuItems];
+    BOOL dictMenuItemExists = NO;
+    for(UIMenuItem *menuItem in menuItems){
+        if([menuItem.title isEqualToString:NSLocalizedString(@"Dictionary", nil)]){
+            dictMenuItemExists = YES;
+            break;
+        }
+    }
+    if(!dictMenuItemExists){
+        UIMenuItem *dictMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Dictionary", nil) 
+                                                              action:@selector(onDictMenuItemTapped)];
+        [menuItems addObject:dictMenuItem];
+        [dictMenuItem release];
+        menuController.menuItems = menuItems;
+    }
+}
+
 #pragma mark - events
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    if(action == @selector(onDictMenuItemTapped)){
+        NSString *selectedText = [self.textView.text substringWithRange:self.textView.selectedRange];
+        if([selectedText length] != 0){
+            return ![CommonUtils stringContainsChinese:selectedText];
+        }
+    }
+    return [super canPerformAction:action withSender:sender];
+}
+
+- (void)onDictMenuItemTapped
+{
+    [self presentModalViewController:[DictionaryViewController sharedInstance] animated:YES];
+    [[DictionaryViewController sharedInstance] query:[self.textView.text substringWithRange:self.textView.selectedRange]];
+}
+
 - (void)onNowPlayingBtnTapped
 {
     [self.navigationController pushViewController:[PlayViewController sharedInstance] animated:YES];
