@@ -33,7 +33,7 @@
     self = [super init];
     
     NSString *fileName = [CodeUtils encodeWithString:[NSString stringWithFormat:@"glossary+%@", identifier]];
-    NSString *filePath = [[CommonUtils documentPath] stringByAppendingPathComponent:fileName];
+    NSString *filePath = [[CommonUtils tmpPath] stringByAppendingPathComponent:fileName];
     self.glossaryLibrary = [[DBKeyValueManager alloc] initWithDBName:identifier atFilePath:filePath];
     
     return self;

@@ -93,6 +93,8 @@
 		CF52CA9015B41A23000854CC /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = CF52CA7215B41A23000854CC /* print.c */; };
 		CF52CA9315B41A4A000854CC /* LuaInvoker.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52CA9215B41A4A000854CC /* LuaInvoker.m */; };
 		CF52CA9815B41F91000854CC /* DBGlossaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52CA9615B41F91000854CC /* DBGlossaryManager.m */; };
+		CF52CA9D15B420CD000854CC /* GlossaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52CA9A15B420CD000854CC /* GlossaryDetailViewController.m */; };
+		CF52CA9E15B420CD000854CC /* GlossaryLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52CA9C15B420CD000854CC /* GlossaryLibraryViewController.m */; };
 		CF6930F315AE6BF8005352AB /* PlayQueueControlSingleLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930F215AE6BF8005352AB /* PlayQueueControlSingleLoop.m */; };
 		CF6930F815AE6CAE005352AB /* PlayQueueControlAllLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930F715AE6CAE005352AB /* PlayQueueControlAllLoop.m */; };
 		CF6930FC15AE78A7005352AB /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6930FB15AE78A7005352AB /* PlayViewController.m */; };
@@ -273,6 +275,10 @@
 		CF52CA9515B41F91000854CC /* DBGlossaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGlossaryManager.h; sourceTree = "<group>"; };
 		CF52CA9615B41F91000854CC /* DBGlossaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGlossaryManager.m; sourceTree = "<group>"; };
 		CF52CA9715B41F91000854CC /* GlossaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlossaryManager.h; sourceTree = "<group>"; };
+		CF52CA9915B420CD000854CC /* GlossaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlossaryDetailViewController.h; sourceTree = "<group>"; };
+		CF52CA9A15B420CD000854CC /* GlossaryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlossaryDetailViewController.m; sourceTree = "<group>"; };
+		CF52CA9B15B420CD000854CC /* GlossaryLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlossaryLibraryViewController.h; sourceTree = "<group>"; };
+		CF52CA9C15B420CD000854CC /* GlossaryLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlossaryLibraryViewController.m; sourceTree = "<group>"; };
 		CF6930F115AE6BF8005352AB /* PlayQueueControlSingleLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueueControlSingleLoop.h; sourceTree = "<group>"; };
 		CF6930F215AE6BF8005352AB /* PlayQueueControlSingleLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayQueueControlSingleLoop.m; sourceTree = "<group>"; };
 		CF6930F615AE6CAE005352AB /* PlayQueueControlAllLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueueControlAllLoop.h; sourceTree = "<group>"; };
@@ -635,6 +641,10 @@
 		CF52CA9415B41F84000854CC /* GlossaryManager */ = {
 			isa = PBXGroup;
 			children = (
+				CF52CA9915B420CD000854CC /* GlossaryDetailViewController.h */,
+				CF52CA9A15B420CD000854CC /* GlossaryDetailViewController.m */,
+				CF52CA9B15B420CD000854CC /* GlossaryLibraryViewController.h */,
+				CF52CA9C15B420CD000854CC /* GlossaryLibraryViewController.m */,
 				CF52CA9515B41F91000854CC /* DBGlossaryManager.h */,
 				CF52CA9615B41F91000854CC /* DBGlossaryManager.m */,
 				CF52CA9715B41F91000854CC /* GlossaryManager.h */,
@@ -839,6 +849,8 @@
 				CF52CA9015B41A23000854CC /* print.c in Sources */,
 				CF52CA9315B41A4A000854CC /* LuaInvoker.m in Sources */,
 				CF52CA9815B41F91000854CC /* DBGlossaryManager.m in Sources */,
+				CF52CA9D15B420CD000854CC /* GlossaryDetailViewController.m in Sources */,
+				CF52CA9E15B420CD000854CC /* GlossaryLibraryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,11 +10,13 @@
 #import "BaseViewController.h"
 #import "KeyValueManager.h"
 #import "TextBookmarkManager.h"
+#import "GlossaryManager.h"
 
 @interface ViewTextViewController : BaseViewController {
     NSString *_textFilePath;
     id<KeyValueManager> _keyValueMgr;
     id<TextBookmarkManager> _bookmarkMgr;
+    id<GlossaryManager> _glossaryMgr;
     
     UITextView *_textView;
     UIBarButtonItem *_nowPlayingBtn;
