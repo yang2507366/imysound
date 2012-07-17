@@ -20,6 +20,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 @interface PlayViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, retain)PlayQueue *playQueue;
+@property(nonatomic, retain)PlayItem *playItem;
 
 @property(nonatomic, retain)PlayerStatusView *playerStatusView;
 @property(nonatomic, retain)PlayerControlView *playerControlView;
@@ -39,6 +40,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 @implementation PlayViewController
 
 @synthesize playQueue = _playQueue;
+@synthesize playItem = _playItem;
 
 @synthesize playerStatusView = _playerStatusView;
 @synthesize playerControlView = _playerControlView;
@@ -52,6 +54,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_playQueue release];
+    [_playItem release];
     
     [_playerStatusView release];
     [_playerControlView release];
@@ -117,6 +120,9 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
         if([Player sharedInstance].currentTime == 0.0f){
             [self playWithPlayItem:[self.playQueue currentPlayItem]];
         }else{
+            if(self.playItem != [self.playQueue currentPlayItem]){
+                [self playWithPlayItem:[self.playQueue currentPlayItem]];
+            }
 //            [[Player sharedInstance] play];
         }
     }
@@ -170,6 +176,8 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 {
     [self.playerControlView setPlaying:NO];
     
+    self.playItem = nil;
+    
     [self.timer cancel];
     self.timer = nil;
     [self.trackFinishTimer cancel];
@@ -210,7 +218,8 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 
 - (PlayItem *)currentPlayItem
 {
-    return self.playQueue.finished ? nil : [self.playQueue currentPlayItem];
+//    return self.playQueue.finished ? nil : [self.playQueue currentPlayItem];
+    return self.playItem;
 }
 
 - (void)reset
@@ -236,7 +245,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
                                              selector:@selector(onPlayerDidStopNotification:) 
                                                  name:kPlayerDidStopNotification 
                                                object:nil];
-    
+    self.playItem = playItem;
     self.playQueue.finished = NO;
     Player *player = [Player sharedInstance];
     [player playSoundAtFilePath:playItem.soundFilePath autoPlay:NO];
@@ -272,6 +281,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
             self.playerStatusView.currentTime = [self currentTimeWithPlayItem:currentItem];
             self.playerStatusView.totalTime = [self totalTimeWithPlayItem:currentItem];
         }
+        NSLog(@"%@", timer);
     }else if(timer == self.trackFinishTimer){
         if(currentItem){
             NSTimeInterval currentTime = [self currentTimeWithPlayItem:currentItem];
@@ -286,7 +296,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
                     [self onPlayQueueOver];
                 }
             }else{
-//                NSLog(@"%f->%f", [self currentTimeWithPlayItem:currentItem], [self totalTimeWithPlayItem:currentItem]);
+//                NSLog(@"%@:%f->%f", timer, [self currentTimeWithPlayItem:currentItem], [self totalTimeWithPlayItem:currentItem]);
             }
         }
     }

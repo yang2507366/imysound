@@ -88,7 +88,7 @@
         item.title = sub.title;
         [playItemList addObject:item];
     }
-    PlayQueue *queue = [[PlayQueue alloc] initWithPlayItemList:playItemList playAtIndex:indexPath.row];
+    PlayQueue *queue = [[[PlayQueue alloc] initWithPlayItemList:playItemList playAtIndex:indexPath.row] autorelease];
     PlayViewController *vc = [PlayViewController sharedInstance];
     [vc playWithPlayQueue:queue];
     [self.navigationController pushViewController:vc animated:YES];

@@ -66,7 +66,7 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
         [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidChangeSoundNotification object:nil];
     }
     
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:_currentSoundFilePath];
+    NSURL *fileURL = [[[NSURL alloc] initFileURLWithPath:_currentSoundFilePath] autorelease];
     self.audioPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil] autorelease];
     self.audioPlayer.delegate = self;
     

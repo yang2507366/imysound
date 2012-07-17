@@ -19,6 +19,7 @@ OBJC_EXPORT NSString *kPlayQueueDidPlayCompletely;
 
 @interface PlayViewController : BaseViewController {
     PlayQueue *_playQueue;
+    PlayItem *_playItem;
     
     PlayerStatusView *_playerStatusView;
     PlayerControlView *_playerControlView;
