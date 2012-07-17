@@ -109,4 +109,17 @@
     return timeString;
 }
 
++ (BOOL)stringIsPureAlphabet:(NSString *)string
+{
+    const char *charArray = [string UTF8String];
+    for(int i = 0; i < string.length; ++i){
+        char ch = *(charArray + i);
+        if(ch < 48 || (ch > 57 && ch < 65) || (ch > 90 && ch <97) || ch > 122){
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 @end

@@ -18,7 +18,8 @@
 #import "DBGlossaryManager.h"
 #import "GlossaryLibraryViewController.h"
 
-@interface ViewTextViewController () <UITextViewDelegate, TextBookmarkViewControllerDelegate, DictionaryViewControllerDelegate>
+
+@interface ViewTextViewController () <UITextViewDelegate, TextBookmarkViewControllerDelegate, DictionaryViewControllerDelegate, UIAlertViewDelegate>
 
 @property(nonatomic, copy)NSString *textFilePath;
 @property(nonatomic, retain)id<KeyValueManager> keyValueMgr;
@@ -30,6 +31,7 @@
 
 - (void)scrollTextViewToY:(CGFloat)y animated:(BOOL)animated;
 - (void)configureDictionaryMenuItem;
+- (void)searchWordByString:(NSString *)selectedText;
 
 @end
 
@@ -177,6 +179,13 @@
     }
 }
 
+- (void)searchWordByString:(NSString *)selectedText
+{
+    [self presentModalViewController:[DictionaryViewController sharedInstance] animated:YES];
+    [[DictionaryViewController sharedInstance] query:selectedText];
+    [DictionaryViewController sharedInstance].dictionaryViewControllerDelegate = self;
+}
+
 #pragma mark - events
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
@@ -198,9 +207,56 @@
 
 - (void)onDictMenuItemTapped
 {
-    [self presentModalViewController:[DictionaryViewController sharedInstance] animated:YES];
-    [[DictionaryViewController sharedInstance] query:[self.textView.text substringWithRange:self.textView.selectedRange]];
-    [DictionaryViewController sharedInstance].dictionaryViewControllerDelegate = self;
+    NSString *selectedText = [self.textView.text substringWithRange:self.textView.selectedRange];
+    selectedText = [selectedText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    BOOL multiLine = NO;
+    if(selectedText.length > 32){
+        multiLine = YES;
+    }
+    if(!multiLine){
+        multiLine = [selectedText rangeOfString:@"\n"].length != 0;
+    }
+    if(![CommonUtils stringIsPureAlphabet:selectedText]){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:multiLine ? @"\n\n\n\n" : @"\n" 
+                                                            message:nil 
+                                                           delegate:self 
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
+                                                  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+        if(multiLine){
+            UIView *bgView = [[[UIView alloc] init] autorelease];
+            [alertView addSubview:bgView];
+            bgView.frame = CGRectMake(15, 20, 252, 90);
+            bgView.backgroundColor = [UIColor whiteColor];
+            
+            UITextView *textView = [[[UITextView alloc] init] autorelease];
+            [alertView addSubview:textView];
+            textView.backgroundColor = [UIColor clearColor];
+            textView.tag = 100;
+            textView.font = [UIFont systemFontOfSize:16.0f];
+            CGFloat marginLeft = 4;
+            CGFloat marginTop = 0;
+            textView.frame = CGRectMake(bgView.frame.origin.x - marginLeft, 
+                                        bgView.frame.origin.y - marginTop, 
+                                        bgView.frame.size.width + marginLeft * 2, 
+                                        bgView.frame.size.height + marginTop * 2);
+            textView.text = selectedText;
+            [textView becomeFirstResponder];
+        }else{
+            UITextField *textField = [[[UITextField alloc] init] autorelease];
+            [alertView addSubview:textField];
+            textField.tag = 100;
+            textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            textField.borderStyle = UITextBorderStyleRoundedRect;
+            textField.frame = CGRectMake(15, 20, 252, 30);
+            textField.text = selectedText;
+            textField.clearButtonMode = UITextFieldViewModeAlways;
+            [textField becomeFirstResponder];
+        }
+        [alertView show];
+        [alertView release];
+    }else{
+        [self searchWordByString:selectedText];
+    }
 }
 
 - (void)onNowPlayingBtnTapped
@@ -240,6 +296,15 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self.keyValueMgr setValue:[NSString stringWithFormat:@"%f", scrollView.contentOffset.y] forKey:self.textFilePath];
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        id textView = (id)[alertView viewWithTag:100];
+        [self searchWordByString:[textView text]];
+    }
 }
 
 @end
