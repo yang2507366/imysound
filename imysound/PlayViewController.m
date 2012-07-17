@@ -114,7 +114,11 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 {
     [super viewWillAppear:animated];
     if(![Player sharedInstance].playing && ![self.playQueue finished]){
-        [self playWithPlayItem:[self.playQueue currentPlayItem]];
+        if([Player sharedInstance].currentTime == 0.0f){
+            [self playWithPlayItem:[self.playQueue currentPlayItem]];
+        }else{
+//            [[Player sharedInstance] play];
+        }
     }
 }
 

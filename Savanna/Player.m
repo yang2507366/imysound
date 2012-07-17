@@ -8,6 +8,7 @@
 
 #import "Player.h"
 #import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 NSString *kPlayerDidStartPlayNotification = @"kPlayerDidStartPlayNotification";
 NSString *kPlayerDidPauseNotification = @"kPlayerDidPauseNotification";
@@ -73,6 +74,7 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
+    AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, audioRouteChange, self);
     if(autoPlay){
         [self play];
     }
@@ -167,6 +169,23 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
 
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)player withFlags:(NSUInteger)flags
 {
+}
+
+#pragma mark - listeners
+void audioRouteChange(
+                      void *                  inClientData,
+                      AudioSessionPropertyID	inID,
+                      UInt32                  inDataSize,
+                      const void *            inData)
+{
+    CFDictionaryRef    routeChangeDictionary = inData;  
+    CFNumberRef routeChangeReasonRef = CFDictionaryGetValue(routeChangeDictionary, CFSTR(kAudioSession_AudioRouteChangeKey_Reason));
+    SInt32 routeChangeReason;
+    CFNumberGetValue(routeChangeReasonRef, kCFNumberSInt32Type, &routeChangeReason); 
+    if(routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable){
+        [(id)inClientData pause];
+    }else if(routeChangeReason == kAudioSessionRouteChangeReason_NewDeviceAvailable){
+    }
 }
 
 @end

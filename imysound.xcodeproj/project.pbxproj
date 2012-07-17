@@ -105,6 +105,7 @@
 		CF81BBF915AD261100A05E67 /* PlayerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBF815AD261100A05E67 /* PlayerStatusView.m */; };
 		CF81BC0015AD339100A05E67 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBFF15AD339100A05E67 /* PlayerControlView.m */; };
 		CF81BC0F15AD707200A05E67 /* SoundSubPlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */; };
+		CF8AA0DA15B5039400738582 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8AA0D915B5039400738582 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -299,6 +300,7 @@
 		CF81BBFF15AD339100A05E67 /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerControlView.m; sourceTree = "<group>"; };
 		CF81BC0D15AD707200A05E67 /* SoundSubPlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSubPlayListViewController.h; sourceTree = "<group>"; };
 		CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSubPlayListViewController.m; sourceTree = "<group>"; };
+		CF8AA0D915B5039400738582 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8AA0DA15B5039400738582 /* AudioToolbox.framework in Frameworks */,
 				678586D015AC735700B096C1 /* AVFoundation.framework in Frameworks */,
 				67C32C861599DF69000E5533 /* libsqlite3.dylib in Frameworks */,
 				67C32C841599DF58000E5533 /* SystemConfiguration.framework in Frameworks */,
@@ -454,6 +457,7 @@
 		67C32C171599DD3D000E5533 = {
 			isa = PBXGroup;
 			children = (
+				CF8AA0D915B5039400738582 /* AudioToolbox.framework */,
 				678586CF15AC735700B096C1 /* AVFoundation.framework */,
 				67C32C851599DF69000E5533 /* libsqlite3.dylib */,
 				67C32C831599DF58000E5533 /* SystemConfiguration.framework */,
