@@ -93,14 +93,12 @@
     self.currentTimeLabel.backgroundColor = [UIColor clearColor];
     self.currentTimeLabel.textColor = [UIColor whiteColor];
     self.currentTimeLabel.font = timeFont;
-    self.currentTimeLabel.text = @"00:00";
     
     self.totalTimeLabel = [[[UILabel alloc] init] autorelease];
     [self addSubview:self.totalTimeLabel];
     self.totalTimeLabel.backgroundColor = [UIColor clearColor];
     self.totalTimeLabel.textColor = [UIColor whiteColor];
     self.totalTimeLabel.font = timeFont;
-    self.totalTimeLabel.text = @"00:00";
     
     return self;
 }
@@ -118,7 +116,7 @@
     frame.origin.y = (self.bounds.size.height - frame.size.height) / 2;
     self.positionSilder.frame = frame;
     
-    frame.size.width = [@"00:00" sizeWithFont:self.currentTimeLabel.font].width;
+    frame.size.width = [@"000:00" sizeWithFont:self.currentTimeLabel.font].width;
     frame.origin.x = self.positionSilder.frame.origin.x - frame.size.width - 2;
     frame.origin.y = self.positionSilder.frame.origin.y;
     frame.size.height = self.positionSilder.frame.size.height;
