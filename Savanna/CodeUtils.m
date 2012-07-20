@@ -11,18 +11,18 @@
 
 @implementation CodeUtils
 
-static char *hexs = "ASDFGHJKLZXCVBNM";
+static char *customHexList = "ASDFGHJKLZXCVBNM";
 
-+ (char)hexCharForByte:(unsigned char )c
++ (char)customHexCharForByte:(unsigned char )c
 {
-    return *(hexs + c);
+    return *(customHexList + c);
 }
 
-+ (unsigned char)byteForHexChar:(char)c
++ (unsigned char)byteForCustomHexChar:(char)c
 {
-    int len = strlen(hexs);
+    int len = strlen(customHexList);
     for(int i = 0; i < len; ++i){
-        if(c == *(hexs + i)){
+        if(c == *(customHexList + i)){
             return i;
         }
     }
@@ -40,8 +40,8 @@ static char *hexs = "ASDFGHJKLZXCVBNM";
         unsigned char tmp = *(bytes + i);
         unsigned char low = tmp & 0xF;
         unsigned char high = (tmp & 0xF0) >> 4;
-        *(result + i * 2) = [CodeUtils hexCharForByte:low];
-        *(result + i * 2 + 1) = [CodeUtils hexCharForByte:high];
+        *(result + i * 2) = [CodeUtils customHexCharForByte:low];
+        *(result + i * 2 + 1) = [CodeUtils customHexCharForByte:high];
     }
     free(bytes);
     
@@ -76,8 +76,8 @@ static char *hexs = "ASDFGHJKLZXCVBNM";
     char *bytes = malloc(sizeof(char) * [data length]);
     [data getBytes:bytes];
     for(int i = 0, j = 0; i < [data length]; i += 2, ++j){
-        unsigned char low = [CodeUtils byteForHexChar:*(bytes + i)];
-        unsigned char high = [CodeUtils byteForHexChar:*(bytes + i + 1)];
+        unsigned char low = [CodeUtils byteForCustomHexChar:*(bytes + i)];
+        unsigned char high = [CodeUtils byteForCustomHexChar:*(bytes + i + 1)];
         unsigned char tmp = ((high << 4) & 0xF0) + low;
         *(resultBytes + j) = tmp;
     }

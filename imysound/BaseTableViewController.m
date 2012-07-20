@@ -36,7 +36,6 @@
     CGRect frame;
     frame = self.view.bounds;
     frame.size.height -= self.navigationController.navigationBar.frame.size.height;
-    frame.size.height -= self.tabBarController.tabBar.frame.size.height;
     
     _tableView = [[UITableView alloc] initWithFrame:frame];
     [self.view addSubview:_tableView];

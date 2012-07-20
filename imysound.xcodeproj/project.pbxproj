@@ -106,6 +106,7 @@
 		CF81BC0015AD339100A05E67 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BBFF15AD339100A05E67 /* PlayerControlView.m */; };
 		CF81BC0F15AD707200A05E67 /* SoundSubPlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */; };
 		CF8AA0DA15B5039400738582 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8AA0D915B5039400738582 /* AudioToolbox.framework */; };
+		CFC2365C15B94A19001BFD88 /* HexMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC2365B15B94A19001BFD88 /* HexMaker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -301,6 +302,8 @@
 		CF81BC0D15AD707200A05E67 /* SoundSubPlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSubPlayListViewController.h; sourceTree = "<group>"; };
 		CF81BC0E15AD707200A05E67 /* SoundSubPlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSubPlayListViewController.m; sourceTree = "<group>"; };
 		CF8AA0D915B5039400738582 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CFC2365A15B94A19001BFD88 /* HexMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMaker.h; sourceTree = "<group>"; };
+		CFC2365B15B94A19001BFD88 /* HexMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMaker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,6 +416,8 @@
 				6785870A15AC760300B096C1 /* TaskQueue.m */,
 				6785870B15AC760300B096C1 /* Timer.h */,
 				6785870C15AC760300B096C1 /* Timer.m */,
+				CFC2365A15B94A19001BFD88 /* HexMaker.h */,
+				CFC2365B15B94A19001BFD88 /* HexMaker.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -855,6 +860,7 @@
 				CF52CA9815B41F91000854CC /* DBGlossaryManager.m in Sources */,
 				CF52CA9D15B420CD000854CC /* GlossaryDetailViewController.m in Sources */,
 				CF52CA9E15B420CD000854CC /* GlossaryLibraryViewController.m in Sources */,
+				CFC2365C15B94A19001BFD88 /* HexMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
