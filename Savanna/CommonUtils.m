@@ -60,6 +60,13 @@
     return [NSString stringWithFormat:@"%@/tmp/", homeDirectory];
 }
 
++ (NSString *)libraryPath
+{
+    NSString *homeDirectory = NSHomeDirectory();
+    
+    return [NSString stringWithFormat:@"%@/Library/", homeDirectory];    
+}
+
 + (NSString *)formatNumber:(NSUInteger)number
 {
     if(number < 10){

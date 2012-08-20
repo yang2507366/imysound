@@ -18,6 +18,7 @@
 + (NSString *)documentPath;
 + (NSString *)randomString;
 + (NSString *)tmpPath;
++ (NSString *)libraryPath;
 + (NSString *)formatNumber:(NSUInteger)number;
 
 + (NSArray *)fileNameListInDocumentPath;

@@ -31,7 +31,7 @@
 {
     self = [super init];
     
-    NSString *filePath = [[CommonUtils tmpPath] stringByAppendingPathComponent:@"sound_sub"];
+    NSString *filePath = [[CommonUtils libraryPath] stringByAppendingPathComponent:@"sound_sub"];
     self.keyValueMgr = [[[DBKeyValueManager alloc] initWithDBName:@"sound_sub_" atFilePath:filePath] autorelease];
     
     return self;
