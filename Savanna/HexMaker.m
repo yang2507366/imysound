@@ -51,7 +51,7 @@
 
 - (NSString *)hexStringForData:(NSData *)data
 {
-    
+    return nil;
 }
 
 @end

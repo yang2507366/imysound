@@ -42,8 +42,8 @@
 {
     self = [super init];
     
-    NSString *filePath = [[CommonUtils tmpPath] stringByAppendingPathComponent:[CodeUtils encodeWithString:dbName]];
-    self.dbKeyValueMgr = [[DBKeyValueManager alloc] initWithDBName:dbName atFilePath:filePath];
+    NSString *filePath = [[CommonUtils libraryPath] stringByAppendingPathComponent:[CodeUtils encodeWithString:dbName]];
+    self.dbKeyValueMgr = [[[DBKeyValueManager alloc] initWithDBName:dbName atFilePath:filePath] autorelease];
     
     return self;
 }
