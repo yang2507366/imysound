@@ -203,7 +203,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
         [[Player sharedInstance] stop];
         
         self.playQueue = playQueue;
-        self.playQueue.playQueueControl = [PlayQueueControlFactory createNormalPlayQueueControl];
+        self.playQueue.playQueueControl = [PlayQueueControlFactory createLoopPlayQueueControl];
     }else{
         if([[Player sharedInstance].currentSoundFilePath isEqualToString:self.currentPlayItem.soundFilePath]){
             if(![Player sharedInstance].playing){
