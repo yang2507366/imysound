@@ -91,6 +91,7 @@
 
 - (void)removeShadow
 {
+    self.backgroundColor = [UIColor clearColor];
     for(UIView *subview in [self subviews]){
         if([subview isKindOfClass:[UIScrollView class]]){
             for(UIView *view in [subview subviews]){
