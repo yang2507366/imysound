@@ -8,6 +8,7 @@
 
 #import "UIViewController+Loading.h"
 #import <QuartzCore/QuartzCore.h>
+#import "KeyboardState.h"
 
 @implementation UIViewController (Loading)
 
@@ -115,6 +116,10 @@ static NSInteger TAG_INDICATOR = 20000279;
         loadingView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         CGFloat labelWid = [label.text sizeWithFont:label.font].width;
         CGFloat leftEdge = (loadingView.frame.size.width - labelWid - indicatorWid) / 2;
+        CGFloat keyboardHeight = 0;
+        if([KeyboardState sharedInstance].keyboardVisible){
+            keyboardHeight = 216;
+        }
         CGFloat topEdge = (loadingView.frame.size.height - indicatorWid) / 2;
         
         if(indicatorWid == 0){
