@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E50D1DC160C6A8C00BA58C5 /* DialogTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E50D1DB160C6A8C00BA58C5 /* DialogTools.m */; };
 		676AB66C15ADBCC3004444C6 /* PlayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 676AB66B15ADBCC3004444C6 /* PlayItem.m */; };
 		676AB67015ADBDA0004444C6 /* PlayQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 676AB66F15ADBDA0004444C6 /* PlayQueue.m */; };
 		676AB67415ADBF03004444C6 /* PlayQueueControlNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = 676AB67315ADBF03004444C6 /* PlayQueueControlNormal.m */; };
@@ -110,6 +111,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E50D1DA160C6A8C00BA58C5 /* DialogTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogTools.h; sourceTree = "<group>"; };
+		3E50D1DB160C6A8C00BA58C5 /* DialogTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogTools.m; sourceTree = "<group>"; };
 		676AB66A15ADBCC3004444C6 /* PlayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayItem.h; sourceTree = "<group>"; };
 		676AB66B15ADBCC3004444C6 /* PlayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayItem.m; sourceTree = "<group>"; };
 		676AB66E15ADBDA0004444C6 /* PlayQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayQueue.h; sourceTree = "<group>"; };
@@ -418,6 +421,8 @@
 				6785870C15AC760300B096C1 /* Timer.m */,
 				CFC2365A15B94A19001BFD88 /* HexMaker.h */,
 				CFC2365B15B94A19001BFD88 /* HexMaker.m */,
+				3E50D1DA160C6A8C00BA58C5 /* DialogTools.h */,
+				3E50D1DB160C6A8C00BA58C5 /* DialogTools.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -861,6 +866,7 @@
 				CF52CA9D15B420CD000854CC /* GlossaryDetailViewController.m in Sources */,
 				CF52CA9E15B420CD000854CC /* GlossaryLibraryViewController.m in Sources */,
 				CFC2365C15B94A19001BFD88 /* HexMaker.m in Sources */,
+				3E50D1DC160C6A8C00BA58C5 /* DialogTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
