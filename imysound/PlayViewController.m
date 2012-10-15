@@ -357,7 +357,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
             self.playerStatusView.currentTime = [self currentTimeWithPlayItem:currentItem];
             self.playerStatusView.totalTime = [self totalTimeWithPlayItem:currentItem];
         }
-        NSLog(@"%@", timer);
+//        NSLog(@"%@", timer);
     }else if(timer == self.trackFinishTimer){
         if(currentItem){
             NSTimeInterval currentTime = [self currentTimeWithPlayItem:currentItem];

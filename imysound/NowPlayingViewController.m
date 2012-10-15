@@ -72,22 +72,24 @@
 #pragma mark - events
 - (void)onPlayButtonItemTapped
 {
-
+    [[Player sharedInstance] resume];
+    self.toolbar.items = [Player sharedInstance].playing ? [self toolbarItemsForPlaying] : [self toolbarItemsForPaused];
 }
 
 - (void)onPauseButtonTapped
 {
-    
+    [[Player sharedInstance] pause];
+    self.toolbar.items = [Player sharedInstance].playing ? [self toolbarItemsForPlaying] : [self toolbarItemsForPaused];
 }
 
 - (void)onPreviousButtonItemTapped
 {
-    
+    [Player sharedInstance].currentTime -= 2.0f;
 }
 
 - (void)onNextButtonItemTapped
 {
-    
+    [Player sharedInstance].currentTime += 2.0f;
 }
 
 - (void)onPlayControlButtonItemTapped
