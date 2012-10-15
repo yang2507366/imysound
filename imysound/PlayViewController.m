@@ -14,10 +14,11 @@
 #import "Timer.h"
 #import "PlayItem.h"
 #import "PlayQueueControlFactory.h"
+#import "NowPlayingViewController.h"
 
 NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 
-@interface PlayViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface PlayViewController () <PlayerStatusViewDelegate, PlayerControlViewDelegate, TimerDelegate, UITableViewDelegate, UITableViewDataSource, NowPlayingViewControllerDelegate>
 
 @property(nonatomic, retain)PlayQueue *playQueue;
 @property(nonatomic, retain)PlayItem *playItem;
@@ -111,6 +112,12 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
                                       self.playerControlView.frame.origin.y - tmpY);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    UIBarButtonItem *nowPlayingButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"playing", nil)
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:self
+                                                                            action:@selector(onNowPlayingButtonItemTapped)] autorelease];
+    self.navigationItem.rightBarButtonItem = nowPlayingButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -196,6 +203,55 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
     [self.tableView reloadData];
 }
 
+- (NSString *)identifierForPlayQueueControl:(id<PlayQueueControl>)control
+{
+    return NSStringFromClass(control.class);
+}
+
+- (id<PlayQueueControl>)playQueueControlForIdentifier:(NSString *)identifier
+{
+    if([identifier isEqualToString:NSStringFromClass([PlayQueueControlFactory createLoopPlayQueueControl].class)]){
+        return [PlayQueueControlFactory createLoopPlayQueueControl];
+    }else if([identifier isEqualToString:NSStringFromClass([PlayQueueControlFactory createNormalPlayQueueControl].class)]){
+        return [PlayQueueControlFactory createNormalPlayQueueControl];
+    }else if([identifier isEqualToString:NSStringFromClass([PlayQueueControlFactory createSingleLoopPlayQueueControl].class)]){
+        return [PlayQueueControlFactory createSingleLoopPlayQueueControl];
+    }
+    return [PlayQueueControlFactory createNormalPlayQueueControl];
+}
+
+- (NSString *)titleForPlayQueueControl:(id<PlayQueueControl>)control
+{
+    NSString *identifier = [self identifierForPlayQueueControl:control];
+    if([identifier isEqualToString:NSStringFromClass([PlayQueueControlFactory createLoopPlayQueueControl].class)]){
+        return NSLocalizedString(@"loop", nil);
+    }else if([identifier isEqualToString:NSStringFromClass([PlayQueueControlFactory createNormalPlayQueueControl].class)]){
+        return NSLocalizedString(@"normal", nil);
+    }else if([identifier isEqualToString:NSStringFromClass([PlayQueueControlFactory createSingleLoopPlayQueueControl].class)]){
+        return NSLocalizedString(@"single", nil);
+    }
+    return NSLocalizedString(@"normal", nil);
+}
+
+- (void)savePlayQueueControl:(id<PlayQueueControl>)control
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[self identifierForPlayQueueControl:control] forKey:@"play_queue_control"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (id<PlayQueueControl>)readPlayQueueControl
+{
+    NSString *identifier = [[NSUserDefaults standardUserDefaults] objectForKey:@"play_queue_control"];
+    return [self playQueueControlForIdentifier:identifier];
+}
+
+- (void)onNowPlayingButtonItemTapped
+{
+    NowPlayingViewController *vc = [[[NowPlayingViewController alloc] init] autorelease];
+    vc.delegate = self;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - instance methods
 - (void)playWithPlayQueue:(PlayQueue *)playQueue
 {
@@ -203,7 +259,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
         [[Player sharedInstance] stop];
         
         self.playQueue = playQueue;
-        self.playQueue.playQueueControl = [PlayQueueControlFactory createLoopPlayQueueControl];
+        self.playQueue.playQueueControl = [self readPlayQueueControl];
     }else{
         if([[Player sharedInstance].currentSoundFilePath isEqualToString:self.currentPlayItem.soundFilePath]){
             if(![Player sharedInstance].playing){
@@ -270,6 +326,26 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
     self.playQueue.finished = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:kPlayQueueDidPlayCompletely object:nil];
     [self.tableView reloadData];
+}
+
+#pragma mark - NowPlayingViewControllerDelegate
+- (NSString *)currentPlayQueueControlTitleForNowPlayingViewController:(NowPlayingViewController *)nowPlayingVC
+{
+    return [self titleForPlayQueueControl:self.playQueue.playQueueControl];
+}
+
+- (NSString *)nextPlayQueueControlTitleForNowPlayingViewController:(NowPlayingViewController *)nowPlayingVC
+{
+    NSString *title = [self titleForPlayQueueControl:self.playQueue.playQueueControl];
+    if([title isEqualToString:NSLocalizedString(@"loop", nil)]){
+        self.playQueue.playQueueControl = [PlayQueueControlFactory createNormalPlayQueueControl];
+    }else if([title isEqualToString:NSLocalizedString(@"normal", nil)]){
+        self.playQueue.playQueueControl = [PlayQueueControlFactory createSingleLoopPlayQueueControl];
+    }else if([title isEqualToString:NSLocalizedString(@"single", nil)]){
+        self.playQueue.playQueueControl = [PlayQueueControlFactory createLoopPlayQueueControl];
+    }
+    [self savePlayQueueControl:self.playQueue.playQueueControl];
+    return [self titleForPlayQueueControl:self.playQueue.playQueueControl];
 }
 
 #pragma mark - TimerDelegate
