@@ -16,6 +16,9 @@ OBJC_EXPORT NSString *kPlayerDidPauseNotification;
 OBJC_EXPORT NSString *kPlayerDidStopNotification;
 OBJC_EXPORT NSString *kPlayerDidChangeSoundNotification;
 
+OBJC_EXPORT NSString *kPlayerPlayNextNotification;
+OBJC_EXPORT NSString *kPlayerPlayPreviousNotification;
+
 @protocol PlayerDelegate <NSObject>
 
 @optional

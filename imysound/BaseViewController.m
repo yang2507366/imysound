@@ -7,6 +7,7 @@
 //
 #import "BaseViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Player.h"
 
 @interface BaseViewController ()
 
@@ -61,6 +62,24 @@
                                        self.titleLabel.font.lineHeight);
     self.navigationItem.titleView = self.titleLabel;
     
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    if(event.subtype == UIEventSubtypeRemoteControlTogglePlayPause){
+        if([Player sharedInstance].currentSoundFilePath.length != 0){
+            [Player sharedInstance].playing ? [[Player sharedInstance] pause] : [[Player sharedInstance] play];
+        }
+    }else if(event.subtype == UIEventSubtypeRemoteControlNextTrack){
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerPlayNextNotification object:nil];
+    }else if(event.subtype == UIEventSubtypeRemoteControlPreviousTrack){
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerPlayPreviousNotification object:nil];
+    }
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
 }
 
 - (void)setCustomTitle:(NSString *)customTitle

@@ -15,6 +15,9 @@ NSString *kPlayerDidPauseNotification = @"kPlayerDidPauseNotification";
 NSString *kPlayerDidStopNotification = @"kPlayerDidStopNotification";
 NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotification";
 
+NSString *kPlayerPlayNextNotification = @"kPlayerPlayNextNotification";
+NSString *kPlayerPlayPreviousNotification = @"kPlayerPlayPreviousNotification";
+
 @interface Player () <AVAudioPlayerDelegate>
 
 @property(nonatomic, retain)AVAudioPlayer *audioPlayer;

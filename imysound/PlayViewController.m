@@ -118,6 +118,9 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
                                                                             target:self
                                                                             action:@selector(onNowPlayingButtonItemTapped)] autorelease];
     self.navigationItem.rightBarButtonItem = nowPlayingButtonItem;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerPlayNextNotification:) name:kPlayerPlayNextNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerPlayPreviousNotification:) name:kPlayerPlayPreviousNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -141,6 +144,16 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 }
 
 #pragma mark - events
+- (void)playerPlayNextNotification:(NSNotification *)n
+{
+    [self playerControlViewDidControlToNext:self.playerControlView];
+}
+
+- (void)playerPlayPreviousNotification:(NSNotification *)n
+{
+    [self playerControlViewDidControlToPrevious:self.playerControlView];
+}
+
 - (void)onPlayerDidStartPlayNotification:(NSNotification *)n
 {
     [self.playerControlView setPlaying:YES];
@@ -279,9 +292,16 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
     return self.playItem;
 }
 
+- (void)removePlayerObserver
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kPlayerDidStartPlayNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kPlayerDidPauseNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kPlayerDidStopNotification object:nil];
+}
+
 - (void)reset
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removePlayerObserver];
     [[Player sharedInstance] stop];
     [self onPlayQueueOver];
     [self onPlayerDidStopNotification:nil];
@@ -290,7 +310,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 #pragma mark - private methods
 - (void)playWithPlayItem:(PlayItem *)playItem
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removePlayerObserver];
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(onPlayerDidStartPlayNotification:) 
                                                  name:kPlayerDidStartPlayNotification 
