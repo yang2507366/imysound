@@ -30,9 +30,11 @@
     
     UINavigationController *soundListNC = [[[UINavigationController alloc] initWithRootViewController:
                                             [[[SoundListViewController alloc] init] autorelease]] autorelease];
+    soundListNC.tabBarItem.image = [UIImage imageNamed:@"icon_local_list"];
     soundListNC.title = NSLocalizedString(@"sound_list", nil);
     UINavigationController *playListNC = [[[UINavigationController alloc] initWithRootViewController:
                                            [[[PlayListViewController alloc] init] autorelease]] autorelease];
+    playListNC.tabBarItem.image = [UIImage imageNamed:@"icon_news_list"];
     playListNC.title = NSLocalizedString(@"play_list", nil);
     
     UITabBarController *tabBarController = [[[UITabBarController alloc] init] autorelease];
