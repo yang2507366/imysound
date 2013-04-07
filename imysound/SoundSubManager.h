@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Singleton.h"
 #import "KeyValueManager.h"
 
-@interface SoundSubManager : Singleton {
+@interface SoundSubManager : NSObject {
     id<KeyValueManager> _keyValueMgr;
 }
 
++ (id)sharedManager;
 - (void)setSubListWithArray:(NSArray *)subList forIdentifier:(NSString *)identifier;
 - (NSArray *)subListForIdentifier:(NSString *)identifier;
 

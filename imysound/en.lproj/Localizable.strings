@@ -1,0 +1,14 @@
+sound_list = "Sound List";
+play_list = "Play List";
+edit_sound_sub = "Edit Subs";
+add_sound_sub = "Add Sub";
+mark_begin_time = "Mark Begin";
+mark_end_time = "Mark End";
+save_sound_sub = "Save Sound Sub";
+exit_sound_edit_confirm = "Exit editing?";
+sound_sub_save_succeed = "Sound sub saved.";
+now_playing = "Now playing";
+playing = "Playing";
+loop = "Loop";
+normal = "Normal";
+single = "Single";

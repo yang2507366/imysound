@@ -68,7 +68,7 @@
 {
     [super viewWillAppear:animated];
     
-    NSArray *existSoundSubList = [[SoundSubManager sharedInstance] subListForIdentifier:self.soundFilePath];
+    NSArray *existSoundSubList = [[SoundSubManager sharedManager] subListForIdentifier:self.soundFilePath];
     if(existSoundSubList){
         self.soundSubList = [NSMutableArray arrayWithArray:existSoundSubList];
     }else{
@@ -118,7 +118,7 @@
 {
     if(editingStyle == UITableViewCellEditingStyleDelete){
         [self.soundSubList removeObjectAtIndex:indexPath.row];
-        [[SoundSubManager sharedInstance] setSubListWithArray:self.soundSubList forIdentifier:self.soundFilePath];
+        [[SoundSubManager sharedManager] setSubListWithArray:self.soundSubList forIdentifier:self.soundFilePath];
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [tableView endUpdates];
@@ -141,7 +141,7 @@
         [self.tableView reloadData];
     }else{
         [self.soundSubList exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
-        [[SoundSubManager sharedInstance] setSubListWithArray:self.soundSubList forIdentifier:self.soundFilePath];
+        [[SoundSubManager sharedManager] setSubListWithArray:self.soundSubList forIdentifier:self.soundFilePath];
     }
 }
 

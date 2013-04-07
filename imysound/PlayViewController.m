@@ -114,7 +114,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
     self.tableView.dataSource = self;
     
     UIBarButtonItem *nowPlayingButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"playing", nil)
-                                                                             style:UIBarButtonItemStyleBordered
+                                                                             style:UIBarButtonItemStyleDone
                                                                             target:self
                                                                             action:@selector(onNowPlayingButtonItemTapped)] autorelease];
     self.navigationItem.rightBarButtonItem = nowPlayingButtonItem;
@@ -248,6 +248,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 - (void)onNowPlayingButtonItemTapped
 {
     NowPlayingViewController *vc = [[[NowPlayingViewController alloc] init] autorelease];
+    vc.title = self.playItem.title;
     vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }

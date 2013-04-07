@@ -88,7 +88,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.view.backgroundColor = [UIColor lightGrayColor];
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
                                                                              target:self 
@@ -321,7 +321,7 @@
     sub.beginTime = self.beginTime;
     sub.endTime = self.endTime;
     
-    NSArray *subList = [[SoundSubManager sharedInstance] subListForIdentifier:self.soundFilePath];
+    NSArray *subList = [[SoundSubManager sharedManager] subListForIdentifier:self.soundFilePath];
     NSMutableArray *newSubList = nil;
     if(subList){
         newSubList = [NSMutableArray arrayWithArray:subList];
@@ -329,7 +329,7 @@
     }else{
         newSubList = [NSMutableArray arrayWithObject:sub];
     }
-    [[SoundSubManager sharedInstance] setSubListWithArray:newSubList forIdentifier:self.soundFilePath];
+    [[SoundSubManager sharedManager] setSubListWithArray:newSubList forIdentifier:self.soundFilePath];
     [self alert:NSLocalizedString(@"sound_sub_save_succeed", nil)];
 }
 

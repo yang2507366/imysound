@@ -48,7 +48,7 @@
 {
     [super viewDidLoad];
     
-    self.soundSubList = [[SoundSubManager sharedInstance] subListForIdentifier:self.soundFilePath];
+    self.soundSubList = [[SoundSubManager sharedManager] subListForIdentifier:self.soundFilePath];
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(onPlayStateChanged:) 

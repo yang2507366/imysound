@@ -21,6 +21,19 @@
 
 @synthesize keyValueMgr = _keyValueMgr;
 
++ (id)sharedManager
+{
+    static id instance = nil;
+    
+    @synchronized(instance){
+        if(instance == nil){
+            instance = [[self.class alloc] init];
+        }
+    }
+    
+    return instance;
+}
+
 - (void)dealloc
 {
     [_keyValueMgr release];

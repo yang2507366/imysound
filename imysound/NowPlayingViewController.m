@@ -54,6 +54,7 @@
     self.playControlButtonItem = [[[UIBarButtonItem alloc] init] autorelease];
     self.playControlButtonItem.action = @selector(onPlayControlButtonItemTapped);
     self.playControlButtonItem.target = self;
+    self.playControlButtonItem.style = UIBarButtonItemStyleDone;
     self.playControlButtonItem.title = [self.delegate currentPlayQueueControlTitleForNowPlayingViewController:self];
     self.navigationItem.rightBarButtonItem = self.playControlButtonItem;
 }

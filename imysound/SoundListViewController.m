@@ -81,7 +81,7 @@
     
     UIButton *viewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [soundFilePopOutView addSubview:viewBtn];
-    [viewBtn setTitle:NSLocalizedString(@"View", nil) forState:UIControlStateNormal];
+    [viewBtn setTitle:NSLocalizedString(@"Play", nil) forState:UIControlStateNormal];
     [viewBtn addTarget:self action:@selector(onViewBtnTapped) forControlEvents:UIControlEventTouchUpInside];
     viewBtn.frame = CGRectMake(10, 5, (self.tableView.frame.size.width - 30) / 2, 40);
     [viewBtn setBackgroundImage:[UITools createPureColorImageWithColor:[UIColor darkGrayColor] size:viewBtn.frame.size] 
