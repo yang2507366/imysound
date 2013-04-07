@@ -236,7 +236,7 @@
 		CF52CA2E15B41931000854CC /* DictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryCache.h; sourceTree = "<group>"; };
 		CF52CA2F15B41931000854CC /* DictonaryWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictonaryWord.h; sourceTree = "<group>"; };
 		CF52CA3015B41931000854CC /* DictonaryWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictonaryWord.m; sourceTree = "<group>"; };
-		CF52CA3815B41A12000854CC /* common.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = common.lua; sourceTree = "<group>"; };
+		CF52CA3815B41A12000854CC /* common.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = common.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		CF52CA3915B41A12000854CC /* LuaHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaHelper.h; sourceTree = "<group>"; };
 		CF52CA3A15B41A12000854CC /* LuaHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaHelper.m; sourceTree = "<group>"; };
 		CF52CA3E15B41A23000854CC /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };

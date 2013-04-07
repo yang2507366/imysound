@@ -216,10 +216,10 @@ function filterDictionaryResult(result)
         prefixStr = string.sub(result, 0, endIndex3);
     end
     --print(prefixStr);
-    
-    local beginIndex1, endIndex1 = string.find(result, "<div class=\"word\">");
+    --print(result);
+    local beginIndex1, endIndex1 = string.find(result, "<div class=\"content\">");
     if beginIndex1 then
-        local beginIndex2, endIndex2 = string.find(result, "<form action", beginIndex1);
+        local beginIndex2, endIndex2 = string.find(result, "</body>");
         local resultStr = string.sub(result, beginIndex1, beginIndex2);
         resultStr = removeTag(resultStr, "a", false);
         resultStr = prefixStr.."<body>"..resultStr.."</body>";
