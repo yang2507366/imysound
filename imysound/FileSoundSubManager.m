@@ -32,7 +32,7 @@
     self.soundFilePath = soundFilePath;
     NSString *soundFileName = [soundFilePath lastPathComponent];
     NSString *parentDirectoryPath = [soundFilePath stringByDeletingLastPathComponent];
-    self.soundSubDictionaryPath = [NSString stringWithFormat:@"%@%@.xml", parentDirectoryPath, soundFileName];
+    self.soundSubDictionaryPath = [NSString stringWithFormat:@"%@/%@.xml", parentDirectoryPath, soundFileName];
     self.keyValue = [NSMutableDictionary dictionaryWithContentsOfFile:self.soundSubDictionaryPath];
     if(!self.keyValue){
         self.keyValue = [NSMutableDictionary dictionary];

@@ -160,7 +160,14 @@
 
 - (void)reloadSoundList
 {
-    self.soundFileList = [NSMutableArray arrayWithArray:[CommonUtils fileNameListInDocumentPath]];
+    NSArray *tmpFileList = [CommonUtils fileNameListInDocumentPath];
+    self.soundFileList = [NSMutableArray array];
+    for(NSString *tmpFileName in tmpFileList){
+        if([tmpFileName hasSuffix:@".xml"]){
+            continue;
+        }
+        [self.soundFileList addObject:tmpFileName];
+    }
     [self.tableView.tableView reloadData];
 }
 
