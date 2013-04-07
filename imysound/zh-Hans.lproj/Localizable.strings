@@ -1,0 +1,17 @@
+sound_list = "音频列表";
+play_list = "播放列表";
+edit_sound_sub = "编辑";
+add_sound_sub = "添加分段";
+mark_begin_time = "标记开始";
+mark_end_time = "标记结束";
+save_sound_sub = "保存分段信息";
+enter_sub_name = "输入分段名称";
+exit_sound_edit_confirm = "退出编辑?";
+sound_sub_save_succeed = "分段信息保存成功.";
+now_playing = "正在播放";
+playing = "播放中";
+loop = "循环";
+normal = "顺序";
+single = "单曲";
+Play = "播放";
+Edit = "编辑";
