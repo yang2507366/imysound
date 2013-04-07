@@ -336,6 +336,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E2B5FDA17111879004CA16E /* AddInFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF8AA0D915B5039400738582 /* AudioToolbox.framework */,
+				678586CF15AC735700B096C1 /* AVFoundation.framework */,
+				67C32C851599DF69000E5533 /* libsqlite3.dylib */,
+				67C32C831599DF58000E5533 /* SystemConfiguration.framework */,
+			);
+			name = AddInFrameworks;
+			sourceTree = "<group>";
+		};
 		678586B915AC624E00B096C1 /* SoundSubManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,18 +358,6 @@
 				3E2B5FD817111236004CA16E /* FileSoundSubManager.m */,
 			);
 			name = SoundSubManager;
-			sourceTree = "<group>";
-		};
-		678586D115AC750400B096C1 /* Savanna */ = {
-			isa = PBXGroup;
-			children = (
-				678586D215AC752F00B096C1 /* Addition */,
-				678586D615AC754100B096C1 /* Media */,
-				678586D315AC753600B096C1 /* Net */,
-				678586D415AC753A00B096C1 /* UI */,
-				678586D515AC753D00B096C1 /* Util */,
-			);
-			path = Savanna;
 			sourceTree = "<group>";
 		};
 		678586D215AC752F00B096C1 /* Addition */ = {
@@ -374,6 +373,7 @@
 				678586E115AC75A800B096C1 /* UIWebViewAdditions.m */,
 			);
 			name = Addition;
+			path = ../Savanna;
 			sourceTree = "<group>";
 		};
 		678586D315AC753600B096C1 /* Net */ = {
@@ -390,6 +390,7 @@
 				678586EE15AC75C500B096C1 /* Reachability.m */,
 			);
 			name = Net;
+			path = ../Savanna;
 			sourceTree = "<group>";
 		};
 		678586D415AC753A00B096C1 /* UI */ = {
@@ -409,6 +410,7 @@
 				CF81BBFF15AD339100A05E67 /* PlayerControlView.m */,
 			);
 			name = UI;
+			path = ../Savanna;
 			sourceTree = "<group>";
 		};
 		678586D515AC753D00B096C1 /* Util */ = {
@@ -434,6 +436,7 @@
 				3E50D1DB160C6A8C00BA58C5 /* DialogTools.m */,
 			);
 			name = Util;
+			path = ../Savanna;
 			sourceTree = "<group>";
 		};
 		678586D615AC754100B096C1 /* Media */ = {
@@ -443,6 +446,7 @@
 				678586D815AC759700B096C1 /* Player.m */,
 			);
 			name = Media;
+			path = ../Savanna;
 			sourceTree = "<group>";
 		};
 		6785871415AC763F00B096C1 /* CacheManager */ = {
@@ -477,12 +481,8 @@
 			isa = PBXGroup;
 			children = (
 				3E2B5FCC17110838004CA16E /* Default-568h@2x.png */,
-				CF8AA0D915B5039400738582 /* AudioToolbox.framework */,
-				678586CF15AC735700B096C1 /* AVFoundation.framework */,
-				67C32C851599DF69000E5533 /* libsqlite3.dylib */,
-				67C32C831599DF58000E5533 /* SystemConfiguration.framework */,
-				678586D115AC750400B096C1 /* Savanna */,
 				67C32C2C1599DD3D000E5533 /* imysound */,
+				3E2B5FDA17111879004CA16E /* AddInFrameworks */,
 				67C32C251599DD3D000E5533 /* Frameworks */,
 				67C32C231599DD3D000E5533 /* Products */,
 			);
@@ -509,6 +509,11 @@
 		67C32C2C1599DD3D000E5533 /* imysound */ = {
 			isa = PBXGroup;
 			children = (
+				678586D215AC752F00B096C1 /* Addition */,
+				678586D615AC754100B096C1 /* Media */,
+				678586D315AC753600B096C1 /* Net */,
+				678586D415AC753A00B096C1 /* UI */,
+				678586D515AC753D00B096C1 /* Util */,
 				CF52CA9415B41F84000854CC /* GlossaryManager */,
 				CF52CA1F15B41881000854CC /* Dictionary */,
 				CF788A1915AFFB8500188B7F /* TextBookmarkManager */,
