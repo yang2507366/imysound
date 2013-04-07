@@ -15,6 +15,7 @@
 - (void)dealloc
 {
 //    NSLog(@"Timer:%@ dealloc", self);
+    [self cancel];
     [super dealloc];
 }
 
