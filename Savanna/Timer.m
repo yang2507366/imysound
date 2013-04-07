@@ -38,6 +38,7 @@
             [NSThread sleepForTimeInterval:_timeInterval];
         }
 //        NSLog(@"timer stop, %@", [NSThread currentThread]);
+        [NSThread exit];
     }
 }
 

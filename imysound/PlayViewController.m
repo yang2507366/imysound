@@ -290,6 +290,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 #pragma mark - private methods
 - (void)playWithPlayItem:(PlayItem *)playItem
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(onPlayerDidStartPlayNotification:) 
                                                  name:kPlayerDidStartPlayNotification 
