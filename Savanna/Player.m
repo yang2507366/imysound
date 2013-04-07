@@ -65,12 +65,8 @@ NSString *kPlayerDidChangeSoundNotification = @"kPlayerDidChangeSoundNotificatio
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:kPlayerDidChangeSoundNotification object:nil];
     }
-
-    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
-    [[AVAudioSession sharedInstance] setActive:NO error:nil];
     
     NSURL *fileURL = [[[NSURL alloc] initFileURLWithPath:_currentSoundFilePath] autorelease];
-    [self.audioPlayer stop];
     self.audioPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil] autorelease];
     self.audioPlayer.delegate = self;
     
