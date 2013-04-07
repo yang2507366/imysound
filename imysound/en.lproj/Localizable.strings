@@ -15,3 +15,5 @@ normal = "Normal";
 single = "Single";
 Play = "Play";
 Edit = "Edit";
+end_time_zero_error = "End time cannot be 00:00";
+begin_time_later_than_end_time = "Begin time cannot be later than end time";

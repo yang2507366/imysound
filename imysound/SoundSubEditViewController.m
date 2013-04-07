@@ -250,9 +250,11 @@
 - (void)onSaveBtnTapped
 {
     if(self.endTime == 0.0f){
+        [self alert:NSLocalizedString(@"end_time_zero_error", nil)];
         return;
     }
     if(self.beginTime > self.endTime){
+        [self alert:NSLocalizedString(@"begin_time_later_than_end_time", nil)];
         return;
     }
     if(self.beginTime != 0.0f || self.endTime != 0.0f){
