@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E2B5FCD17110838004CA16E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B5FCC17110838004CA16E /* Default-568h@2x.png */; };
 		3E2B5FD017110898004CA16E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B5FD217110898004CA16E /* Localizable.strings */; };
+		3E2B5FD917111236004CA16E /* FileSoundSubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B5FD817111236004CA16E /* FileSoundSubManager.m */; };
 		3E50D1DC160C6A8C00BA58C5 /* DialogTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E50D1DB160C6A8C00BA58C5 /* DialogTools.m */; };
 		3E6B6203162BB662004C1BCC /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B6202162BB662004C1BCC /* NowPlayingViewController.m */; };
 		676AB66C15ADBCC3004444C6 /* PlayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 676AB66B15ADBCC3004444C6 /* PlayItem.m */; };
@@ -117,6 +118,8 @@
 		3E2B5FD117110898004CA16E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E2B5FD3171108ED004CA16E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		3E2B5FD4171108ED004CA16E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		3E2B5FD717111236004CA16E /* FileSoundSubManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSoundSubManager.h; sourceTree = "<group>"; };
+		3E2B5FD817111236004CA16E /* FileSoundSubManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSoundSubManager.m; sourceTree = "<group>"; };
 		3E50D1DA160C6A8C00BA58C5 /* DialogTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogTools.h; sourceTree = "<group>"; };
 		3E50D1DB160C6A8C00BA58C5 /* DialogTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogTools.m; sourceTree = "<group>"; };
 		3E6B6201162BB662004C1BCC /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingViewController.h; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 				678586B715AC622D00B096C1 /* SoundSub.m */,
 				678586BA15AC626C00B096C1 /* SoundSubManager.h */,
 				678586BB15AC626C00B096C1 /* SoundSubManager.m */,
+				3E2B5FD717111236004CA16E /* FileSoundSubManager.h */,
+				3E2B5FD817111236004CA16E /* FileSoundSubManager.m */,
 			);
 			name = SoundSubManager;
 			sourceTree = "<group>";
@@ -878,6 +883,7 @@
 				CFC2365C15B94A19001BFD88 /* HexMaker.m in Sources */,
 				3E50D1DC160C6A8C00BA58C5 /* DialogTools.m in Sources */,
 				3E6B6203162BB662004C1BCC /* NowPlayingViewController.m in Sources */,
+				3E2B5FD917111236004CA16E /* FileSoundSubManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
