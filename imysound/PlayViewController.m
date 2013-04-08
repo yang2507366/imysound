@@ -15,6 +15,9 @@
 #import "PlayItem.h"
 #import "PlayQueueControlFactory.h"
 #import "NowPlayingViewController.h"
+#import "SVDelayControl.h"
+
+#define kTrackDelayTimeInterval     3.0f
 
 NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 
@@ -30,6 +33,8 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 @property(nonatomic, retain)Timer *trackFinishTimer;
 
 @property(nonatomic, retain)UITableView *tableView;
+@property(nonatomic, retain)SVDelayControl *decidePreviousDelayControl;
+@property(nonatomic, assign)BOOL isInPreviousTrackDelay;
 
 - (void)playWithPlayItem:(PlayItem *)playItem;
 - (NSTimeInterval)currentTimeWithPlayItem:(PlayItem *)playItem;
@@ -64,6 +69,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
     [_trackFinishTimer cancel]; [_trackFinishTimer release];
     
     [_tableView release];
+    self.decidePreviousDelayControl = nil;
     [super dealloc];
 }
 
@@ -179,7 +185,19 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
     self.trackFinishTimer.delegate = self;
     [self.trackFinishTimer startWithTimeInterval:0.01];
     
+    [self resetTrackDelay];
+    
     [self.tableView reloadData];
+}
+
+- (void)resetTrackDelay
+{
+    self.isInPreviousTrackDelay = NO;
+    __block typeof(self) bself = self;
+    self.decidePreviousDelayControl = [[[SVDelayControl alloc] initWithInterval:kTrackDelayTimeInterval completion:^{
+        bself.isInPreviousTrackDelay = YES;
+    }] autorelease];
+    [self.decidePreviousDelayControl start];
 }
 
 - (void)onPlayerDidPauseNotification:(NSNotification *)n
@@ -427,6 +445,11 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
 
 - (void)playerControlViewDidControlToPrevious:(PlayerControlView *)playerControlView
 {
+    if(self.isInPreviousTrackDelay){
+        [Player sharedInstance].currentTime = self.currentPlayItem.beginTime;
+        [self resetTrackDelay];
+        return;
+    }
     PlayItem *previousItem = [self.playQueue goPrevious];
     if(previousItem){
         [self playWithPlayItem:previousItem];
@@ -481,7 +504,7 @@ NSString *kPlayQueueDidPlayCompletely = @"kPlayQueueDidPlayCompletely";
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    cell.textLabel.text = item.title;
+    cell.textLabel.text = [NSString stringWithFormat:@"%02d %@", indexPath.row + 1, item.title];
     
     return cell;
 }

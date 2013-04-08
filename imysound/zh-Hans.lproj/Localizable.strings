@@ -22,3 +22,4 @@ msg_bookmark_word_succeed = "\"$word\"添加成功";
 msg_bookmark_word_failed = "\"$word\"添加失败";
 word_can_not_found = "\"$word\"没有找到该单词";
 error_network = "网络连接错误";
+enter_bookmark_title = "请输入书签名称";

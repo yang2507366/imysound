@@ -9,20 +9,17 @@
 #import "TextBookmarkManager.h"
 #import "KeyValueManagerFactory.h"
 #import "CodeUtils.h"
+#import "SimpleFileKeyValueManager.h"
 
 @interface TextBookmarkManager ()
-
-@property(nonatomic, retain)id<KeyValueManager> keyValueMgr;
 
 @end
 
 @implementation TextBookmarkManager
 
-@synthesize keyValueMgr = _keyValueMgr;
 
 - (void)dealloc
 {
-    [_keyValueMgr release];
     [super dealloc];
 }
 
@@ -35,9 +32,12 @@
 {
     self = [super init];
     
-    self.keyValueMgr = [KeyValueManagerFactory createLocalDBKeyValueManagerWithName:@"textbookmark"];
-    
     return self;
+}
+
+- (NSString *)formatIdentifier:(NSString *)identifier
+{
+    return [NSString stringWithFormat:@"%@.bookmark", identifier];
 }
 
 - (void)addBookmark:(TextBookmark *)bookmark forIdentifier:(NSString *)identifier
@@ -48,19 +48,19 @@
         [newBookmarkList addObjectsFromArray:existBookmarkList];
     }
     [newBookmarkList addObject:bookmark];
-    [self.keyValueMgr setValue:[CodeUtils encodeWithData:[NSKeyedArchiver archivedDataWithRootObject:newBookmarkList]] 
-                        forKey:identifier];
+    [self setBookmarkList:newBookmarkList forIdentifier:identifier];
 }
 
 - (void)setBookmarkList:(NSArray *)bookmarkList forIdentifier:(NSString *)identifier
 {
-    [self.keyValueMgr setValue:[CodeUtils encodeWithData:[NSKeyedArchiver archivedDataWithRootObject:bookmarkList]] 
-                        forKey:identifier];
+    [[[[SimpleFileKeyValueManager alloc]
+       initWithFilePath:[self formatIdentifier:identifier]] autorelease] setValue:[CodeUtils encodeWithData:[NSKeyedArchiver archivedDataWithRootObject:bookmarkList]] forKey:@"bookmarks"];
 }
 
 - (NSArray *)bookmarkListForIdentifier:(NSString *)identifier
 {
-    NSData *objData = [CodeUtils dataDecodedWithString:[self.keyValueMgr valueForKey:identifier]];
+    NSString *dataSting = [[[[SimpleFileKeyValueManager alloc] initWithFilePath:[self formatIdentifier:identifier]] autorelease] valueForKey:@"bookmarks"];
+    NSData *objData = [CodeUtils dataDecodedWithString:dataSting];
     
     return [NSKeyedUnarchiver unarchiveObjectWithData:objData];
 }

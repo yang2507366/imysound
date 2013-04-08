@@ -7,12 +7,12 @@
 //
 
 #import "FileSoundSubManager.h"
+#import "SimpleFileKeyValueManager.h"
 
 @interface FileSoundSubManager ()
 
 @property(nonatomic, copy)NSString *soundFilePath;
-@property(nonatomic, copy)NSString *soundSubDictionaryPath;
-@property(nonatomic, retain)NSMutableDictionary *keyValue;
+@property(nonatomic, retain)id<KeyValueManager> keyValue;
 
 @end
 
@@ -30,26 +30,14 @@
     self = [super init];
     
     self.soundFilePath = soundFilePath;
-    NSString *soundFileName = [soundFilePath lastPathComponent];
-    NSString *parentDirectoryPath = [soundFilePath stringByDeletingLastPathComponent];
-    self.soundSubDictionaryPath = [NSString stringWithFormat:@"%@/%@.xml", parentDirectoryPath, soundFileName];
-    self.keyValue = [NSMutableDictionary dictionaryWithContentsOfFile:self.soundSubDictionaryPath];
-    if(!self.keyValue){
-        self.keyValue = [NSMutableDictionary dictionary];
-        [self save];
-    }
+    self.keyValue = [[SimpleFileKeyValueManager alloc] initWithFilePath:[NSString stringWithFormat:@"%@.playlist", self.soundFilePath]];
+    
     return self;
-}
-
-- (void)save
-{
-    [self.keyValue writeToFile:self.soundSubDictionaryPath atomically:NO];
 }
 
 - (void)setValue:(NSString *)value forKey:(NSString *)key
 {
-    [self.keyValue setObject:value forKey:key];
-    [self save];
+    [self.keyValue setValue:value forKey:key];
 }
 
 - (NSString *)valueForKey:(NSString *)key
@@ -59,14 +47,12 @@
 
 - (void)removeValueForKey:(NSString *)key
 {
-    [self.keyValue removeObjectForKey:key];
-    [self save];
+    [self.keyValue removeValueForKey:key];
 }
 
 - (void)clear
 {
-    [self.keyValue removeAllObjects];
-    [self save];
+    [self.keyValue clear];
 }
 
 - (NSArray *)allKeys
@@ -76,13 +62,7 @@
 
 - (NSArray *)keyListAtIndex:(NSInteger)index size:(NSInteger)size
 {
-    NSMutableArray *arr = [NSMutableArray array];
-    NSArray *allKeys = [self allKeys];
-    NSInteger endIndex = index + size > allKeys.count ? allKeys.count : index + size;
-    for(NSInteger i = index; i < endIndex; ++i){
-        [arr addObject:[allKeys objectAtIndex:i]];
-    }
-    return arr;
+    return [self.keyValue keyListAtIndex:index size:size];
 }
 
 @end

@@ -88,11 +88,11 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(editingStyle == UITableViewCellEditingStyleDelete){
-        [tableView beginUpdates];
         [self.glossaryManager removeWord:[self.glossaryList objectAtIndex:indexPath.row]];
         self.glossaryList = [self.glossaryManager wordList];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-                         withRowAnimation:UITableViewRowAnimationFade];
+        [tableView beginUpdates];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
         [tableView endUpdates];
     }
 }

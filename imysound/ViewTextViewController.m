@@ -17,12 +17,12 @@
 #import "DictionaryViewController.h"
 #import "DBGlossaryManager.h"
 #import "GlossaryLibraryViewController.h"
-
+#import "FileGlossaryManager.h"
 
 @interface ViewTextViewController () <UITextViewDelegate, TextBookmarkViewControllerDelegate, DictionaryViewControllerDelegate, UIAlertViewDelegate>
 
 @property(nonatomic, copy)NSString *textFilePath;
-@property(nonatomic, retain)id<KeyValueManager> keyValueMgr;
+@property(nonatomic, retain)id<KeyValueManager> keyTextFilePathValueScrollPosition;
 @property(nonatomic, retain)id<TextBookmarkManager> bookmarkMgr;
 @property(nonatomic, retain)id<GlossaryManager> glossaryMgr;
 
@@ -38,7 +38,7 @@
 @implementation ViewTextViewController
 
 @synthesize textFilePath = _textFilePath;
-@synthesize keyValueMgr = _keyValueMgr;
+@synthesize keyTextFilePathValueScrollPosition = _keyValueMgr;
 @synthesize bookmarkMgr = _bookmarkMgr;
 @synthesize glossaryMgr = _glossaryMgr;
 
@@ -62,9 +62,10 @@
     self = [super init];
     
     self.textFilePath = filePath;
-    self.keyValueMgr = [KeyValueManagerFactory createLocalDBKeyValueManagerWithName:@"text_position_"];
+    self.keyTextFilePathValueScrollPosition = [KeyValueManagerFactory createLocalDBKeyValueManagerWithName:@"text_position_"];
     self.bookmarkMgr = [TextBookmarkManager createManager];
-    self.glossaryMgr = [[[DBGlossaryManager alloc] initWithIdentifier:[filePath lastPathComponent]] autorelease];
+//    self.glossaryMgr = [[[DBGlossaryManager alloc] initWithIdentifier:[filePath lastPathComponent]] autorelease];
+    self.glossaryMgr = [[[FileGlossaryManager alloc] initWithSRTFilePath:filePath] autorelease];
     
     self.title = [self.textFilePath lastPathComponent];
     
@@ -85,7 +86,7 @@
     self.textView.text = [NSString stringWithContentsOfFile:self.textFilePath encoding:NSASCIIStringEncoding error:nil];
     self.textView.delegate = self;
     
-    [self scrollTextViewToY:[[self.keyValueMgr valueForKey:self.textFilePath] floatValue] animated:NO];
+    [self scrollTextViewToY:[[self.keyTextFilePathValueScrollPosition valueForKey:self.textFilePath] floatValue] animated:NO];
     
     self.nowPlayingBtn = [[[UIBarButtonItem alloc] init] autorelease];
     self.nowPlayingBtn.title = NSLocalizedString(@"now_playing", nil);
@@ -139,6 +140,12 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.keyTextFilePathValueScrollPosition setValue:[NSString stringWithFormat:@"%f", self.textView.contentOffset.y] forKey:self.textFilePath];
 }
 
 #pragma mark - TextBookmarkViewControllerDelegate
@@ -295,7 +302,7 @@
 #pragma mark - UITextViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self.keyValueMgr setValue:[NSString stringWithFormat:@"%f", scrollView.contentOffset.y] forKey:self.textFilePath];
+    [self.keyTextFilePathValueScrollPosition setValue:[NSString stringWithFormat:@"%f", scrollView.contentOffset.y] forKey:self.textFilePath];
 }
 
 #pragma mark - UIAlertViewDelegate

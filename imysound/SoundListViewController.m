@@ -160,13 +160,21 @@
 
 - (void)reloadSoundList
 {
+    NSArray *filterExtentions = @[@".playlist", @".glossary", @".bookmark"];
     NSArray *tmpFileList = [CommonUtils fileNameListInDocumentPath];
     self.soundFileList = [NSMutableArray array];
     for(NSString *tmpFileName in tmpFileList){
-        if([tmpFileName hasSuffix:@".xml"]){
-            continue;
+        BOOL isInFilterExtention = NO;
+        NSString *lowerFileName = [tmpFileName lowercaseString];
+        for(NSString *tmpExtention in filterExtentions){
+            if([lowerFileName hasSuffix:tmpExtention]){
+                isInFilterExtention = YES;
+                break;
+            }
         }
-        [self.soundFileList addObject:tmpFileName];
+        if(!isInFilterExtention){
+            [self.soundFileList addObject:tmpFileName];
+        }
     }
     [self.tableView.tableView reloadData];
 }
@@ -266,11 +274,12 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                       reuseIdentifier:identifier] autorelease];
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
     }
     
     NSString *soundFilePath = [self.soundFileList objectAtIndex:index];
     
-    cell.textLabel.text = soundFilePath;
+    cell.textLabel.text = [NSString stringWithFormat:@"%02d %@", index + 1, soundFilePath];
     cell.textLabel.textColor = [[soundFilePath lowercaseString] hasSuffix:@".mp3"] ? 
         [UIColor blackColor] : [UIColor orangeColor];
     

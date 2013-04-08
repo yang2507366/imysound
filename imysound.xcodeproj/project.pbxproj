@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E055FDB17126C640019A6E6 /* FileGlossaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FDA17126C640019A6E6 /* FileGlossaryManager.m */; };
+		3E055FDE17126CFA0019A6E6 /* SimpleFileKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FDD17126CFA0019A6E6 /* SimpleFileKeyValueManager.m */; };
+		3E055FE217127D380019A6E6 /* SVDelayControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FE117127D380019A6E6 /* SVDelayControl.m */; };
+		3E055FE517127D590019A6E6 /* SVProviderPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FE417127D590019A6E6 /* SVProviderPool.m */; };
 		3E2B5FCD17110838004CA16E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B5FCC17110838004CA16E /* Default-568h@2x.png */; };
 		3E2B5FD017110898004CA16E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B5FD217110898004CA16E /* Localizable.strings */; };
 		3E2B5FD917111236004CA16E /* FileSoundSubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B5FD817111236004CA16E /* FileSoundSubManager.m */; };
@@ -118,6 +122,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E055FD917126C640019A6E6 /* FileGlossaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileGlossaryManager.h; sourceTree = "<group>"; };
+		3E055FDA17126C640019A6E6 /* FileGlossaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileGlossaryManager.m; sourceTree = "<group>"; };
+		3E055FDC17126CFA0019A6E6 /* SimpleFileKeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFileKeyValueManager.h; sourceTree = "<group>"; };
+		3E055FDD17126CFA0019A6E6 /* SimpleFileKeyValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFileKeyValueManager.m; sourceTree = "<group>"; };
+		3E055FE017127D380019A6E6 /* SVDelayControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDelayControl.h; sourceTree = "<group>"; };
+		3E055FE117127D380019A6E6 /* SVDelayControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDelayControl.m; sourceTree = "<group>"; };
+		3E055FE317127D580019A6E6 /* SVProviderPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProviderPool.h; sourceTree = "<group>"; };
+		3E055FE417127D590019A6E6 /* SVProviderPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProviderPool.m; sourceTree = "<group>"; };
 		3E2B5FCC17110838004CA16E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E2B5FD117110898004CA16E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E2B5FD3171108ED004CA16E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -438,6 +450,10 @@
 				6785871415AC763F00B096C1 /* CacheManager */,
 				678586FF15AC760300B096C1 /* CodeUtils.h */,
 				6785870015AC760300B096C1 /* CodeUtils.m */,
+				3E055FE017127D380019A6E6 /* SVDelayControl.h */,
+				3E055FE117127D380019A6E6 /* SVDelayControl.m */,
+				3E055FE317127D580019A6E6 /* SVProviderPool.h */,
+				3E055FE417127D590019A6E6 /* SVProviderPool.m */,
 				6785870115AC760300B096C1 /* CommonUtils.h */,
 				6785870215AC760300B096C1 /* CommonUtils.m */,
 				6785870315AC760300B096C1 /* DelayController.h */,
@@ -492,6 +508,8 @@
 				6785872315AC768300B096C1 /* KeyValueManager.h */,
 				6785872715AC775400B096C1 /* KeyValueManagerFactory.h */,
 				6785872815AC775400B096C1 /* KeyValueManagerFactory.m */,
+				3E055FDC17126CFA0019A6E6 /* SimpleFileKeyValueManager.h */,
+				3E055FDD17126CFA0019A6E6 /* SimpleFileKeyValueManager.m */,
 			);
 			name = KeyValueManager;
 			sourceTree = "<group>";
@@ -700,6 +718,8 @@
 				CF52CA9515B41F91000854CC /* DBGlossaryManager.h */,
 				CF52CA9615B41F91000854CC /* DBGlossaryManager.m */,
 				CF52CA9715B41F91000854CC /* GlossaryManager.h */,
+				3E055FD917126C640019A6E6 /* FileGlossaryManager.h */,
+				3E055FDA17126C640019A6E6 /* FileGlossaryManager.m */,
 			);
 			name = GlossaryManager;
 			sourceTree = "<group>";
@@ -913,6 +933,10 @@
 				3E50D1DC160C6A8C00BA58C5 /* DialogTools.m in Sources */,
 				3E6B6203162BB662004C1BCC /* NowPlayingViewController.m in Sources */,
 				3E2B5FD917111236004CA16E /* FileSoundSubManager.m in Sources */,
+				3E055FDB17126C640019A6E6 /* FileGlossaryManager.m in Sources */,
+				3E055FDE17126CFA0019A6E6 /* SimpleFileKeyValueManager.m in Sources */,
+				3E055FE217127D380019A6E6 /* SVDelayControl.m in Sources */,
+				3E055FE517127D590019A6E6 /* SVProviderPool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

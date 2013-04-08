@@ -112,7 +112,7 @@
     
     SoundSub *sub = [self.soundSubList objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = sub.title;
+    cell.textLabel.text = [NSString stringWithFormat:@"%02d %@", indexPath.row + 1, sub.title];
     
     NSInteger minute = sub.beginTime / 60;
     NSInteger second = (NSInteger)sub.beginTime % 60;
