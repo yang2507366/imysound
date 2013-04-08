@@ -130,6 +130,13 @@
     self.webView.delegate = self;
     [self.dictVC.view addSubview:self.webView];
     
+    UIButton *playSoundButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    playSoundButton.frame = CGRectMake(frame.size.width - 80, 0, 80, 40);
+    [playSoundButton setTitle:@"🔊" forState:UIControlStateNormal];
+    playSoundButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+    [playSoundButton addTarget:self action:@selector(playSoundButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+//    [self.dictVC.view addSubview:playSoundButton];
+    
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
                                                                              target:self 
                                                                              action:@selector(onDoneBtnTapped)];
@@ -196,6 +203,11 @@
         [self setLoading];
         [self.dictionary query:word delegate:self];
     }
+}
+
+- (void)playSoundButtonTapped
+{
+    
 }
 
 - (void)setLoading

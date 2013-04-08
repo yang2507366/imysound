@@ -13,6 +13,7 @@
 		3E055FE517127D590019A6E6 /* SVProviderPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FE417127D590019A6E6 /* SVProviderPool.m */; };
 		3E055FE917128B630019A6E6 /* icon_glossary_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E055FE717128B630019A6E6 /* icon_glossary_list.png */; };
 		3E055FEA17128B630019A6E6 /* icon_glossary_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E055FE817128B630019A6E6 /* icon_glossary_list@2x.png */; };
+		3E055FEF171294FA0019A6E6 /* SVInputDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FEE171294FA0019A6E6 /* SVInputDialog.m */; };
 		3E2B5FCD17110838004CA16E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B5FCC17110838004CA16E /* Default-568h@2x.png */; };
 		3E2B5FD017110898004CA16E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B5FD217110898004CA16E /* Localizable.strings */; };
 		3E2B5FD917111236004CA16E /* FileSoundSubManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B5FD817111236004CA16E /* FileSoundSubManager.m */; };
@@ -134,6 +135,8 @@
 		3E055FE417127D590019A6E6 /* SVProviderPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProviderPool.m; sourceTree = "<group>"; };
 		3E055FE717128B630019A6E6 /* icon_glossary_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_glossary_list.png; sourceTree = "<group>"; };
 		3E055FE817128B630019A6E6 /* icon_glossary_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_glossary_list@2x.png"; sourceTree = "<group>"; };
+		3E055FED171294FA0019A6E6 /* SVInputDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVInputDialog.h; sourceTree = "<group>"; };
+		3E055FEE171294FA0019A6E6 /* SVInputDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVInputDialog.m; sourceTree = "<group>"; };
 		3E2B5FCC17110838004CA16E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E2B5FD117110898004CA16E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E2B5FD3171108ED004CA16E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -458,6 +461,8 @@
 				6785870015AC760300B096C1 /* CodeUtils.m */,
 				3E055FE017127D380019A6E6 /* SVDelayControl.h */,
 				3E055FE117127D380019A6E6 /* SVDelayControl.m */,
+				3E055FED171294FA0019A6E6 /* SVInputDialog.h */,
+				3E055FEE171294FA0019A6E6 /* SVInputDialog.m */,
 				3E055FE317127D580019A6E6 /* SVProviderPool.h */,
 				3E055FE417127D590019A6E6 /* SVProviderPool.m */,
 				6785870115AC760300B096C1 /* CommonUtils.h */,
@@ -945,6 +950,7 @@
 				3E055FDE17126CFA0019A6E6 /* SimpleFileKeyValueManager.m in Sources */,
 				3E055FE217127D380019A6E6 /* SVDelayControl.m in Sources */,
 				3E055FE517127D590019A6E6 /* SVProviderPool.m in Sources */,
+				3E055FEF171294FA0019A6E6 /* SVInputDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

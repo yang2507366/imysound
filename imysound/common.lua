@@ -198,7 +198,7 @@ function nullContent(en)
 end
 
 function dictionaryName()
-    return "JNHCKCLNMXBL";
+    return "LNMXBLHNHLLC";
 end
 
 function dictionaryURLForWord(word)

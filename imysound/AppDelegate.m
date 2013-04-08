@@ -10,6 +10,7 @@
 #import "SoundListViewController.h"
 #import "PlayListViewController.h"
 #import "LuaHelper.h"
+#import "CodeUtils.h"
 
 @implementation AppDelegate
 
@@ -45,6 +46,7 @@
     [LuaHelper sharedInstance].script = [NSString stringWithContentsOfFile:scriptFilePath 
                                                                   encoding:NSUTF8StringEncoding 
                                                                      error:nil];
+//    NSLog(@"%@", [CodeUtils encodeWithString:@"词典"]);
     
     return YES;
 }
