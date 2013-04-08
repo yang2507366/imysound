@@ -113,9 +113,10 @@
     [toolbarItems addObject:[UITools createFlexibleSpaceBarButtonItem]];
     
     [toolbarItems addObject:[UITools createFlexibleSpaceBarButtonItem]];
-    UIBarButtonItem *glossaryBtn = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
-                                                                                 target:self 
-                                                                                 action:@selector(onGlossaryBtnTapped)] autorelease];
+    UIBarButtonItem *glossaryBtn = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_glossary_list.png"]
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(onGlossaryBtnTapped)] autorelease];
     [toolbarItems addObject:glossaryBtn];
     [toolbarItems addObject:[UITools createFlexibleSpaceBarButtonItem]];
     
